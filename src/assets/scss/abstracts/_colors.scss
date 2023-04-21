@@ -1,0 +1,24 @@
+$color-palette: (
+  "gray-scale": (
+    0: #000000,
+    25: #18181b,
+    50: #26262b,
+    75: #a1a1aa,
+    100: #ffffff,
+  ),
+  "primary": #1e90ff,
+  "invalid": #f65164,
+);
+
+$sidebar-background: map-get($color-palette, "gray-scale", 25);
+$list-item-background: map-get($color-palette, "gray-scale", 50);
+$list-item-hover: map-get($color-palette, "gray-scale", 50);
+
+$todo-item-background: map-get($color-palette, "gray-scale", 50);
+
+$input-text-background: map-get($color-palette, "gray-scale", 50);
+
+$color-primary: map-get($color-palette, "primary");
+$color-danger: map-get($color-palette, "invalid");
+$color-white: map-get($color-palette, "gray-scale", 100);
+$color-text--light: map-get($color-palette, "gray-scale", 75);

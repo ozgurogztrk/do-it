@@ -1,0 +1,7 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.animated-page-container {
+  display: inline-block;
+  width: 100%;
+  padding-right: abs.em(32);
+}

@@ -1,0 +1,51 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.add-todo {
+  position: relative;
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    left: 10px;
+    top: 50%;
+    cursor: pointer;
+
+    svg {
+      color: abs.$color-white;
+      font-size: abs.rem(30);
+    }
+  }
+
+  input {
+    background: abs.$input-text-background;
+    color: abs.$color-white;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+    width: 100%;
+    padding-top: abs.em(20);
+    padding-bottom: abs.em(20);
+    padding-left: abs.em(48);
+    padding-right: abs.em(16);
+    transition: box-shadow 0.25s ease;
+
+    &::placeholder {
+      color: abs.$color-text--light;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px abs.$color-primary;
+
+      &:not(:placeholder-shown) {
+        &:invalid {
+          box-shadow: 0 0 0 2px abs.$color-danger;
+        }
+      }
+    }
+  }
+}

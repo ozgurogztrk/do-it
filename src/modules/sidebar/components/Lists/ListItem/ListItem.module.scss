@@ -1,0 +1,29 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.list-item {
+  text-decoration: none;
+  padding: abs.em(16);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-radius 0.25s ease,
+    font-weight 0.25s ease;
+
+  &:hover {
+    background-color: abs.$list-item-background;
+    border-radius: 16px;
+  }
+}
+
+.list-item__text {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.--active {
+  background-color: abs.$list-item-background;
+  text-decoration: none;
+  border-radius: 16px;
+  font-weight: 700;
+  padding: abs.em(16);
+  cursor: pointer;
+  transition: font-weight 0.25s ease;
+}

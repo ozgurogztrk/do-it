@@ -1,0 +1,28 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.sidebar {
+  background-color: abs.$sidebar-background;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  padding-left: abs.em(16);
+  padding-right: abs.em(16);
+  margin-right: abs.em(32);
+  height: 100vh;
+
+  .sidebar__header {
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+      color: abs.$color-white;
+      font-size: abs.rem(30);
+      margin-top: abs.em(11.2);
+      cursor: pointer;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

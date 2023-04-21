@@ -1,0 +1,15 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  .lists__header {
+    padding-left: abs.em(14);
+  }
+}
+
+.hidden {
+  display: none;
+}

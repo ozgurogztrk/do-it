@@ -1,0 +1,31 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.todo {
+  background-color: abs.$todo-item-background;
+  position: relative;
+  border-radius: 16px;
+  text-decoration: none;
+  padding: abs.em(16);
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-right: abs.em(16);
+    cursor: pointer;
+
+    svg {
+      color: abs.$color-white;
+      font-size: abs.rem(30);
+    }
+  }
+}
