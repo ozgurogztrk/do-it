@@ -1,12 +1,12 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.lists {
+.main {
   display: flex;
   flex-direction: column;
-  row-gap: 16px;
+  // row-gap: 16px;
 
-  .lists__header {
-    padding-left: abs.em(14);
+  .main__header {
+    // padding-left: abs.em(14);
   }
 }
 

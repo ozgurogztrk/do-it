@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ListContext } from "src/contexts/listContext";
-import AddTodo from "../AddTodo";
-import Todo from "../TodoItem";
+import AddTodo from "./AddTodo";
+import Todo from "./TodoItem";
 import styles from "./Todos.module.scss";
 
 export default function Container({ listId }: any) {

@@ -2,7 +2,8 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./Sidebar.module.scss";
-import Lists from "../Lists/Lists";
+import Lists from "./Lists";
+import Main from "./Main";
 
 export default function Sidebar() {
   const [activeState, setActiveState] = useState<boolean>(true);
@@ -30,6 +31,7 @@ export default function Sidebar() {
         />
       </div>
 
+      <Main sidebarState={activeState} />
       <Lists sidebarState={activeState} />
     </motion.nav>
   );

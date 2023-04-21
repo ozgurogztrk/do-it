@@ -1,23 +1,23 @@
 import { NavLink } from "react-router-dom";
-import styles from "./ListItem.module.scss";
+import styles from "./ItemList.module.scss";
 
-type listItemTypes = {
+type itemListTypes = {
   title: string;
   pathId: string;
 };
 
-export default function ListItem({
+export default function ItemList({
   title = "Default List",
   pathId = "0",
-}: listItemTypes) {
+}: itemListTypes) {
   return (
     <NavLink
       to={`/${pathId}`}
       className={({ isActive }) =>
-        isActive ? styles["--active"] : styles["list-item"]
+        isActive ? styles["--active"] : styles["item-list"]
       }
     >
-      <p className={styles["list-item__text"]}> {title}</p>
+      <p className={styles["item-list__text"]}> {title}</p>
     </NavLink>
   );
 }

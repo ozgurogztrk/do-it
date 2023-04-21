@@ -11,8 +11,10 @@ $color-palette: (
 );
 
 $sidebar-background: map-get($color-palette, "gray-scale", 25);
-$list-item-background: map-get($color-palette, "gray-scale", 50);
-$list-item-hover: map-get($color-palette, "gray-scale", 50);
+
+$item-favorites-background: map-get($color-palette, "gray-scale", 50);
+
+$item-list-background: map-get($color-palette, "gray-scale", 50);
 
 $todo-item-background: map-get($color-palette, "gray-scale", 50);
 
