@@ -13,16 +13,17 @@
     left: 10px;
     top: 50%;
     cursor: pointer;
+  }
 
-    svg {
-      color: abs.$color-white;
-      font-size: abs.rem(30);
-    }
+  svg {
+    color: abs.$color-text--light;
+    font-size: abs.rem(26);
   }
 
   input {
-    background: abs.$input-text-background;
+    background: transparent;
     color: abs.$color-white;
+    box-shadow: 0 0 0 2px abs.$color-input-outline;
     box-sizing: border-box;
     outline: none;
     border: none;
@@ -39,7 +40,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px abs.$color-primary;
+      box-shadow: 0 0 0 2px abs.$color-input-focused;
 
       &:not(:placeholder-shown) {
         &:invalid {

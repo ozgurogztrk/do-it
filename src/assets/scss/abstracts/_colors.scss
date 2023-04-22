@@ -10,15 +10,14 @@ $color-palette: (
   "invalid": #f65164,
 );
 
-$sidebar-background: map-get($color-palette, "gray-scale", 25);
+$color-sidebar-background: map-get($color-palette, "gray-scale", 25);
+$color-item-favorites-background: map-get($color-palette, "gray-scale", 50);
+$color-item-list-background: map-get($color-palette, "gray-scale", 50);
+$color-item-todo-background: map-get($color-palette, "gray-scale", 50);
 
-$item-favorites-background: map-get($color-palette, "gray-scale", 50);
-
-$item-list-background: map-get($color-palette, "gray-scale", 50);
-
-$todo-item-background: map-get($color-palette, "gray-scale", 50);
-
-$input-text-background: map-get($color-palette, "gray-scale", 50);
+$color-input-background: map-get($color-palette, "gray-scale", 50);
+$color-input-outline: map-get($color-palette, "gray-scale", 50);
+$color-input-focused: map-get($color-palette, "gray-scale", 75);
 
 $color-primary: map-get($color-palette, "primary");
 $color-danger: map-get($color-palette, "invalid");

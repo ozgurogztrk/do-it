@@ -1,27 +1,27 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
-import { ListContext } from "src/contexts/listContext";
+import { ListsContext } from "src/contexts/listsContext";
 import styles from "./AddTodo.module.scss";
 
 export default function AddTodo({ listId = 0 }: any) {
-  const { list, setList } = useContext(ListContext);
+  const { lists, setLists } = useContext(ListsContext);
 
   const addNewTodo = (event: any) => {
     event.preventDefault();
 
-    const notContained = list[listId].todos.every((todoElement: string) => {
+    const notContained = lists[listId].todos.every((todoElement: string) => {
       return todoElement !== getFormData(event)?.todoTitle;
     });
 
     if (notContained) {
-      const updatedList = [...list];
+      const updatedList = [...lists];
 
       updatedList[listId].todos = [
         ...updatedList[listId].todos,
-        getFormData(event).todoTitle,
+        { title: getFormData(event).todoTitle },
       ];
 
-      setList(updatedList);
+      setLists(updatedList);
 
       event.target.reset();
     }

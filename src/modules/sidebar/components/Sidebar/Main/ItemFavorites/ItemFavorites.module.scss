@@ -9,7 +9,7 @@
     font-weight 0.25s ease;
 
   &:hover {
-    background-color: abs.$item-favorites-background;
+    background-color: abs.$color-item-favorites-background;
     border-radius: 16px;
   }
 }
@@ -20,7 +20,7 @@
 }
 
 .--active {
-  background-color: abs.$item-favorites-background;
+  background-color: abs.$color-item-favorites-background;
   text-decoration: none;
   border-radius: 16px;
   font-weight: 700;

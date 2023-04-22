@@ -3,7 +3,7 @@ import AnimatedPageContainer from "src/modules/common/components/AnimatedPageCon
 export default function Home() {
   return (
     <AnimatedPageContainer>
-      <h1>Home</h1>
+      <h1>Welcome to To Do</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
         vitae unde sit consectetur, tenetur sapiente sequi accusamus cupiditate,

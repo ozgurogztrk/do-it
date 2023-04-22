@@ -1,18 +1,20 @@
 import { useContext } from "react";
-import { ListContext } from "src/contexts/listContext";
+import { ListsContext } from "src/contexts/listsContext";
 import AddTodo from "./AddTodo";
-import Todo from "./TodoItem";
+import ItemTodo from "src/modules/common/components/ItemTodo";
 import styles from "./Todos.module.scss";
+import { useParams } from "react-router-dom";
 
-export default function Container({ listId }: any) {
-  const { list } = useContext(ListContext);
+export default function Todos() {
+  const { lists } = useContext(ListsContext);
+  const { id }: any = useParams();
 
   return (
     <div className={styles.todos}>
-      <AddTodo listId={listId} />
+      <AddTodo listId={id} />
 
-      {list[listId]?.todos?.map((todo: string, index: number) => (
-        <Todo key={index} todo={todo} />
+      {lists[id]?.todos?.map((todo: string, index: number) => (
+        <ItemTodo key={index} todo={todo} listId={id} />
       ))}
     </div>
   );

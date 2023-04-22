@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { ListContext } from "src/contexts/listContext";
+import { ListsContext } from "src/contexts/listsContext";
 import AnimatedPageContainer from "src/modules/common/components/AnimatedPageContainer";
-import Todos from "src/modules/todos/components/Todos";
+import FavoriteTodos from "src/modules/todos/components/FavoriteTodos";
 
 export default function List() {
-  const { list } = useContext(ListContext);
+  const { lists } = useContext(ListsContext);
 
   return (
     <AnimatedPageContainer>
       <h1>Favorites</h1>
 
-      {/* <Todos listId={id} /> */}
+      <FavoriteTodos />
     </AnimatedPageContainer>
   );
 }

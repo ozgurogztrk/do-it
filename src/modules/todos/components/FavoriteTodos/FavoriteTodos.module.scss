@@ -1,0 +1,8 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.favorite-todos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding-top: abs.em(16);
+}
