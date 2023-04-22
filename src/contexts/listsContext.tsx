@@ -8,16 +8,16 @@ export default function ListsContextProvider({ children }: any) {
       id: 0,
       title: "List 1",
       todos: [
-        { title: "Go to mall", isFavorite: true },
-        { title: "Dentist appointment", isFavorite: false },
+        { id: 0, title: "Go to mall", isFavorite: true },
+        { id: 1, title: "Dentist appointment", isFavorite: false },
       ],
     },
     {
       id: 1,
       title: "List 2",
       todos: [
-        { title: "Make amogus memes", isFavorite: false },
-        { title: "Sleep well", isFavorite: true },
+        { id: 0, title: "Make amogus memes", isFavorite: false },
+        { id: 1, title: "Sleep well", isFavorite: true },
       ],
     },
   ]);

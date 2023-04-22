@@ -10,7 +10,7 @@ export default function FavoriteTodos() {
     list?.todos
       ?.filter((todo: any) => todo.isFavorite == true)
       .map((filteredTodo: string, index: number) => (
-        <ItemTodo key={index} todo={filteredTodo} />
+        <ItemTodo key={index} todo={filteredTodo} listId={list.id} />
       ))
   );
 

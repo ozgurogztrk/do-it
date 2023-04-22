@@ -9,10 +9,7 @@ export default function ItemTodo({ todo, listId = 0 }: any) {
   const setFavorite = () => {
     const updatedList = [...lists];
 
-    updatedList[listId].todos = [
-      ...updatedList[listId].todos,
-      { isFavorite: !todo.isFavorite },
-    ];
+    updatedList[listId].todos[todo.id].isFavorite = !todo.isFavorite;
 
     setLists(updatedList);
   };
