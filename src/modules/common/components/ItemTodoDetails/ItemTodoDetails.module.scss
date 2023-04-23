@@ -4,17 +4,16 @@
   background-color: abs.$color-sidebar-background;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
   float: right;
   padding-left: abs.em(16);
   padding-right: abs.em(16);
   height: 100vh;
   min-width: 0px;
 
-  svg {
+  button {
     color: abs.$color-white;
     font-size: abs.rem(30);
-    cursor: pointer;
   }
 }
 

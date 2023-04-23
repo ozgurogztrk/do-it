@@ -10,6 +10,7 @@ export default function Todos() {
   const { lists } = useContext(ListsContext);
   const { id }: any = useParams();
   const [detailsState, setDetailsState] = useState(false);
+  const [selectedTodoState, setSelectedTodoState] = useState();
 
   return (
     <div className={styles.todos}>
@@ -21,11 +22,17 @@ export default function Todos() {
           todo={todo}
           listId={id}
           setDetailsState={setDetailsState}
+          setSelectedTodoState={setSelectedTodoState}
         />
       ))}
 
       {detailsState ? (
-        <ItemTodoDetails activeState={detailsState} setActiveState={setDetailsState} />
+        <ItemTodoDetails
+          activeState={detailsState}
+          setActiveState={setDetailsState}
+          selectedTodoState={selectedTodoState}
+          listId={id}
+        />
       ) : null}
     </div>
   );

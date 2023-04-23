@@ -3,11 +3,28 @@ import { useContext } from "react";
 import { ListsContext } from "src/contexts/listsContext";
 import styles from "./ItemTodo.module.scss";
 
-export default function ItemTodo({ listId = 0, todo, setDetailsState }: any) {
+export default function ItemTodo({
+  listId = 0,
+  todo,
+  setDetailsState,
+  setSelectedTodoState,
+}: any) {
   const { lists, setLists } = useContext(ListsContext);
 
   const toggleTodoDetails = () => {
-    setDetailsState(true);
+    setDetailsState(false);
+
+    setTimeout(() => {
+      setDetailsState(true);
+    }, 250);
+
+    setSelectedTodoState(getTodo);
+  };
+
+  const getTodo = () => {
+    const updatedList = [...lists];
+
+    return updatedList[listId].todos[todo.id];
   };
 
   const setFavorite = () => {

@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { ListsContext } from "src/contexts/listsContext";
+import ButtonIcon from "src/modules/common/components/ButtonIcon";
+import InputText from "src/modules/common/components/InputText";
 import styles from "./AddTodo.module.scss";
 
 export default function AddTodo({ listId = 0 }: any) {
@@ -29,17 +31,11 @@ export default function AddTodo({ listId = 0 }: any) {
 
   return (
     <form className={styles["add-todo"]} onSubmit={addNewTodo}>
-      <button type="submit">
-        <Icon icon={"lucide:plus"} />
-      </button>
-
-      <input
-        type="text"
+      <ButtonIcon type="submit" icon="lucide:plus" isAbsolute={true} />
+      <InputText
         name="todoTitle"
-        defaultValue=""
-        pattern="^[^\s]+(\s[^\s]+)*$"
-        placeholder="Add Something To Do"
-        required
+        placeholder="Add Somethiıng To Do"
+        hasIcon={true}
       />
     </form>
   );
