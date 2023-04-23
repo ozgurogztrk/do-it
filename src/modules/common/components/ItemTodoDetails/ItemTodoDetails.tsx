@@ -1,11 +1,14 @@
 import { createPortal } from "react-dom";
-import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import styles from "./ItemTodoDetails.module.scss";
+import InputText from "../InputText";
+import ButtonIcon from "../ButtonIcon";
 
 export default function ItemTodoDetails({
   activeState = false,
   setActiveState,
+  selectedTodoState,
+  listId = 0,
 }: any) {
   const detailsVariant = {
     width: activeState ? "400px" : "0px",
@@ -15,6 +18,8 @@ export default function ItemTodoDetails({
   const closeDetails = () => {
     setActiveState(false);
   };
+
+  const saveNewTodoDetails = (event: any) => {};
 
   return createPortal(
     <motion.section
@@ -26,7 +31,14 @@ export default function ItemTodoDetails({
         <h1>Todo Details:</h1>
       </div>
 
-      <Icon icon={"lucide:arrow-right-circle"} onClick={closeDetails} />
+      <form action="">
+        <InputText
+          defaultValue={selectedTodoState.title}
+          placeholder="Add New Title"
+        />
+      </form>
+
+      <ButtonIcon icon={"lucide:arrow-right-circle"} click={closeDetails} />
     </motion.section>,
     document.getElementById("root") as HTMLElement
   );

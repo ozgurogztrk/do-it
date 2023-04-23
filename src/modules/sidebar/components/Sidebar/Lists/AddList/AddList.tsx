@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { ListsContext } from "src/contexts/listsContext";
+import ButtonIcon from "src/modules/common/components/ButtonIcon";
+import InputText from "src/modules/common/components/InputText";
 import styles from "./AddList.module.scss";
 
 export default function AddList() {
@@ -25,18 +27,8 @@ export default function AddList() {
 
   return (
     <form className={styles["add-list"]} onSubmit={addNewList}>
-      <button type="submit">
-        <Icon icon={"lucide:plus"} />
-      </button>
-
-      <input
-        type="text"
-        name="listTitle"
-        defaultValue=""
-        pattern="^[^\s]+(\s[^\s]+)*$"
-        placeholder="Add New List"
-        required
-      />
+      <ButtonIcon type="submit" icon="lucide:plus" isAbsolute={true} />
+      <InputText name="listTitle" placeholder="Add New List" hasIcon={true} />
     </form>
   );
 }
