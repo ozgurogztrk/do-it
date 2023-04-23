@@ -9,6 +9,7 @@
   padding-right: abs.em(16);
   margin-right: abs.em(32);
   height: 100vh;
+  min-width: 30px;
 
   .sidebar__header {
     display: flex;

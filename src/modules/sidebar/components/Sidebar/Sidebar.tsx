@@ -8,8 +8,9 @@ import Main from "./Main";
 export default function Sidebar() {
   const [activeState, setActiveState] = useState<boolean>(true);
 
-  const navVariant = {
-    width: activeState ? "400px" : "30px",
+  const sidebarVariant = {
+    width: activeState ? "300px" : "30px",
+    minWidth: activeState ? "300px" : "30px",
   };
 
   const toggleSidebar = () => {
@@ -19,7 +20,7 @@ export default function Sidebar() {
   return (
     <motion.nav
       className={styles.sidebar}
-      animate={navVariant}
+      animate={sidebarVariant}
       transition={{ duration: "0.25", type: "spring" }}
     >
       <div className={styles.sidebar__header}>
