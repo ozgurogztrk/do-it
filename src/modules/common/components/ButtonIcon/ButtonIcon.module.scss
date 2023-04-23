@@ -1,0 +1,22 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.button-icon {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  width: fit-content;
+  cursor: pointer;
+
+  svg {
+    color: abs.$color-text--light;
+    font-size: abs.rem(26);
+  }
+}
+
+.absolute {
+  position: absolute;
+  transform: translateY(-50%);
+  left: 10px;
+  top: 50%;
+}
