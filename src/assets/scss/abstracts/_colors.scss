@@ -6,8 +6,8 @@ $color-palette: (
     75: #a1a1aa,
     100: #ffffff,
   ),
-  "primary": #1e90ff,
-  "invalid": #f65164,
+  "primary": #2873ff,
+  "invalid": #ff2845,
 );
 
 $color-sidebar-background: map-get($color-palette, "gray-scale", 25);
