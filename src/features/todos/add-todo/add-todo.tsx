@@ -17,7 +17,11 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
 
       updatedList[id].todos = [
         ...updatedList[id].todos,
-        { title: getFormData(event).todoTitle },
+        {
+          id: updatedList[id].todos.length,
+          title: getFormData(event).todoTitle,
+          isFavorite: false,
+        },
       ];
 
       setLists(updatedList);
