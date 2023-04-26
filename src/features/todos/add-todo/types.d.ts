@@ -1,0 +1,3 @@
+type AddTodoProps = {
+  id?: number;
+};

@@ -1,0 +1,52 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.wrapper {
+  color: abs.$color-text--light;
+  display: flex;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 2px abs.$color-input-focused;
+  border-radius: 16px;
+  width: 100%;
+  padding: abs.em(20) abs.em(16);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: box-shadow 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+
+  input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      & ~ .checkbox {
+        box-shadow: 0 0 0 2px abs.$color-primary;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .checkbox {
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px abs.$color-text--light;
+    margin-right: abs.em(16);
+    width: 25px;
+    height: 25px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+  }
+}
+
+.active {
+  color: abs.$color-primary;
+  box-shadow: 0 0 0 2px abs.$color-primary;
+}

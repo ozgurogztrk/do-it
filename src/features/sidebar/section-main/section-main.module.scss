@@ -1,0 +1,15 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.section-main {
+  display: flex;
+  flex-direction: column;
+  // row-gap: 16px;
+
+  .section-main__header {
+    // padding-left: abs.em(14);
+  }
+}
+
+.hidden {
+  display: none;
+}

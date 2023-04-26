@@ -1,0 +1,3 @@
+type SectionMainProps = {
+  sidebarState?: boolean;
+};

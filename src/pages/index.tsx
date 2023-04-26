@@ -1,8 +1,8 @@
-import AnimatedPageContainer from "src/modules/common/components/AnimatedPageContainer";
+import PageContainer from "src/components/page-container";
 
-export default function Home() {
+export default function Index() {
   return (
-    <AnimatedPageContainer>
+    <PageContainer>
       <h1>Welcome to To Do</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
@@ -10,6 +10,6 @@ export default function Home() {
         obcaecati et esse beatae ratione pariatur alias quia explicabo
         architecto rem possimus?
       </p>
-    </AnimatedPageContainer>
+    </PageContainer>
   );
 }

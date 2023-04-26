@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ListsContext } from "src/contexts/listsContext";
-import AnimatedPageContainer from "src/modules/common/components/AnimatedPageContainer";
-import Todos from "src/modules/todos/components/Todos";
+import { ListsContext } from "src/contexts/lists-context";
+import AnimatedPageContainer from "src/components/page-container";
+import Todos from "src/features/todos";
 
 export default function List() {
   const { id }: any = useParams();
