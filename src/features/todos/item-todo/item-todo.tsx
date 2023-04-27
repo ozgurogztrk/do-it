@@ -12,11 +12,7 @@ export default function ItemTodo({
   const { lists, setLists } = useContext(ListsContext);
 
   const toggleTodoDetails = () => {
-    setDetailsState(false);
-
-    setTimeout(() => {
-      setDetailsState(true);
-    }, 250);
+    setDetailsState(true);
 
     setSelectedTodoState(getTodo);
   };

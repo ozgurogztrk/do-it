@@ -1,44 +1,54 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.item-todo-details {
-  background-color: abs.$color-sidebar-background;
-  display: flex;
-  flex-direction: column;
-  float: right;
-  padding-left: abs.em(16);
-  padding-right: abs.em(16);
+.backdrop {
+  background-color: abs.$color-backdrop--dark;
+  position: absolute;
+  width: 100vw;
   height: 100vh;
-  min-width: 0px;
 
-  .item-todo-details__header {
-    // margin-bottom: abs.em(16);
-  }
-
-  form {
+  .item-todo-details {
+    background-color: abs.$color-sidebar-background;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    row-gap: 16px;
-    height: 100%;
+    float: right;
+    padding-left: abs.em(16);
+    padding-right: abs.em(16);
+    height: 100vh;
+    min-width: 0px;
+    z-index: 10;
 
-    .item-todo-details__inputs {
+    .item-todo-details__header {
+      display: flex;
+      justify-content: space-between;
+
+      svg {
+        color: abs.$color-white;
+        font-size: abs.rem(30);
+      }
+    }
+
+    form {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       row-gap: 16px;
-    }
+      height: 100%;
 
-    .item-todo-details__buttons {
-      display: flex;
-      column-gap: 16px;
+      .item-todo-details__inputs {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+      }
+
+      .item-todo-details__buttons {
+        display: flex;
+        column-gap: 16px;
+        padding-bottom: abs.em(20);
+      }
     }
   }
 
-  svg {
-    color: abs.$color-white;
-    font-size: abs.rem(30);
+  .hidden {
+    display: none;
   }
-}
-
-.hidden {
-  display: none;
 }

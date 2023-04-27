@@ -24,36 +24,37 @@ export default function ItemTodoDetails({
   const saveNewTodoDetails = (event: any) => {};
 
   return createPortal(
-    <motion.section
-      className={styles["item-todo-details"]}
-      animate={detailsVariant}
-      transition={{ duration: "0.25", type: "spring" }}
-    >
-      <div className={styles["item-todo-details__header"]}>
-        <h1>Todo Details:</h1>
-      </div>
-
-      <form>
-        <div className={styles["item-todo-details__inputs"]}>
-          <InputText
-            defaultValue={selectedTodoState.title}
-            placeholder="Add New Title"
-          />
-
-          <InputCheckbox defaultChecked={selectedTodoState.isFavorite}>
-            Add To Favorites
-          </InputCheckbox>
+    <div className={styles.backdrop}>
+      <motion.section
+        className={styles["item-todo-details"]}
+        animate={detailsVariant}
+        transition={{ duration: "0.25", type: "spring" }}
+      >
+        <div className={styles["item-todo-details__header"]}>
+          <h1>Todo Details:</h1>
+          <ButtonIcon icon={"lucide:x"} onClick={closeDetails} />
         </div>
 
-        <div className={styles["item-todo-details__buttons"]}>
-          <Button type="submit">Save Changes</Button>
+        <form>
+          <div className={styles["item-todo-details__inputs"]}>
+            <InputText
+              defaultValue={selectedTodoState.title}
+              placeholder="Add New Title"
+            />
 
-          <Button>Delete Todo</Button>
-        </div>
-      </form>
+            <InputCheckbox defaultChecked={selectedTodoState.isFavorite}>
+              Add To Favorites
+            </InputCheckbox>
+          </div>
 
-      <ButtonIcon icon={"lucide:arrow-right-circle"} onClick={closeDetails} />
-    </motion.section>,
+          <div className={styles["item-todo-details__buttons"]}>
+            <Button type="submit">Save Changes</Button>
+
+            <Button>Delete Todo</Button>
+          </div>
+        </form>
+      </motion.section>
+    </div>,
     document.getElementById("root") as HTMLElement
   );
 }
