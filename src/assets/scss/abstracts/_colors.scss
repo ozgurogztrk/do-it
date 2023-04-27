@@ -8,6 +8,7 @@ $color-palette: (
   ),
   "primary": #2873ff,
   "invalid": #ff2845,
+  "semi-transparent--dark": #0000009a,
 );
 
 $color-sidebar-background: map-get($color-palette, "gray-scale", 25);
@@ -23,3 +24,5 @@ $color-primary: map-get($color-palette, "primary");
 $color-danger: map-get($color-palette, "invalid");
 $color-white: map-get($color-palette, "gray-scale", 100);
 $color-text--light: map-get($color-palette, "gray-scale", 75);
+
+$color-backdrop--dark: map-get($color-palette, "semi-transparent--dark");
