@@ -32,12 +32,13 @@
       flex-direction: column;
       justify-content: space-between;
       row-gap: 16px;
+      padding-top: abs.em(16);
       height: 100%;
 
       .item-todo-details__inputs {
         display: flex;
         flex-direction: column;
-        row-gap: 16px;
+        row-gap: 20px;
       }
 
       .item-todo-details__buttons {
