@@ -2,7 +2,7 @@
 
 .input-text {
   background-color: transparent;
-  color: abs.$color-white;
+  color: abs.$color-text--light;
   box-shadow: 0 0 0 2px abs.$color-input-outline;
   box-sizing: border-box;
   outline: none;
@@ -14,6 +14,7 @@
 
   &::placeholder {
     color: abs.$color-text--light;
+    opacity: 0.5;
   }
 
   &:focus {
