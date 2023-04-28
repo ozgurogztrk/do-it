@@ -3,11 +3,12 @@
 .wrapper {
   color: abs.$color-text--light;
   display: flex;
+  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
   width: fit-content;
-  transition: box-shadow 0.25s ease, color 0.25s ease;
+  transition: all 0.25s ease;
   cursor: pointer;
 
   input {
@@ -17,7 +18,8 @@
 
     &:checked {
       & ~ .checkbox {
-        box-shadow: 0 0 0 2px abs.$color-primary;
+        background-color: abs.$color-primary;
+        box-shadow: none;
 
         &::after {
           display: block;
@@ -27,16 +29,26 @@
   }
 
   .checkbox {
-    border-radius: 50%;
+    border-radius: 8px;
     box-shadow: 0 0 0 2px abs.$color-input-outline;
     margin-right: abs.em(16);
     width: 25px;
     height: 25px;
+    // transition: background-color 0.25s ease;
 
     &:after {
       content: "";
       position: absolute;
       display: none;
     }
+  }
+
+  svg {
+    color: abs.$color-white;
+    position: absolute;
+    font-size: abs.rem(22);
+    z-index: 10;
+    left: 5px;
+    top: 2px;
   }
 }
