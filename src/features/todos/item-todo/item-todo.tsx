@@ -8,13 +8,14 @@ export default function ItemTodo({
   todo,
   setDetailsState,
   setSelectedTodoState,
+  setFavoriteTodosId = () => 0,
 }: ItemTodoProps) {
   const { lists, setLists } = useContext(ListsContext);
 
   const toggleTodoDetails = () => {
     setDetailsState(true);
-
     setSelectedTodoState(getTodo);
+    setFavoriteTodosId(id);
   };
 
   const getTodo = () => {
