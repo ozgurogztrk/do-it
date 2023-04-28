@@ -1,5 +1,9 @@
+import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { notContains } from "src/utils/not-contains";
+import { getFormData } from "src/utils/get-form-data";
+import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
 import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
@@ -12,6 +16,8 @@ export default function ItemTodoDetails({
   setActiveState,
   selectedTodoState,
 }: ItemTodoDetailsProps) {
+  const { lists, setLists } = useContext(ListsContext);
+
   const detailsVariant = {
     width: activeState ? "400px" : "0px",
     minWidth: activeState ? "400px" : "0px",
@@ -21,7 +27,21 @@ export default function ItemTodoDetails({
     setActiveState(false);
   };
 
-  const saveNewTodoDetails = (event: any) => {};
+  const saveNewTodoDetails = (event: any) => {
+    event.preventDefault();
+
+    const updatedList = [...lists];
+
+    updatedList[id].todos[selectedTodoState.id] = {
+      id: selectedTodoState.id,
+      title: getFormData(event).todoTitle,
+      isFavorite: getFormData(event).todoFavoriteState,
+    };
+
+    setLists(updatedList);
+
+    closeDetails();
+  };
 
   return createPortal(
     <div className={styles.backdrop}>
@@ -35,14 +55,18 @@ export default function ItemTodoDetails({
           <ButtonIcon icon={"lucide:x"} onClick={closeDetails} />
         </div>
 
-        <form>
+        <form onSubmit={saveNewTodoDetails}>
           <div className={styles["item-todo-details__inputs"]}>
             <InputText
               defaultValue={selectedTodoState.title}
+              name="todoTitle"
               placeholder="Add New Title"
             />
 
-            <InputCheckbox defaultChecked={selectedTodoState.isFavorite}>
+            <InputCheckbox
+              defaultChecked={selectedTodoState.isFavorite}
+              name="todoFavoriteState"
+            >
               Add To Favorites
             </InputCheckbox>
           </div>

@@ -25,11 +25,7 @@ export default function ItemTodo({
   };
 
   const setFavorite = () => {
-    const updatedList = [...lists];
-
-    updatedList[id].todos[todo.id].isFavorite = !todo.isFavorite;
-
-    setLists(updatedList);
+    setLists((getTodo().isFavorite = !todo.isFavorite));
   };
 
   return (
