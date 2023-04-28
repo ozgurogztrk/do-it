@@ -35,7 +35,7 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
       <ButtonIcon type="submit" icon="lucide:plus" isAbsolute={true} />
       <InputText
         name="todoTitle"
-        placeholder="Add Somethiıng To Do"
+        placeholder="Add Something To Do"
         hasIcon={true}
       />
     </form>
