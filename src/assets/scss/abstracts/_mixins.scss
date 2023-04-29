@@ -1,0 +1,61 @@
+// Components
+
+@mixin button($color) {
+  background-color: $color;
+
+  &:hover {
+    background-color: lighten($color, 5%);
+  }
+
+  &:active {
+    background-color: darken($color, 2%);
+  }
+}
+
+@mixin button--outline($color) {
+  background-color: transparent;
+  outline: $color solid 2px;
+  color: $color;
+
+  &:hover {
+    background-color: rgba(lighten($color, 5%), 0.3);
+  }
+
+  &:active {
+    background-color: rgba(darken($color, 2%), 0.2);
+  }
+}
+
+// Animation & Keyframe
+
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Media Breakpoints
+
+@mixin breakpoints($breakpoint) {
+  @if $breakpoint == lg {
+    @media only screen and (max-width: 810px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == md {
+    @media only screen and (max-width: 680px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == sm {
+    @media only screen and (max-width: 481px) {
+      @content;
+    }
+  }
+}
