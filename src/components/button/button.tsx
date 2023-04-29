@@ -2,7 +2,7 @@ import styles from "./button.module.scss";
 
 export default function Button({
   type = "button",
-  role = "--primary",
+  role = "primary",
   onClick,
   children,
 }: ButtonProps) {

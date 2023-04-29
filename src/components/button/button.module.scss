@@ -1,6 +1,7 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .button {
+  color: abs.$color-white;
   border: none;
   outline: none;
   font-size: abs.rem(16);
@@ -8,10 +9,26 @@
   border-radius: 16px;
   width: 100%;
   padding: abs.em(16) abs.em(16);
+  transition: background-color 0.25s ease;
   cursor: pointer;
 }
 
-.--primary {
-  background-color: abs.$color-primary;
-  color: abs.$color-white;
+.primary {
+  @include abs.button(abs.$color-primary);
+}
+
+.primary--outline {
+  @include abs.button--outline(abs.$color-primary);
+}
+
+.secondary {
+  @include abs.button--outline(abs.$color-button-secondary);
+}
+
+.danger {
+  @include abs.button(abs.$color-danger);
+}
+
+.danger--outline {
+  @include abs.button--outline(abs.$color-danger);
 }

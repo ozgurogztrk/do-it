@@ -20,6 +20,8 @@ $color-input-background: map-get($color-palette, "gray-scale", 50);
 $color-input-outline: map-get($color-palette, "gray-scale", 50);
 $color-input-focused: map-get($color-palette, "gray-scale", 75);
 
+$color-button-secondary: map-get($color-palette, "gray-scale", 75);
+
 $color-primary: map-get($color-palette, "primary");
 $color-danger: map-get($color-palette, "invalid");
 $color-white: map-get($color-palette, "gray-scale", 100);

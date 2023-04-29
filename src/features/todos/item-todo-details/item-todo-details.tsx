@@ -43,6 +43,10 @@ export default function ItemTodoDetails({
     closeDetails();
   };
 
+  const deleteTodo = () => {
+    closeDetails();
+  };
+
   return createPortal(
     <div className={styles.backdrop}>
       <motion.section
@@ -73,8 +77,9 @@ export default function ItemTodoDetails({
 
           <div className={styles["item-todo-details__buttons"]}>
             <Button type="submit">Save Changes</Button>
-
-            <Button>Delete Todo</Button>
+            <Button role="secondary" onClick={deleteTodo}>
+              Delete Todo
+            </Button>
           </div>
         </form>
       </motion.section>
