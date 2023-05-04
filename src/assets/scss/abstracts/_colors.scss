@@ -16,6 +16,8 @@ $color-item-favorites-background: map-get($color-palette, "gray-scale", 50);
 $color-item-list-background: map-get($color-palette, "gray-scale", 50);
 $color-item-todo-background: map-get($color-palette, "gray-scale", 50);
 
+$color-modal-background: map-get($color-palette, "gray-scale", 25);
+
 $color-input-background: map-get($color-palette, "gray-scale", 50);
 $color-input-outline: map-get($color-palette, "gray-scale", 50);
 $color-input-focused: map-get($color-palette, "gray-scale", 75);
