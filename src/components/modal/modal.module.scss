@@ -1,0 +1,32 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.backdrop {
+  background-color: abs.$color-backdrop--dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+
+  .modal {
+    background-color: abs.$color-modal-background;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+    border-radius: 16px;
+    padding: abs.em(16);
+    height: 0px;
+    max-width: 90%;
+    max-height: 90%;
+
+    .modal__buttons {
+      display: flex;
+      column-gap: 16px;
+      padding-bottom: abs.em(20);
+    }
+  }
+}
