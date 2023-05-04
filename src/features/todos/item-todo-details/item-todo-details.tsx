@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { notContains } from "src/utils/not-contains";
 import { getFormData } from "src/utils/get-form-data";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
 import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
 import InputCheckbox from "src/components/input-checkbox";
+import Modal from "src/components/modal";
 import styles from "./item-todo-details.module.scss";
 
 export default function ItemTodoDetails({
@@ -17,6 +17,7 @@ export default function ItemTodoDetails({
   selectedTodoState,
 }: ItemTodoDetailsProps) {
   const { lists, setLists } = useContext(ListsContext);
+  const [modalState, setModalState] = useState(false);
 
   const detailsVariant = {
     width: activeState ? "400px" : "0px",
@@ -44,7 +45,7 @@ export default function ItemTodoDetails({
   };
 
   const deleteTodo = () => {
-    closeDetails();
+    setModalState(true);
   };
 
   return createPortal(
@@ -80,6 +81,18 @@ export default function ItemTodoDetails({
             <Button role="secondary" onClick={deleteTodo}>
               Delete Todo
             </Button>
+
+            {modalState ? (
+              <Modal modalState={modalState}>
+                <h1>Confirm Your Action!</h1>
+                <p>Are you sure you want to delete this item?</p>
+
+                <div>
+                  <Button>Yes</Button>
+                  <Button role="secondary">Cancel</Button>
+                </div>
+              </Modal>
+            ) : null}
           </div>
         </form>
       </motion.section>
