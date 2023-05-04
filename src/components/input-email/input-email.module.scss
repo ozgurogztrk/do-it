@@ -1,0 +1,33 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.input-email {
+  background-color: transparent;
+  color: abs.$color-text--light;
+  box-shadow: 0 0 0 2px abs.$color-input-outline;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+  padding: abs.em(20) abs.em(16);
+  transition: box-shadow 0.25s ease;
+
+  &::placeholder {
+    color: abs.$color-text--light;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px abs.$color-input-focused;
+
+    &:not(:placeholder-shown) {
+      &:invalid {
+        box-shadow: 0 0 0 2px abs.$color-danger;
+      }
+    }
+  }
+}
+
+.with-icon {
+  padding-left: abs.em(48);
+}
