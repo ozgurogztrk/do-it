@@ -5,7 +5,7 @@ export default function InputText({
   defaultValue = "",
   placeholder = "Placeholder...",
   hasIcon = false,
-}: InputProps) {
+}: InputTextProps) {
   return (
     <input
       type="text"
