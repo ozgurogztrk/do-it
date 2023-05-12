@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
-import { getFormData } from "src/utils/get-form-data";
 import { notContains } from "src/utils/not-contains";
 import ButtonIcon from "src/components/button-icon";
 import InputText from "src/components/input-text";
@@ -8,18 +7,19 @@ import styles from "./add-todo.module.scss";
 
 export default function AddTodo({ id = 0 }: AddTodoProps) {
   const { lists, setLists } = useContext(ListsContext);
+  const [todoTitle, setTodoTitle] = useState("");
 
   const addNewTodo = (event: any) => {
     event.preventDefault();
 
-    if (notContains(lists[id].todos, getFormData(event)?.todoTitle)) {
+    if (notContains(lists[id].todos, todoTitle)) {
       const updatedList = [...lists];
 
       updatedList[id].todos = [
         ...updatedList[id].todos,
         {
           id: updatedList[id].todos.length,
-          title: getFormData(event).todoTitle,
+          title: todoTitle,
           isFavorite: false,
         },
       ];
@@ -34,9 +34,9 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
     <form className={styles["add-todo"]} onSubmit={addNewTodo}>
       <ButtonIcon type="submit" icon="lucide:plus" isAbsolute={true} />
       <InputText
-        name="todoTitle"
         placeholder="Add Something To Do"
         hasIcon={true}
+        onChange={(event) => setTodoTitle(event.target.value)}
       />
     </form>
   );

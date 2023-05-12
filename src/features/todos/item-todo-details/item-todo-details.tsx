@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { getFormData } from "src/utils/get-form-data";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
 import ButtonIcon from "src/components/button-icon";
@@ -17,7 +16,12 @@ export default function ItemTodoDetails({
   selectedTodoState,
 }: ItemTodoDetailsProps) {
   const { lists, setLists } = useContext(ListsContext);
+
   const [modalState, setModalState] = useState(false);
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoFavoriteState, setTodoFavoriteState] = useState(
+    selectedTodoState.isFavorite
+  );
 
   const detailsVariant = {
     width: activeState ? "400px" : "0px",
@@ -35,8 +39,8 @@ export default function ItemTodoDetails({
 
     updatedList[id].todos[selectedTodoState.id] = {
       id: selectedTodoState.id,
-      title: getFormData(event).todoTitle,
-      isFavorite: getFormData(event).todoFavoriteState,
+      title: todoTitle,
+      isFavorite: todoFavoriteState,
     };
 
     setLists(updatedList);
@@ -64,13 +68,14 @@ export default function ItemTodoDetails({
           <div className={styles["item-todo-details__inputs"]}>
             <InputText
               defaultValue={selectedTodoState.title}
-              name="todoTitle"
               placeholder="Add New Title"
+              onChange={(event) => setTodoTitle(event.target.value)}
             />
 
             <InputCheckbox
               defaultChecked={selectedTodoState.isFavorite}
-              name="todoFavoriteState"
+              onChange={(event) => setTodoFavoriteState(event.target.checked)}
+              isChecked={todoFavoriteState}
             >
               Add To Favorites
             </InputCheckbox>
