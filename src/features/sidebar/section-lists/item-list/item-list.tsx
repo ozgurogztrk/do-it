@@ -12,7 +12,7 @@ export default function ItemList({
         isActive ? styles["--active"] : styles["item-list"]
       }
     >
-      <p className={styles["item-list__text"]}> {title}</p>
+      <p className={styles["item-list__text"]}>{title}</p>
     </NavLink>
   );
 }
