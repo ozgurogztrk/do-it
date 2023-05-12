@@ -1,16 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
 import AnimatedRoutes from "src/features/animated-routes";
-import ListsContextProvider from "../../contexts/lists-context";
-import DefaultLayout from "src/layouts/default-layout";
-import Button from "../button/button";
+import ListsContextProvider from "src/contexts/lists-context";
+import AuthContextProvider from "src/contexts/auth-context";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <ListsContextProvider>
-        <DefaultLayout />
-        <AnimatedRoutes />
-      </ListsContextProvider>
+      <AuthContextProvider>
+        <ListsContextProvider>
+          <AnimatedRoutes />
+        </ListsContextProvider>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }
