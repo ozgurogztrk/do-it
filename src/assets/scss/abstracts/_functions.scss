@@ -1,13 +1,13 @@
 // Converting 'px' to 'rem'
 
-@function rem($variable) {
-  $remValue: calc($variable / 16) + rem;
+@function rem($value) {
+  $remValue: calc($value / 16) + rem;
   @return $remValue;
 }
 
 // Converting 'px' to 'em'
 
-@function em($variable) {
-  $emValue: calc($variable / 16) + em;
+@function em($value) {
+  $emValue: calc($value / 16) + em;
   @return $emValue;
 }
