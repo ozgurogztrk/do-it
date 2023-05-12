@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "src/utils/firebase-config";
+import PageLoader from "src/components/page-loader";
 
 export const AuthContext = createContext({} as any);
 
@@ -17,7 +18,7 @@ export default function AuthContextProvider({ children }: any) {
   }, []);
   return (
     <AuthContext.Provider value={{ currentUser }}>
-      {!loading ? children : null}
+      {!loading ? children : <PageLoader />}
     </AuthContext.Provider>
   );
 }

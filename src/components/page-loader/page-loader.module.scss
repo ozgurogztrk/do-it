@@ -1,0 +1,13 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  h1 {
+    color: abs.$color-text--light;
+  }
+}
