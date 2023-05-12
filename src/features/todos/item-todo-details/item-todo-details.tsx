@@ -23,9 +23,15 @@ export default function ItemTodoDetails({
     selectedTodoState.isFavorite
   );
 
-  const detailsVariant = {
-    width: activeState ? "400px" : "0px",
-    minWidth: activeState ? "400px" : "0px",
+  const sidebarVariants = {
+    opened: {
+      width: 400,
+      transition: { duration: 0.2 },
+    },
+    closed: {
+      width: 0,
+      transition: { duration: 0.2 },
+    },
   };
 
   const closeDetails = () => {
@@ -56,8 +62,8 @@ export default function ItemTodoDetails({
     <div className={styles.backdrop}>
       <motion.section
         className={styles["item-todo-details"]}
-        animate={detailsVariant}
-        transition={{ duration: "0.25", type: "spring" }}
+        animate={activeState ? "opened" : "closed"}
+        variants={sidebarVariants}
       >
         <div className={styles["item-todo-details__header"]}>
           <h1>Todo Details:</h1>
