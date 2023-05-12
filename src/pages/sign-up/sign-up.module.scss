@@ -1,7 +1,7 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .sign-up {
-  background-color: abs.$color-sign-in-background;
+  background-color: abs.$color-sign-up-background;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
