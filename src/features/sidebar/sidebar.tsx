@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react";
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import SectionMain from "./section-main";
 import SectionLists from "./section-lists";
@@ -8,9 +8,15 @@ import styles from "./sidebar.module.scss";
 export default function Sidebar() {
   const [activeState, setActiveState] = useState<boolean>(true);
 
-  const sidebarVariant = {
-    width: activeState ? "300px" : "30px",
-    minWidth: activeState ? "300px" : "30px",
+  const sidebarVariants = {
+    opened: {
+      width: 380,
+      transition: { duration: 0.2 },
+    },
+    closed: {
+      width: 30,
+      transition: { duration: 0.2 },
+    },
   };
 
   const toggleSidebar = () => {
@@ -20,8 +26,9 @@ export default function Sidebar() {
   return (
     <motion.nav
       className={styles.sidebar}
-      animate={sidebarVariant}
-      transition={{ duration: "0.25", type: "spring" }}
+      initial={false}
+      animate={activeState ? "opened" : "closed"}
+      variants={sidebarVariants}
     >
       <div className={styles.sidebar__header}>
         <h1 className={activeState ? "" : styles.hidden}>To Do</h1>
