@@ -1,0 +1,20 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.sign-in {
+  background-color: abs.$color-sign-in-background;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  border-radius: 16px;
+  padding: abs.em(16);
+  margin: auto;
+  width: 20%;
+  text-align: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+  }
+}
