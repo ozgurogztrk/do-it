@@ -11,6 +11,9 @@ $color-palette: (
   "semi-transparent--dark": #0000009a,
 );
 
+$color-sign-in-background: map-get($color-palette, "gray-scale", 25);
+$color-sign-up-background: map-get($color-palette, "gray-scale", 25);
+
 $color-sidebar-background: map-get($color-palette, "gray-scale", 25);
 $color-item-favorites-background: map-get($color-palette, "gray-scale", 50);
 $color-item-list-background: map-get($color-palette, "gray-scale", 50);
