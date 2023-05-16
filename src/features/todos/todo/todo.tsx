@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { ListsContext } from "src/contexts/lists-context";
-import styles from "./item-todo.module.scss";
+import styles from "./todo.module.scss";
 
-export default function ItemTodo({
+export default function Todo({
   id = 0,
   todo,
   setDetailsState,
   setSelectedTodoState,
   setFavoriteTodosId = () => 0,
-}: ItemTodoProps) {
+}: TodoProps) {
   const { lists, setLists } = useContext(ListsContext);
 
   const toggleTodoDetails = () => {
@@ -29,7 +29,7 @@ export default function ItemTodo({
   };
 
   return (
-    <div className={styles["item-todo"]} onClick={toggleTodoDetails}>
+    <div className={styles.todo} onClick={toggleTodoDetails}>
       <p> {todo.title}</p>
 
       <button type="button" onClick={setFavorite}>

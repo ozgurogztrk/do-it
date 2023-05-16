@@ -1,4 +1,4 @@
-type ItemTodoProps = {
+type TodoProps = {
   id?: number;
   todo: { id: number; title: string; isFavorite: boolean };
   setDetailsState: React.Dispatch<React.SetStateAction<boolean>>;

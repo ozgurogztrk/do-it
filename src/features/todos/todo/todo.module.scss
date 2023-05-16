@@ -1,7 +1,7 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.item-todo {
-  background-color: abs.$color-item-todo-background;
+.todo {
+  background-color: abs.$color-todo-background;
   position: relative;
   border-radius: 16px;
   text-decoration: none;
