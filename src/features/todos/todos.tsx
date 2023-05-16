@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ListsContext } from "src/contexts/lists-context";
 import AddTodo from "./add-todo";
-import ItemTodo from "src/features/todos/item-todo";
-import ItemTodoDetails from "src/features/todos/item-todo-details";
+import Todo from "src/features/todos/todo";
+import TodoDetails from "src/features/todos/todo-details";
 import styles from "./todos.module.scss";
 
 export default function Todos() {
@@ -19,7 +19,7 @@ export default function Todos() {
       <AddTodo id={id} />
 
       {lists[id]?.todos?.map((todo: any, index: number) => (
-        <ItemTodo
+        <Todo
           key={index}
           todo={todo}
           id={id}
@@ -29,7 +29,7 @@ export default function Todos() {
       ))}
 
       {detailsState ? (
-        <ItemTodoDetails
+        <TodoDetails
           activeState={detailsState}
           setActiveState={setDetailsState}
           selectedTodoState={selectedTodoState}

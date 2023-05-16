@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
-import ItemTodo from "src/features/todos/item-todo";
-import ItemTodoDetails from "../item-todo-details/item-todo-details";
+import Todo from "src/features/todos/todo";
+import TodoDetails from "src/features/todos/todo-details";
 import styles from "./favorite-todos.module.scss";
 
 export default function FavoriteTodos() {
@@ -32,7 +32,7 @@ export default function FavoriteTodos() {
         list?.todos
           ?.filter((todo: any) => todo.isFavorite == true)
           .map((filteredTodo: any, index: number) => (
-            <ItemTodo
+            <Todo
               key={index}
               todo={filteredTodo}
               id={list.id}
@@ -44,7 +44,7 @@ export default function FavoriteTodos() {
       )}
 
       {detailsState ? (
-        <ItemTodoDetails
+        <TodoDetails
           activeState={detailsState}
           setActiveState={setDetailsState}
           selectedTodoState={selectedTodoState}
