@@ -39,8 +39,10 @@ export default function Sidebar() {
         />
       </div>
 
-      <SectionMain sidebarState={activeState} />
-      <SectionLists sidebarState={activeState} />
+      <div className={styles.sidebar__content}>
+        <SectionMain sidebarState={activeState} />
+        <SectionLists sidebarState={activeState} />
+      </div>
     </motion.nav>
   );
 }
