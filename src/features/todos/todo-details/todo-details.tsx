@@ -7,14 +7,14 @@ import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
 import InputCheckbox from "src/components/input-checkbox";
 import Modal from "src/components/modal";
-import styles from "./item-todo-details.module.scss";
+import styles from "./todo-details.module.scss";
 
-export default function ItemTodoDetails({
+export default function TodoDetails({
   id = 0,
   activeState = false,
   setActiveState,
   selectedTodoState,
-}: ItemTodoDetailsProps) {
+}: TodoDetailsProps) {
   const { lists, setLists } = useContext(ListsContext);
 
   const [modalState, setModalState] = useState(false);
@@ -61,17 +61,17 @@ export default function ItemTodoDetails({
   return createPortal(
     <div className={styles.backdrop}>
       <motion.section
-        className={styles["item-todo-details"]}
+        className={styles["todo-details"]}
         animate={activeState ? "opened" : "closed"}
         variants={sidebarVariants}
       >
-        <div className={styles["item-todo-details__header"]}>
+        <div className={styles["todo-details__header"]}>
           <h1>Todo Details:</h1>
           <ButtonIcon icon={"lucide:x"} onClick={closeDetails} />
         </div>
 
         <form onSubmit={saveNewTodoDetails}>
-          <div className={styles["item-todo-details__inputs"]}>
+          <div className={styles["todo-details__inputs"]}>
             <InputText
               defaultValue={selectedTodoState.title}
               placeholder="Add New Title"
@@ -87,7 +87,7 @@ export default function ItemTodoDetails({
             </InputCheckbox>
           </div>
 
-          <div className={styles["item-todo-details__buttons"]}>
+          <div className={styles["todo-details__buttons"]}>
             <Button type="submit">Save Changes</Button>
             <Button role="secondary" onClick={deleteTodo}>
               Delete Todo

@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
 
-  .item-todo-details {
+  .todo-details {
     background-color: abs.$color-sidebar-background;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     min-width: 0px;
     z-index: 10;
 
-    .item-todo-details__header {
+    .todo-details__header {
       display: flex;
       justify-content: space-between;
 
@@ -35,13 +35,13 @@
       padding-top: abs.em(16);
       height: 100%;
 
-      .item-todo-details__inputs {
+      .todo-details__inputs {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
       }
 
-      .item-todo-details__buttons {
+      .todo-details__buttons {
         display: flex;
         column-gap: 16px;
         padding-bottom: abs.em(20);
