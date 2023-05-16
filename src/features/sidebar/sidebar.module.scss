@@ -12,18 +12,6 @@
   height: 100vh;
   min-width: 30px;
 
-  .sidebar__header {
-    display: flex;
-    justify-content: space-between;
-
-    svg {
-      color: abs.$color-white;
-      font-size: abs.rem(30);
-      margin-top: abs.em(11.2);
-      cursor: pointer;
-    }
-  }
-
   .sidebar__content {
     display: flex;
     flex-direction: column;
@@ -31,8 +19,4 @@
     height: 100%;
     padding-bottom: abs.em(26);
   }
-}
-
-.hidden {
-  display: none;
 }

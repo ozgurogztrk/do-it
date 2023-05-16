@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Main from "./main";
 import Lists from "./lists";
 import styles from "./sidebar.module.scss";
+import Header from "./header";
 
 export default function Sidebar() {
   const [activeState, setActiveState] = useState<boolean>(true);
@@ -30,14 +30,7 @@ export default function Sidebar() {
       animate={activeState ? "opened" : "closed"}
       variants={sidebarVariants}
     >
-      <div className={styles.sidebar__header}>
-        <h1 className={activeState ? "" : styles.hidden}>To Do</h1>
-
-        <Icon
-          icon={activeState ? "lucide:x" : "lucide:menu"}
-          onClick={toggleSidebar}
-        />
-      </div>
+      <Header activeState={activeState} toggleEvent={toggleSidebar} />
 
       <div className={styles.sidebar__content}>
         <Main sidebarState={activeState} />
