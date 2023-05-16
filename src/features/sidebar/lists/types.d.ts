@@ -1,4 +1,4 @@
-type SectionListsProps = {
+type ListsProps = {
   sidebarState?: boolean;
 };
 

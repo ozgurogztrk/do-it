@@ -1,4 +1,4 @@
-type ItemListProps = {
+type ListProps = {
   title?: string;
   id?: string;
 };

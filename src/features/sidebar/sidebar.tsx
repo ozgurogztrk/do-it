@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import SectionMain from "./section-main";
-import SectionLists from "./section-lists";
+import Main from "./main";
+import Lists from "./lists";
 import styles from "./sidebar.module.scss";
 
 export default function Sidebar() {
@@ -40,8 +40,8 @@ export default function Sidebar() {
       </div>
 
       <div className={styles.sidebar__content}>
-        <SectionMain sidebarState={activeState} />
-        <SectionLists sidebarState={activeState} />
+        <Main sidebarState={activeState} />
+        <Lists sidebarState={activeState} />
       </div>
     </motion.nav>
   );

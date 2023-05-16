@@ -1,13 +1,8 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.section-lists {
+.main {
   display: flex;
   flex-direction: column;
-  // row-gap: 16px;
-
-  .section-lists__header {
-    // padding-left: abs.em(14);
-  }
 }
 
 .hidden {
