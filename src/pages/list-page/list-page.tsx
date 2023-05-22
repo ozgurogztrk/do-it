@@ -6,7 +6,10 @@ import Todos from "src/features/todos";
 import styles from "./list-page.module.scss";
 
 export default function ListPage() {
+  // Get the value of id parameter from '/list-page/:id' URL
   const { id }: any = useParams();
+
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
   return (

@@ -8,14 +8,20 @@ import InputText from "src/components/input-text";
 import styles from "./add-list.module.scss";
 
 export default function AddList() {
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
+
+  // Create a reactive listTitle variable to use it in the InputText component
   const [listTitle, setListTitle] = useState("");
 
+  // Create a variable named docRef to get a specific document in list-collection
   const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
+  // The function of adding a new list to cloud firestore
   const addNewList = async (event: any) => {
     event.preventDefault();
 
+    // Check if the new list title is already in the lists variable
     if (notContains(lists, listTitle)) {
       await updateDoc(docRef, {
         lists: [...lists, { id: lists.length, title: listTitle, todos: [] }],

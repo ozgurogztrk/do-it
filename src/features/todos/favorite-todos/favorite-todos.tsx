@@ -1,12 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
 import Todo from "src/features/todos/todo";
 import TodoDetails from "src/features/todos/todo-details";
 import styles from "./favorite-todos.module.scss";
 
 export default function FavoriteTodos() {
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
+  // Create reactive details, selectedTodo and favoriteTodosId variables
   const [detailsState, setDetailsState] = useState(false);
   const [selectedTodoState, setSelectedTodoState] = useState();
   const [favoriteTodosId, setFavoriteTodosId] = useState(0);

@@ -5,6 +5,7 @@ import AddList from "./add-list";
 import styles from "./lists.module.scss";
 
 export default function Lists({ sidebarState = false }: ListsProps) {
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
   return (

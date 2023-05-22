@@ -7,10 +7,13 @@ import TodoDetails from "src/features/todos/todo-details";
 import styles from "./todos.module.scss";
 
 export default function Todos() {
+  // Get the value of id parameter from '/list-page/:id' URL
   const { id }: any = useParams();
 
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
+  // Create reactive details and selectedTodo variables
   const [detailsState, setDetailsState] = useState(false);
   const [selectedTodoState, setSelectedTodoState] = useState();
 

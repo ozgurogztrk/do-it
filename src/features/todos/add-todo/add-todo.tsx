@@ -8,14 +8,20 @@ import InputText from "src/components/input-text";
 import styles from "./add-todo.module.scss";
 
 export default function AddTodo({ id = 0 }: AddTodoProps) {
+  // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
+
+  // Create a reactive todoTitle variable to use it in the InputText component
   const [todoTitle, setTodoTitle] = useState("");
 
+  // Create a variable named docRef to get a specific document in list-collection
   const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
+  // The function of adding a new todo to cloud firestore
   const addNewTodo = async (event: any) => {
     event.preventDefault();
 
+    // Check if the new todo title is already in the todos array in the lists variable with the specified id
     if (notContains(lists[id].todos, todoTitle)) {
       const newTodo = {
         id: [...lists][id].todos.length,

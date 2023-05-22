@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./modal.module.scss";
 
 export default function modal({ modalState, children }: ModalProps) {
+  // Animation properties
   const modalVariant = {
     height: modalState ? "fit-content" : "0px",
   };

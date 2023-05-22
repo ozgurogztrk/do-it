@@ -9,11 +9,14 @@ import InputPassword from "src/components/input-password";
 import styles from "./sign-up.module.scss";
 
 export default function SignUp() {
+  // Create reactive email and password variables to use them in the InputEmail and InputPassword components
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Create a navigate variable using useNavigate hook to navigate between pages
   const navigate = useNavigate();
 
+  // The function of signing up
   const handleSignUp = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 

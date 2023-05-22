@@ -7,8 +7,10 @@ import UserActions from "./user-actions";
 import styles from "./sidebar.module.scss";
 
 export default function Sidebar() {
+  // Create a reactive activeState variable to check if the sidebar is open or not
   const [activeState, setActiveState] = useState<boolean>(true);
 
+  // Animation properties
   const sidebarVariants = {
     opened: {
       width: 380,
@@ -21,6 +23,7 @@ export default function Sidebar() {
     },
   };
 
+  // The function of toggling the sidebar menu
   const toggleSidebar = () => {
     setActiveState(!activeState);
   };

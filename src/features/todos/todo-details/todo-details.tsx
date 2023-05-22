@@ -17,16 +17,22 @@ export default function TodoDetails({
   setActiveState,
   selectedTodoState,
 }: TodoDetailsProps) {
-  const { lists, setLists } = useContext(ListsContext);
+  // Get lists variable from lists context
+  const { lists } = useContext(ListsContext);
 
+  // Create a reactive variable to check if the modal is open or not
   const [modalState, setModalState] = useState(false);
+
+  // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
   const [todoTitle, setTodoTitle] = useState(selectedTodoState.title);
   const [todoFavoriteState, setTodoFavoriteState] = useState(
     selectedTodoState.isFavorite
   );
 
+  // Create a variable named docRef to get a specific document in list-collection
   const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
+  // Animation properties
   const sidebarVariants = {
     opened: {
       width: 400,
@@ -38,10 +44,12 @@ export default function TodoDetails({
     },
   };
 
+  // The function of closing the todo details menu
   const closeDetails = () => {
     setActiveState(false);
   };
 
+  // The function of updating new todo details to cloud firestore
   const saveNewTodoDetails = async (event: any) => {
     event.preventDefault();
 
@@ -60,6 +68,7 @@ export default function TodoDetails({
     closeDetails();
   };
 
+  // The function of deleting current todo
   const deleteTodo = () => {
     setModalState(true);
   };

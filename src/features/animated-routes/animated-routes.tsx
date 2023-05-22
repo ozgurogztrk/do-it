@@ -9,6 +9,7 @@ import SignIn from "src/pages/sign-in";
 import SignUp from "src/pages/sign-up";
 
 export default function AnimatedRoutes() {
+  // Create a location variable that will allow users to navigate between pages without any problem
   const location = useLocation();
 
   return (
