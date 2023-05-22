@@ -1,8 +1,8 @@
 import styles from "./input-email.module.scss";
 
 export default function InputEmail({
-  defaultValue = "",
   title,
+  value,
   placeholder = "Enter Your E-Mail....",
   hasIcon = false,
   onChange,
@@ -15,7 +15,7 @@ export default function InputEmail({
           ? `${styles["input-email"]} ${styles["with-icon"]}`
           : styles["input-email"]
       }
-      defaultValue={defaultValue}
+      value={value}
       placeholder={placeholder}
       title={title}
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"

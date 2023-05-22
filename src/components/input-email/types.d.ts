@@ -1,5 +1,5 @@
 type InputEmailProps = {
-  defaultValue?: string;
+  value?: string;
   placeholder?: string;
   title?: string;
   hasIcon?: boolean;

@@ -1,7 +1,7 @@
 import styles from "./input-password.module.scss";
 
 export default function InputPassword({
-  defaultValue = "",
+  value,
   title = "Enter a password with a minimum length of 6 characters",
   placeholder = "Enter Your Password...",
   minLength = 6,
@@ -16,7 +16,7 @@ export default function InputPassword({
           ? `${styles["input-password"]} ${styles["with-icon"]}`
           : styles["input-password"]
       }
-      defaultValue={defaultValue}
+      value={value}
       placeholder={placeholder}
       title={title}
       minLength={minLength}

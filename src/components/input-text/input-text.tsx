@@ -1,8 +1,8 @@
 import styles from "./input-text.module.scss";
 
 export default function InputText({
-  defaultValue = "",
   title,
+  value,
   placeholder = "Placeholder...",
   hasIcon = false,
   onChange,
@@ -15,7 +15,7 @@ export default function InputText({
           ? `${styles["input-text"]} ${styles["with-icon"]}`
           : styles["input-text"]
       }
-      defaultValue={defaultValue}
+      value={value}
       placeholder={placeholder}
       title={title}
       pattern="^[^\s]+(\s[^\s]+)*$"

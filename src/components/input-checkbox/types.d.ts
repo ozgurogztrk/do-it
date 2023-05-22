@@ -1,6 +1,5 @@
 type InputCheckboxProps = {
-  name?: string;
-  defaultChecked?: boolean;
+  checked?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   isChecked?: boolean;
   children?: React.ReactNode;
