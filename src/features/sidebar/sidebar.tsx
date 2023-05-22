@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Header from "./header";
 import Main from "./main";
 import Lists from "./lists";
+import UserActions from "./user-actions";
 import styles from "./sidebar.module.scss";
-import Header from "./header";
 
 export default function Sidebar() {
   const [activeState, setActiveState] = useState<boolean>(true);
@@ -14,7 +15,8 @@ export default function Sidebar() {
       transition: { duration: 0.2 },
     },
     closed: {
-      width: 30,
+      width: 0,
+      padding: 0,
       transition: { duration: 0.2 },
     },
   };
@@ -35,6 +37,7 @@ export default function Sidebar() {
       <div className={styles.sidebar__content}>
         <Main sidebarState={activeState} />
         <Lists sidebarState={activeState} />
+        <UserActions sidebarState={activeState} />
       </div>
     </motion.nav>
   );
