@@ -33,9 +33,13 @@ export default function SignUp() {
         <h1>Sign Up</h1>
 
         <form onSubmit={handleSignUp}>
-          <InputEmail onChange={(event) => setEmail(event.target.value)} />
+          <InputEmail
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+          />
           <InputPassword
             onChange={(event) => setPassword(event.target.value)}
+            value={password}
           />
 
           <p>Have an account? Click here to Sign In</p>

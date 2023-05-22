@@ -31,9 +31,13 @@ export default function SignIn() {
         <h1>Sign In</h1>
 
         <form onSubmit={handleSignIn}>
-          <InputEmail onChange={(event) => setEmail(event.target.value)} />
+          <InputEmail
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+          />
           <InputPassword
             onChange={(event) => setPassword(event.target.value)}
+            value={password}
           />
 
           <p>Don't have an account? Click here to Sign Up</p>
