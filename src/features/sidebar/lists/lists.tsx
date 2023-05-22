@@ -8,14 +8,16 @@ export default function Lists({ sidebarState = false }: ListsProps) {
   const { lists } = useContext(ListsContext);
 
   return (
-    <div className={sidebarState ? styles["lists"] : styles.hidden}>
+    <section className={sidebarState ? styles.lists : styles.hidden}>
       <p>Lists</p>
 
-      {lists.map(({ id, title }: ListsMapProps) => (
-        <List key={id} id={id} title={title} />
-      ))}
+      <div className={styles.lists__content}>
+        {lists.map(({ id, title }: ListsMapProps) => (
+          <List key={id} id={id} title={title} />
+        ))}
+      </div>
 
       <AddList />
-    </div>
+    </section>
   );
 }
