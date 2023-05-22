@@ -18,6 +18,7 @@ $color-danger: map-get($color-palette, "invalid");
 $color-white: map-get($color-palette, "gray-scale", 100);
 $color-text--light: map-get($color-palette, "gray-scale", 75);
 $color-backdrop--dark: map-get($color-palette, "semi-transparent--dark");
+$color-link-background: map-get($color-palette, "gray-scale", 50);
 
 // Authentication Pages
 
@@ -27,8 +28,6 @@ $color-sign-up-background: map-get($color-palette, "gray-scale", 25);
 // Sidebar
 
 $color-sidebar-background: map-get($color-palette, "gray-scale", 25);
-$color-favorites-background: map-get($color-palette, "gray-scale", 50);
-$color-list-background: map-get($color-palette, "gray-scale", 50);
 
 // Todos
 
