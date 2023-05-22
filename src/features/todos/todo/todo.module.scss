@@ -3,14 +3,18 @@
 .todo {
   background-color: abs.$color-todo-background;
   position: relative;
-  border-radius: 16px;
   text-decoration: none;
+  border-radius: 16px;
   padding: abs.em(16);
   cursor: pointer;
 
   p {
-    margin-top: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     margin-bottom: 0;
+    margin-top: 0;
+    max-width: 90%;
   }
 
   button {

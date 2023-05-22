@@ -1,13 +1,10 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.header {
+.user-actions {
   display: flex;
   justify-content: space-between;
-
-  svg {
-    color: abs.$color-white !important;
-    font-size: abs.rem(30) !important;
-  }
+  column-gap: 16px;
+  margin-top: auto;
 }
 
 .hidden {

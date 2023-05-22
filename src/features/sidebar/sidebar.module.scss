@@ -10,12 +10,10 @@
   padding-right: abs.em(16);
   margin-right: abs.em(32);
   height: 100vh;
-  min-width: 30px;
 
   .sidebar__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     padding-bottom: abs.em(26);
   }

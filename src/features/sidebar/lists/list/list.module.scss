@@ -1,7 +1,9 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .list {
+  display: flex;
   text-decoration: none;
+  column-gap: 16px;
   padding: abs.em(16);
   margin-bottom: abs.em(16);
   cursor: pointer;
@@ -9,7 +11,7 @@
     font-weight 0.25s ease;
 
   &:hover {
-    background-color: abs.$color-list-background;
+    background-color: abs.$color-link-background;
     border-radius: 16px;
   }
 }
@@ -20,12 +22,19 @@
 }
 
 .--active {
-  background-color: abs.$color-list-background;
+  background-color: abs.$color-link-background;
+  display: flex;
   text-decoration: none;
   border-radius: 16px;
   font-weight: 700;
+  column-gap: 16px;
   padding: abs.em(16);
   margin-bottom: abs.em(16);
   cursor: pointer;
   transition: font-weight 0.25s ease;
+}
+
+svg {
+  color: abs.$color-text--light;
+  font-size: abs.rem(26);
 }
