@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { db } from "src/utils/firebase-config";
+import { doc, updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
 import ButtonIcon from "src/components/button-icon";
@@ -18,10 +20,12 @@ export default function TodoDetails({
   const { lists, setLists } = useContext(ListsContext);
 
   const [modalState, setModalState] = useState(false);
-  const [todoTitle, setTodoTitle] = useState("");
+  const [todoTitle, setTodoTitle] = useState(selectedTodoState.title);
   const [todoFavoriteState, setTodoFavoriteState] = useState(
     selectedTodoState.isFavorite
   );
+
+  const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
   const sidebarVariants = {
     opened: {
@@ -38,18 +42,20 @@ export default function TodoDetails({
     setActiveState(false);
   };
 
-  const saveNewTodoDetails = (event: any) => {
+  const saveNewTodoDetails = async (event: any) => {
     event.preventDefault();
 
-    const updatedList = [...lists];
+    const updatedLists = [...lists];
 
-    updatedList[id].todos[selectedTodoState.id] = {
+    updatedLists[id].todos[selectedTodoState.id] = {
       id: selectedTodoState.id,
       title: todoTitle,
       isFavorite: todoFavoriteState,
     };
 
-    setLists(updatedList);
+    await updateDoc(docRef, {
+      lists: updatedLists,
+    });
 
     closeDetails();
   };
@@ -73,15 +79,14 @@ export default function TodoDetails({
         <form onSubmit={saveNewTodoDetails}>
           <div className={styles["todo-details__inputs"]}>
             <InputText
-              defaultValue={selectedTodoState.title}
               placeholder="Add New Title"
               onChange={(event) => setTodoTitle(event.target.value)}
+              value={todoTitle}
             />
 
             <InputCheckbox
-              defaultChecked={selectedTodoState.isFavorite}
               onChange={(event) => setTodoFavoriteState(event.target.checked)}
-              isChecked={todoFavoriteState}
+              checked={todoFavoriteState}
             >
               Add To Favorites
             </InputCheckbox>
