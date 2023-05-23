@@ -68,9 +68,13 @@ export default function TodoDetails({
     closeDetails();
   };
 
-  // The function of deleting current todo
+  // The function of toggling a confirmation modal to delete the current todo
+  const toggleDeleteModal = () => {
+    setModalState(!modalState);
+  };
+
   const deleteTodo = () => {
-    setModalState(true);
+    toggleDeleteModal();
   };
 
   return createPortal(
@@ -103,21 +107,21 @@ export default function TodoDetails({
 
           <div className={styles["todo-details__buttons"]}>
             <Button type="submit">Save Changes</Button>
-            <Button role="secondary" onClick={deleteTodo}>
+            <Button role="secondary" onClick={toggleDeleteModal}>
               Delete Todo
             </Button>
 
-            {modalState ? (
-              <Modal modalState={modalState}>
-                <h1>Confirm Your Action!</h1>
-                <p>Are you sure you want to delete this item?</p>
+            <Modal modalState={modalState}>
+              <h1>Confirm Your Action!</h1>
+              <p>Are you sure you want to delete this item?</p>
 
-                <div>
-                  <Button>Yes</Button>
-                  <Button role="secondary">Cancel</Button>
-                </div>
-              </Modal>
-            ) : null}
+              <div className={styles.modal__buttons}>
+                <Button onClick={deleteTodo}>Yes</Button>
+                <Button role="secondary" onClick={toggleDeleteModal}>
+                  Cancel
+                </Button>
+              </div>
+            </Modal>
           </div>
         </form>
       </motion.section>

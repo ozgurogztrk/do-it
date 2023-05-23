@@ -4,20 +4,46 @@ import styles from "./modal.module.scss";
 
 export default function modal({ modalState, children }: ModalProps) {
   // Animation properties
-  const modalVariant = {
-    height: modalState ? "fit-content" : "0px",
+  const backdropVariants = {
+    opened: {
+      display: "flex",
+      opacity: 1,
+      transition: { duration: 0.2 },
+    },
+    closed: {
+      opacity: 0,
+      transition: { duration: 0.2 },
+      transitionEnd: { display: "none" },
+    },
+  };
+
+  const modalVariants = {
+    opened: {
+      scale: 1,
+      transition: { duration: 0.2 },
+    },
+    closed: {
+      scale: 0,
+      transition: { duration: 0.2 },
+    },
   };
 
   return createPortal(
-    <div className={styles.backdrop}>
+    <motion.div
+      className={styles.backdrop}
+      initial={false}
+      animate={modalState ? "opened" : "closed"}
+      variants={backdropVariants}
+    >
       <motion.div
         className={styles.modal}
-        animate={modalVariant}
-        transition={{ duration: "0.25", type: "spring" }}
+        initial={false}
+        animate={modalState ? "opened" : "closed"}
+        variants={modalVariants}
       >
         {children}
       </motion.div>
-    </div>,
+    </motion.div>,
     document.getElementById("root") as HTMLElement
   );
 }

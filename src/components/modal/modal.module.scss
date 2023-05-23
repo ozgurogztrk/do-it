@@ -19,14 +19,7 @@
     row-gap: 16px;
     border-radius: 16px;
     padding: abs.em(16);
-    height: 0px;
     max-width: 90%;
-    max-height: 90%;
-
-    .modal__buttons {
-      display: flex;
-      column-gap: 16px;
-      padding-bottom: abs.em(20);
-    }
+    width: 20%;
   }
 }

@@ -43,8 +43,10 @@
 
       .todo-details__buttons {
         display: flex;
+        justify-content: center;
         column-gap: 16px;
         padding-bottom: abs.em(20);
+        width: 100%;
       }
     }
   }
@@ -52,4 +54,12 @@
   .hidden {
     display: none;
   }
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  padding-bottom: abs.em(20);
+  width: 100%;
 }
