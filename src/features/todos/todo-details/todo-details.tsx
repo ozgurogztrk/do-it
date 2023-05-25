@@ -13,30 +13,25 @@ import styles from "./todo-details.module.scss";
 
 export default function TodoDetails({
   id = 0,
-  activeState = false,
-  setActiveState,
-  selectedTodoState,
+  setIsDetailsOpen,
+  selectedTodo,
 }: TodoDetailsProps) {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
   // Create a reactive variable to check if the modal is open or not
-  const [modalState, setModalState] = useState(false);
-
-  // const [backdropVisibility, setBackdropVisibility] = useState(styles.hidden);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
-  const [todoTitle, setTodoTitle] = useState(selectedTodoState?.title);
-  const [todoFavoriteState, setTodoFavoriteState] = useState(
-    selectedTodoState?.isFavorite
-  );
+  const [todoTitle, setTodoTitle] = useState(selectedTodo?.title);
+  const [todoFavorite, setTodoFavorite] = useState(selectedTodo?.isFavorite);
 
   // Create a variable named docRef to get a specific document in list-collection
   const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
   // The function of closing the todo details menu
   const closeDetails = () => {
-    setActiveState(false);
+    setIsDetailsOpen(false);
   };
 
   // The function of updating new todo details to cloud firestore
@@ -45,10 +40,10 @@ export default function TodoDetails({
 
     const updatedLists = [...lists];
 
-    updatedLists[id].todos[selectedTodoState.id] = {
-      id: selectedTodoState.id,
+    updatedLists[id].todos[selectedTodo.id] = {
+      id: selectedTodo.id,
       title: todoTitle,
-      isFavorite: todoFavoriteState,
+      isFavorite: todoFavorite,
     };
 
     await updateDoc(docRef, {
@@ -60,7 +55,7 @@ export default function TodoDetails({
 
   // The function of toggling a confirmation modal to delete the current todo
   const toggleDeleteModal = () => {
-    setModalState(!modalState);
+    setIsModalOpen(!isModalOpen);
   };
 
   // The function of deleting the current todo
@@ -90,8 +85,8 @@ export default function TodoDetails({
             />
 
             <InputCheckbox
-              onChange={(event) => setTodoFavoriteState(event.target.checked)}
-              checked={todoFavoriteState}
+              onChange={(event) => setTodoFavorite(event.target.checked)}
+              checked={todoFavorite}
             >
               Add To Favorites
             </InputCheckbox>
@@ -103,7 +98,7 @@ export default function TodoDetails({
               Delete Todo
             </Button>
 
-            <Modal activeState={modalState}>
+            <Modal isModalOpen={isModalOpen}>
               <h1>Confirm Your Action!</h1>
               <p>Are you sure you want to delete this item?</p>
 

@@ -2,10 +2,10 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./modal.module.scss";
 
-export default function modal({ activeState, children }: ModalProps) {
+export default function modal({ isModalOpen, children }: ModalProps) {
   return createPortal(
     <AnimatePresence>
-      {activeState ? (
+      {isModalOpen ? (
         <div className={styles.backdrop}>
           <motion.div
             className={styles.modal}

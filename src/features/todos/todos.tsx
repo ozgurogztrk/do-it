@@ -14,9 +14,9 @@ export default function Todos() {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
-  // Create reactive details and selectedTodo variables
-  const [detailsState, setDetailsState] = useState(false);
-  const [selectedTodoState, setSelectedTodoState] = useState();
+  // Create reactive activeState and selectedTodo variables
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState();
 
   return (
     <div className={styles.todos}>
@@ -27,17 +27,16 @@ export default function Todos() {
           key={index}
           todo={todo}
           id={id}
-          setDetailsState={setDetailsState}
-          setSelectedTodoState={setSelectedTodoState}
+          setIsDetailsOpen={setIsDetailsOpen}
+          setSelectedTodo={setSelectedTodo}
         />
       ))}
 
       <AnimatePresence>
-        {detailsState ? (
+        {isDetailsOpen ? (
           <TodoDetails
-            activeState={detailsState}
-            setActiveState={setDetailsState}
-            selectedTodoState={selectedTodoState}
+            setIsDetailsOpen={setIsDetailsOpen}
+            selectedTodo={selectedTodo}
             id={id}
           />
         ) : null}

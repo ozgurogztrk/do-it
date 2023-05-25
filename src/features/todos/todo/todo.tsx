@@ -5,8 +5,8 @@ import styles from "./todo.module.scss";
 export default function Todo({
   id = 0,
   todo,
-  setDetailsState,
-  setSelectedTodoState,
+  setIsDetailsOpen,
+  setSelectedTodo,
   setFavoriteTodosId = () => 0,
 }: TodoProps) {
   // Get lists variable from lists context
@@ -14,8 +14,8 @@ export default function Todo({
 
   // The function of toggling the todo details menu
   const toggleTodoDetails = () => {
-    setDetailsState(true);
-    setSelectedTodoState(getTodo);
+    setIsDetailsOpen(true);
+    setSelectedTodo(getTodo);
     setFavoriteTodosId(id);
   };
 
