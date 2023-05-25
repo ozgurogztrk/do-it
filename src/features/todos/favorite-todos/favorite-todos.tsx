@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
 import Todo from "src/features/todos/todo";
@@ -45,14 +46,16 @@ export default function FavoriteTodos() {
           ))
       )}
 
-      {detailsState ? (
-        <TodoDetails
-          activeState={detailsState}
-          setActiveState={setDetailsState}
-          selectedTodoState={selectedTodoState}
-          id={favoriteTodosId}
-        />
-      ) : null}
+      <AnimatePresence>
+        {detailsState ? (
+          <TodoDetails
+            activeState={detailsState}
+            setActiveState={setDetailsState}
+            selectedTodoState={selectedTodoState}
+            id={favoriteTodosId}
+          />
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

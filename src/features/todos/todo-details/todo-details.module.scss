@@ -5,6 +5,7 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 10;
 
   .todo-details {
     background-color: abs.$color-sidebar-background;
@@ -14,8 +15,7 @@
     padding-left: abs.em(16);
     padding-right: abs.em(16);
     height: 100vh;
-    min-width: 0px;
-    z-index: 10;
+    z-index: 20;
 
     .todo-details__header {
       display: flex;

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { db } from "src/utils/firebase-config";
@@ -23,26 +23,16 @@ export default function TodoDetails({
   // Create a reactive variable to check if the modal is open or not
   const [modalState, setModalState] = useState(false);
 
+  // const [backdropVisibility, setBackdropVisibility] = useState(styles.hidden);
+
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
-  const [todoTitle, setTodoTitle] = useState(selectedTodoState.title);
+  const [todoTitle, setTodoTitle] = useState(selectedTodoState?.title);
   const [todoFavoriteState, setTodoFavoriteState] = useState(
-    selectedTodoState.isFavorite
+    selectedTodoState?.isFavorite
   );
 
   // Create a variable named docRef to get a specific document in list-collection
   const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
-
-  // Animation properties
-  const sidebarVariants = {
-    opened: {
-      width: 400,
-      transition: { duration: 0.2 },
-    },
-    closed: {
-      width: 0,
-      transition: { duration: 0.2 },
-    },
-  };
 
   // The function of closing the todo details menu
   const closeDetails = () => {
@@ -73,16 +63,18 @@ export default function TodoDetails({
     setModalState(!modalState);
   };
 
+  // The function of deleting the current todo
   const deleteTodo = () => {
     toggleDeleteModal();
   };
-
   return createPortal(
     <div className={styles.backdrop}>
       <motion.section
         className={styles["todo-details"]}
-        animate={activeState ? "opened" : "closed"}
-        variants={sidebarVariants}
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.2 }}
       >
         <div className={styles["todo-details__header"]}>
           <h1>Todo Details:</h1>
@@ -111,7 +103,7 @@ export default function TodoDetails({
               Delete Todo
             </Button>
 
-            <Modal modalState={modalState}>
+            <Modal activeState={modalState}>
               <h1>Confirm Your Action!</h1>
               <p>Are you sure you want to delete this item?</p>
 

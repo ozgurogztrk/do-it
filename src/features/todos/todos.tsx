@@ -5,6 +5,7 @@ import AddTodo from "./add-todo";
 import Todo from "src/features/todos/todo";
 import TodoDetails from "src/features/todos/todo-details";
 import styles from "./todos.module.scss";
+import { AnimatePresence } from "framer-motion";
 
 export default function Todos() {
   // Get the value of id parameter from '/list-page/:id' URL
@@ -31,14 +32,16 @@ export default function Todos() {
         />
       ))}
 
-      {detailsState ? (
-        <TodoDetails
-          activeState={detailsState}
-          setActiveState={setDetailsState}
-          selectedTodoState={selectedTodoState}
-          id={id}
-        />
-      ) : null}
+      <AnimatePresence>
+        {detailsState ? (
+          <TodoDetails
+            activeState={detailsState}
+            setActiveState={setDetailsState}
+            selectedTodoState={selectedTodoState}
+            id={id}
+          />
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

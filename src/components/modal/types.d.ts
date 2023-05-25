@@ -1,4 +1,4 @@
 type ModalProps = {
-  modalState?: boolean;
+  activeState?: boolean;
   children?: React.ReactNode;
 };
