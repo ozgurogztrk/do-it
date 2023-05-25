@@ -59,8 +59,23 @@ export default function TodoDetails({
   };
 
   // The function of deleting the current todo
-  const deleteTodo = () => {
+  const deleteTodo = async () => {
+    const updatedLists = [...lists];
+    const todos = updatedLists[id].todos;
+
+    const todoIndex = todos.findIndex(
+      (todo: any) => todo.id === selectedTodo.id
+    );
+
+    if (todoIndex !== -1) {
+      todos.splice(todoIndex, 1);
+    }
+    await updateDoc(docRef, {
+      lists: updatedLists,
+    });
+
     toggleDeleteModal();
+    closeDetails();
   };
   return createPortal(
     <div className={styles.backdrop}>
