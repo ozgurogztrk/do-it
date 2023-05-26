@@ -9,9 +9,9 @@ export default function FavoriteTodos() {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
-  // Create reactive details, selectedTodo and favoriteTodosId variables
-  const [detailsState, setDetailsState] = useState(false);
-  const [selectedTodoState, setSelectedTodoState] = useState();
+  // Create reactive activeState, selectedTodo and favoriteTodosId variables
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState();
   const [favoriteTodosId, setFavoriteTodosId] = useState(0);
 
   // const filteredTodos = lists?.map((list: any) =>
@@ -39,19 +39,19 @@ export default function FavoriteTodos() {
               key={index}
               todo={filteredTodo}
               id={list.id}
-              setDetailsState={setDetailsState}
-              setSelectedTodoState={setSelectedTodoState}
+              setIsDetailsOpen={setIsDetailsOpen}
+              setSelectedTodo={setSelectedTodo}
               setFavoriteTodosId={setFavoriteTodosId}
             />
           ))
       )}
 
       <AnimatePresence>
-        {detailsState ? (
+        {isDetailsOpen ? (
           <TodoDetails
-            activeState={detailsState}
-            setActiveState={setDetailsState}
-            selectedTodoState={selectedTodoState}
+            activeState={isDetailsOpen}
+            setIsDetailsOpen={setIsDetailsOpen}
+            selectedTodo={selectedTodo}
             id={favoriteTodosId}
           />
         ) : null}
