@@ -69,6 +69,7 @@ export default function TodoDetails({
 
     if (todoIndex !== -1) {
       todos.splice(todoIndex, 1);
+      todos.map((todo: any) => (todo.id = todos.indexOf(todo)));
     }
     await updateDoc(docRef, {
       lists: updatedLists,
