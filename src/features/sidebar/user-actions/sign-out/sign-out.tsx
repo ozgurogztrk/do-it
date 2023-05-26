@@ -1,13 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "src/utils/firebase-config";
 import ButtonIcon from "src/components/button-icon/button-icon";
-import styles from "./sign-out.module.scss";
 
 export default function SignOut() {
   const navigate = useNavigate();
 
-  const signOut = () => {
-    navigate("/sign-in");
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/sign-in");
+      })
+      .catch((error) => {
+        console.error(error.code, error.message);
+      });
   };
 
-  return <ButtonIcon icon="lucide:log-out" onClick={signOut} />;
+  return <ButtonIcon icon="lucide:log-out" onClick={handleSignOut} />;
 }
