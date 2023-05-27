@@ -1,0 +1,28 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 26px;
+
+  .settings-page__panel {
+    display: flex;
+    flex-direction: column;
+
+    .settings-page__panel-title {
+      margin-top: abs.em(16);
+    }
+
+    .settings-page__panel-button {
+      padding-top: abs.em(16);
+    }
+  }
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  padding-bottom: abs.em(20);
+  width: 100%;
+}
