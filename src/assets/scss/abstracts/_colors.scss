@@ -1,8 +1,9 @@
 $color-palette: (
   "gray-scale": (
     0: #000000,
-    25: #18181b,
-    50: #26262b,
+    10: #0c0c0d,
+    25: #121212,
+    50: #242426,
     75: #a1a1aa,
     100: #ffffff,
   ),
@@ -12,7 +13,6 @@ $color-palette: (
 );
 
 // Main
-
 $color-primary: map-get($color-palette, "primary");
 $color-danger: map-get($color-palette, "invalid");
 $color-white: map-get($color-palette, "gray-scale", 100);
@@ -20,29 +20,27 @@ $color-text--light: map-get($color-palette, "gray-scale", 75);
 $color-backdrop--dark: map-get($color-palette, "semi-transparent--dark");
 $color-link-background: map-get($color-palette, "gray-scale", 50);
 
-// Authentication Pages
+// Body
+$color-body-background: map-get($color-palette, "gray-scale", 10);
 
+// Authentication Pages
 $color-sign-in-background: map-get($color-palette, "gray-scale", 25);
 $color-sign-up-background: map-get($color-palette, "gray-scale", 25);
 
 // Sidebar
-
 $color-sidebar-background: map-get($color-palette, "gray-scale", 25);
+$color-sidebar-border: map-get($color-palette, "gray-scale", 50);
 
 // Todos
-
 $color-todo-background: map-get($color-palette, "gray-scale", 50);
 
 // Modal
-
 $color-modal-background: map-get($color-palette, "gray-scale", 25);
 
 // Inputs
-
-$color-input-background: map-get($color-palette, "gray-scale", 50);
+$color-input-background: map-get($color-palette, "gray-scale", 10);
 $color-input-outline: map-get($color-palette, "gray-scale", 50);
 $color-input-focused: map-get($color-palette, "primary");
 
 // Buttons
-
 $color-button-secondary: map-get($color-palette, "gray-scale", 75);
