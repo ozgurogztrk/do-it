@@ -10,7 +10,7 @@ export default function Lists({ sidebarState = false }: ListsProps) {
 
   return (
     <section className={sidebarState ? styles.lists : styles.hidden}>
-      <p>Lists</p>
+      <p className={styles.lists__title}>Lists</p>
 
       <div className={styles.lists__content}>
         {lists.map(({ id, title }: ListsMapProps) => (
