@@ -17,11 +17,11 @@ export default function SettingsPage() {
 
   const navigate = useNavigate();
 
-  const changeEmail = async (event: { preventDefault: () => void }) => {
+  const changeEmail = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     if (email != auth.currentUser?.email) {
-      await updateEmail(auth.currentUser!, email!)
+      updateEmail(auth.currentUser!, email!)
         .then(() => {
           signOut(auth)
             .then(() => {
@@ -40,10 +40,10 @@ export default function SettingsPage() {
     }
   };
 
-  const changePassword = async (event: { preventDefault: () => void }) => {
+  const changePassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    await updatePassword(auth.currentUser!, password)
+    updatePassword(auth.currentUser!, password)
       .then(() => {
         signOut(auth)
           .then(() => {
@@ -68,7 +68,7 @@ export default function SettingsPage() {
   const deleteAccount = async () => {
     toggleDeleteAccountModal();
 
-    await auth.currentUser
+    auth.currentUser
       ?.delete()
       .then(() => navigate("/sign-up"))
       .catch((error) => {
