@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { deleteDoc } from "firebase/firestore";
 import { auth } from "src/utils/firebase-config";
 import { signOut, updateEmail, updatePassword } from "firebase/auth";
+import { ListsContext } from "src/contexts/lists-context";
 import PageContainer from "src/components/page-container";
 import InputEmail from "src/components/input-email";
 import InputPassword from "src/components/input-password";
@@ -10,6 +12,8 @@ import Modal from "src/components/modal";
 import styles from "./settings-page.module.scss";
 
 export default function SettingsPage() {
+  const { userDocRef } = useContext(ListsContext);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [email, setEmail] = useState(auth.currentUser!.email);
@@ -68,9 +72,13 @@ export default function SettingsPage() {
   const deleteAccount = async () => {
     toggleDeleteAccountModal();
 
-    auth.currentUser
+    await deleteUserDocument();
+
+    await auth.currentUser
       ?.delete()
-      .then(() => navigate("/sign-up"))
+      .then(() => {
+        navigate("/sign-up");
+      })
       .catch((error) => {
         if (error.code == "auth/requires-recent-login") {
           alert("You Must Sign In Again Before Deleting Your Account!");
@@ -78,11 +86,30 @@ export default function SettingsPage() {
         }
       });
   };
+
+  // Function to delete the user's document
+  const deleteUserDocument = async () => {
+    try {
+      if (userDocRef) {
+        await deleteDoc(userDocRef);
+        console.log(
+          "User document deleted successfully",
+          userDocRef,
+          auth.currentUser?.uid
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting user document for user", error);
+    }
+  };
   return (
     <PageContainer>
-      <h1>Settings</h1>
-
       <section className={styles["settings-page"]}>
+        <div className={styles["settings-page__header"]}>
+          <div id="sidebar-toggle"></div>
+          <h1>Settings</h1>
+        </div>
+
         <form className={styles["settings-page__panel"]} onSubmit={changeEmail}>
           <p className={styles["settings-page__panel-title"]}>Change E-Mail</p>
 
@@ -114,7 +141,7 @@ export default function SettingsPage() {
           </div>
         </form>
 
-        <section className={styles["settings-page__panel"]}>
+        <div className={styles["settings-page__panel"]}>
           <p className={styles["settings-page__panel-title"]}>Delete Account</p>
 
           <div>
@@ -134,7 +161,7 @@ export default function SettingsPage() {
               </div>
             </Modal>
           </div>
-        </section>
+        </div>
       </section>
     </PageContainer>
   );
