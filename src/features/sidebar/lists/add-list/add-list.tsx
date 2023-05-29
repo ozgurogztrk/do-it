@@ -21,7 +21,7 @@ export default function AddList() {
     if (notContains(lists, listTitle)) {
       await updateDoc(userDocRef, {
         lists: [...lists, { id: lists.length, title: listTitle, todos: [] }],
-      });
+      }).catch((error) => console.error(error.code, error.message));
 
       setListTitle("");
     }

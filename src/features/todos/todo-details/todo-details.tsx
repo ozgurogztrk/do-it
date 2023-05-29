@@ -69,7 +69,7 @@ export default function TodoDetails({
     }
     await updateDoc(userDocRef, {
       lists: updatedLists,
-    });
+    }).catch((error) => console.error(error.code, error.message));
 
     toggleDeleteModal();
     closeDetails();
