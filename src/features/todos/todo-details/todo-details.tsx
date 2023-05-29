@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { db } from "src/utils/firebase-config";
-import { doc, updateDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
 import ButtonIcon from "src/components/button-icon";
@@ -16,8 +15,8 @@ export default function TodoDetails({
   setIsDetailsOpen,
   selectedTodo,
 }: TodoDetailsProps) {
-  // Get lists variable from lists context
-  const { lists } = useContext(ListsContext);
+  // Get lists and userDocRef variable from lists context
+  const { lists, userDocRef } = useContext(ListsContext);
 
   // Create a reactive variable to check if the modal is open or not
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,9 +24,6 @@ export default function TodoDetails({
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
   const [todoTitle, setTodoTitle] = useState(selectedTodo?.title);
   const [todoFavorite, setTodoFavorite] = useState(selectedTodo?.isFavorite);
-
-  // Create a variable named docRef to get a specific document in list-collection
-  const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
   // The function of closing the todo details menu
   const closeDetails = () => {
@@ -46,7 +42,7 @@ export default function TodoDetails({
       isFavorite: todoFavorite,
     };
 
-    await updateDoc(docRef, {
+    await updateDoc(userDocRef, {
       lists: updatedLists,
     });
 
@@ -71,7 +67,7 @@ export default function TodoDetails({
       todos.splice(todoIndex, 1);
       todos.map((todo: any) => (todo.id = todos.indexOf(todo)));
     }
-    await updateDoc(docRef, {
+    await updateDoc(userDocRef, {
       lists: updatedLists,
     });
 

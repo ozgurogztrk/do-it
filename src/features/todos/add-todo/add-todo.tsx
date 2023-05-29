@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import { db } from "src/utils/firebase-config";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import { notContains } from "src/utils/not-contains";
 import ButtonIcon from "src/components/button-icon";
@@ -8,14 +7,11 @@ import InputText from "src/components/input-text";
 import styles from "./add-todo.module.scss";
 
 export default function AddTodo({ id = 0 }: AddTodoProps) {
-  // Get lists variable from lists context
-  const { lists } = useContext(ListsContext);
+  // Get lists and userDocRef variable from lists context
+  const { lists, userDocRef } = useContext(ListsContext);
 
   // Create a reactive todoTitle variable to use it in the InputText component
   const [todoTitle, setTodoTitle] = useState("");
-
-  // Create a variable named docRef to get a specific document in list-collection
-  const docRef = doc(db, "list-collection", "1wSSriX8Y6ism0UyzTJP");
 
   // The function of adding a new todo to cloud firestore
   const addNewTodo = async (event: any) => {
@@ -33,7 +29,7 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
 
       updatedLists[id].todos.push(newTodo);
 
-      await updateDoc(docRef, {
+      await updateDoc(userDocRef, {
         lists: updatedLists,
       });
 
