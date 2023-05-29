@@ -2,8 +2,11 @@
 
 .button {
   color: abs.$color-white;
+  display: flex;
+  align-items: center;
   border: none;
   outline: none;
+  column-gap: 12px;
   font-size: abs.rem(16);
   font-weight: 600;
   border-radius: 12px;
