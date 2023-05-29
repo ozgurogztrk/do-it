@@ -9,6 +9,7 @@ import Button from "src/components/button";
 import InputCheckbox from "src/components/input-checkbox";
 import Modal from "src/components/modal";
 import styles from "./todo-details.module.scss";
+import { Icon } from "@iconify/react";
 
 export default function TodoDetails({
   id = 0,
@@ -106,8 +107,9 @@ export default function TodoDetails({
 
           <div className={styles["todo-details__buttons"]}>
             <Button type="submit">Save Changes</Button>
-            <Button role="secondary" onClick={toggleDeleteModal}>
-              Delete Todo
+            <Button role="danger--outline" onClick={toggleDeleteModal}>
+              Delete
+              <Icon icon="lucide:trash-2" />
             </Button>
 
             <Modal isModalOpen={isModalOpen}>
