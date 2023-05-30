@@ -51,7 +51,14 @@ export default function ListsContextProvider({ children }: any) {
           {
             id: 0,
             title: "My List",
-            todos: [{ id: 0, title: "Click This To Edit!", isFavorite: false }],
+            todos: [
+              {
+                id: 0,
+                title: "Click this to edit!",
+                isFavorite: false,
+                isCompleted: false,
+              },
+            ],
           },
         ],
       });
