@@ -23,6 +23,7 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
         id: [...lists][id].todos.length,
         title: todoTitle,
         isFavorite: false,
+        isCompleted: false,
       };
 
       const updatedLists = [...lists];
