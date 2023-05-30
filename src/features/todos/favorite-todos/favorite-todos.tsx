@@ -14,29 +14,16 @@ export default function FavoriteTodos() {
   const [selectedTodo, setSelectedTodo] = useState();
   const [favoriteTodosId, setFavoriteTodosId] = useState(0);
 
-  // const filteredTodos = lists?.map((list: any) =>
-  //   list?.todos
-  //     ?.filter((todo: any) => todo.isFavorite == true)
-  //     .map((filteredTodo: any, index: number) => (
-  //       <ItemTodo
-  //         key={index}
-  //         todo={filteredTodo}
-  //         id={list.id}
-  //         setDetailsState={setDetailsState}
-  //         setSelectedTodoState={setSelectedTodoState}
-  //         setFavoriteTodosId={setFavoriteTodosId}
-  //       />
-  //     ))
-  // );
-
   return (
     <div className={styles["favorite-todos"]}>
       {lists?.map((list: any) =>
         list?.todos
-          ?.filter((todo: any) => todo.isFavorite == true)
-          .map((filteredTodo: any, index: number) => (
+          ?.filter(
+            (todo: any) => (todo.isFavorite == true, todo.isCompleted == false)
+          )
+          .map((filteredTodo: any) => (
             <Todo
-              key={index}
+              key={filteredTodo.id}
               todo={filteredTodo}
               id={list.id}
               setIsDetailsOpen={setIsDetailsOpen}
