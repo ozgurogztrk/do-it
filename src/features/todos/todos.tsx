@@ -22,15 +22,31 @@ export default function Todos() {
     <div className={styles.todos}>
       <AddTodo id={id} />
 
-      {lists[id]?.todos?.map((todo: any, index: number) => (
-        <Todo
-          key={index}
-          todo={todo}
-          id={id}
-          setIsDetailsOpen={setIsDetailsOpen}
-          setSelectedTodo={setSelectedTodo}
-        />
-      ))}
+      {lists[id]?.todos
+        ?.filter((todo: any) => todo.isCompleted == false)
+        .map((filteredTodo: any) => (
+          <Todo
+            key={filteredTodo.id}
+            todo={filteredTodo}
+            id={id}
+            setIsDetailsOpen={setIsDetailsOpen}
+            setSelectedTodo={setSelectedTodo}
+          />
+        ))}
+
+      <h2>Completed</h2>
+
+      {lists[id]?.todos
+        ?.filter((todo: any) => todo.isCompleted == true)
+        .map((filteredTodo: any) => (
+          <Todo
+            key={filteredTodo.id}
+            todo={filteredTodo}
+            id={id}
+            setIsDetailsOpen={setIsDetailsOpen}
+            setSelectedTodo={setSelectedTodo}
+          />
+        ))}
 
       <AnimatePresence>
         {isDetailsOpen ? (
