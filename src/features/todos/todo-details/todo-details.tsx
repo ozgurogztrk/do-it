@@ -24,7 +24,9 @@ export default function TodoDetails({
 
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
   const [todoTitle, setTodoTitle] = useState(selectedTodo?.title);
-  const [todoFavorite, setTodoFavorite] = useState(selectedTodo?.isFavorite);
+  const [isTodoFavorite, setIsTodoFavorite] = useState(
+    selectedTodo?.isFavorite
+  );
 
   // The function of closing the todo details menu
   const closeDetails = () => {
@@ -37,11 +39,8 @@ export default function TodoDetails({
 
     const updatedLists = [...lists];
 
-    updatedLists[id].todos[selectedTodo.id] = {
-      id: selectedTodo.id,
-      title: todoTitle,
-      isFavorite: todoFavorite,
-    };
+    updatedLists[id].todos[selectedTodo.id].title = todoTitle;
+    updatedLists[id].todos[selectedTodo.id].isFavorite = isTodoFavorite;
 
     await updateDoc(userDocRef, {
       lists: updatedLists,
@@ -98,8 +97,8 @@ export default function TodoDetails({
             />
 
             <InputCheckbox
-              onChange={(event) => setTodoFavorite(event.target.checked)}
-              checked={todoFavorite}
+              onChange={(event) => setIsTodoFavorite(event.target.checked)}
+              checked={isTodoFavorite}
             >
               Add To Favorites
             </InputCheckbox>
