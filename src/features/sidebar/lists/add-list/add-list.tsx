@@ -20,7 +20,14 @@ export default function AddList() {
     // Check if the new list title is already in the lists variable
     if (notContains(lists, listTitle)) {
       await updateDoc(userDocRef, {
-        lists: [...lists, { id: lists.length, title: listTitle, todos: [] }],
+        lists: [
+          ...lists,
+          {
+            id: lists.length,
+            title: listTitle,
+            todos: [],
+          },
+        ],
       }).catch((error) => console.error(error.code, error.message));
 
       setListTitle("");
