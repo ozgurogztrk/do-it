@@ -1,0 +1,15 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.change-email {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: abs.em(16);
+
+  .change-email__title {
+    color: abs.$color-white;
+  }
+
+  .change-email__button {
+    padding-top: abs.em(16);
+  }
+}
