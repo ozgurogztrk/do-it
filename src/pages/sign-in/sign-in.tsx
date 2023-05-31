@@ -25,7 +25,7 @@ export default function SignIn() {
     event.preventDefault();
 
     await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         navigate("/");
       })
       .catch((error) => console.error(error.code, error.message));
