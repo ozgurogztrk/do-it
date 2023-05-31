@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import AnimatedPageContainer from "src/components/page-container";
+import PageContainer from "src/components/page-container";
 import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
 import Todos from "src/features/todos";
@@ -44,8 +44,8 @@ export default function ListPage() {
     toggleListModal();
   };
   return (
-    <AnimatedPageContainer>
-      <div className={styles["list-page__header"]}>
+    <PageContainer>
+      <div className={styles["list-page-header"]}>
         <div id="sidebar-toggle"></div>
 
         <h1>{lists[id]?.title}</h1>
@@ -66,6 +66,6 @@ export default function ListPage() {
       </div>
 
       <Todos />
-    </AnimatedPageContainer>
+    </PageContainer>
   );
 }
