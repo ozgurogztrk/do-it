@@ -35,7 +35,7 @@ export default function Todo({
   useEffect(() => {
     const unsubscribe = onSnapshot(userDocRef, (doc: any) => {
       const updatedLists = [...doc.data().lists];
-      const updatedTodo = updatedLists[id].todos.find(
+      const updatedTodo = updatedLists[id]?.todos.find(
         (t: any) => t.id === todo.id
       );
 
