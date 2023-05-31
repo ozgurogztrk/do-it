@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { ListsContext } from "src/contexts/lists-context";
 import AddTodo from "./add-todo";
 import Todo from "src/features/todos/todo";
 import TodoDetails from "src/features/todos/todo-details";
 import styles from "./todos.module.scss";
-import { AnimatePresence } from "framer-motion";
 
 export default function Todos() {
   // Get the value of id parameter from '/list-page/:id' URL
