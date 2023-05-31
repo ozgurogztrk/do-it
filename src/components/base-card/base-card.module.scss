@@ -1,0 +1,7 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.base-card {
+  background-color: abs.$color-base-card-background;
+  border-radius: 12px;
+  padding: abs.em(16);
+}
