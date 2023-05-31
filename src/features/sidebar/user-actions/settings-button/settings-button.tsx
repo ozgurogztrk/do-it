@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import ButtonIcon from "src/components/button-icon/button-icon";
 
-export default function Settings() {
+export default function SettingsButton() {
   const navigate = useNavigate();
 
-  const toSettings = () => {
+  const navigateToSettings = () => {
     navigate("/settings");
   };
 
-  return <ButtonIcon icon="lucide:settings" onClick={toSettings} />;
+  return <ButtonIcon icon="lucide:settings" onClick={navigateToSettings} />;
 }
