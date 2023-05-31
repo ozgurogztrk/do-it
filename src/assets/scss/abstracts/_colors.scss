@@ -23,6 +23,10 @@ $color-link-background: map-get($color-palette, "gray-scale", 50);
 // Body
 $color-body-background: map-get($color-palette, "gray-scale", 10);
 
+// Page Loader
+$color-spinner-background: map-get($color-palette, "gray-scale", 25);
+$color-spinner: map-get($color-palette, "gray-scale", 75);
+
 // Authentication Pages
 $color-sign-in-background: map-get($color-palette, "gray-scale", 25);
 $color-sign-up-background: map-get($color-palette, "gray-scale", 25);
