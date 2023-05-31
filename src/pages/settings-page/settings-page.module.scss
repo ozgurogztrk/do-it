@@ -1,41 +1,15 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.settings-page {
+.settings-page-header {
   display: flex;
-  flex-direction: column;
 
-  .settings-page__header {
-    display: flex;
+  button {
+    padding-top: abs.em(22);
+    margin-right: abs.em(16);
 
-    button {
-      padding-top: abs.em(22);
-      margin-right: abs.em(16);
-
-      svg {
-        color: abs.$color-white !important;
-        font-size: abs.rem(30) !important;
-      }
+    svg {
+      color: abs.$color-white !important;
+      font-size: abs.rem(30) !important;
     }
   }
-
-  .settings-page__panel {
-    display: flex;
-    flex-direction: column;
-
-    .settings-page__panel-title {
-      color: abs.$color-white;
-    }
-
-    .settings-page__panel-button {
-      padding-top: abs.em(16);
-    }
-  }
-}
-
-.modal__buttons {
-  display: flex;
-  justify-content: center;
-  column-gap: 16px;
-  padding-bottom: abs.em(20);
-  width: 100%;
 }
