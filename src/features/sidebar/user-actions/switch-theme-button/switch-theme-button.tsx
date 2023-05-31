@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ButtonIcon from "src/components/button-icon/button-icon";
-import styles from "./switch-theme.module.scss";
 
-export default function Settings() {
+export default function SwitchThemeButton() {
   const navigate = useNavigate();
 
   const switchTheme = () => {
