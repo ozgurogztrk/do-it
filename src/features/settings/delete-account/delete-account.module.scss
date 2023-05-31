@@ -1,0 +1,19 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.delete-account {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: abs.em(16);
+
+  .delete-account__title {
+    color: abs.$color-white;
+  }
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  padding-bottom: abs.em(20);
+  width: 100%;
+}
