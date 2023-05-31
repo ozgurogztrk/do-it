@@ -1,6 +1,6 @@
-import SignOut from "./sign-out";
-import SwitchTheme from "./switch-theme";
-import Settings from "./settings";
+import SignOutButton from "./sign-out-button";
+import SwitchThemeButton from "./switch-theme-button";
+import SettingsButton from "./settings-button";
 import styles from "./user-actions.module.scss";
 
 export default function UserActions({
@@ -8,9 +8,9 @@ export default function UserActions({
 }: UserActionsProps) {
   return (
     <section className={sidebarState ? styles["user-actions"] : styles.hidden}>
-      <SignOut />
-      <SwitchTheme />
-      <Settings />
+      <SignOutButton />
+      <SwitchThemeButton />
+      <SettingsButton />
     </section>
   );
 }
