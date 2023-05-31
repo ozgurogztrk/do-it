@@ -1,13 +1,29 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .page-loader {
+  background-color: abs.$color-body-background;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
 
-  h1 {
-    color: abs.$color-text--light;
+  .page-loader__spinner {
+    border: 8px solid abs.$color-spinner-background;
+    border-top: 8px solid abs.$color-spinner;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+
+    @include abs.keyframes(spin) {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @include abs.animate(spin, 2s, linear, infinite);
   }
 }
