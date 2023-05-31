@@ -43,5 +43,8 @@ $color-input-outline: map-get($color-palette, "gray-scale", 50);
 $color-input-focused: map-get($color-palette, "primary");
 $color-input-checkbox: map-get($color-palette, "gray-scale", 10);
 
+// Cards
+$color-base-card-background: map-get($color-palette, "gray-scale", 25);
+
 // Buttons
 $color-button-secondary: map-get($color-palette, "gray-scale", 75);
