@@ -38,9 +38,8 @@ export default function ChangePassword() {
   return (
     <BaseCard>
       <form className={styles["change-password"]} onSubmit={changePassword}>
-        <p className={styles["change-password__title"]}>Change Password</p>
-
         <InputPassword
+          inputTitle="Change Password"
           placeholder="Enter A New Password..."
           onChange={(event) => setPassword(event.target.value)}
           value={password}

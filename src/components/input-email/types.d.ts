@@ -1,4 +1,5 @@
 type InputEmailProps = {
+  inputTitle?: string;
   value?: string;
   placeholder?: string;
   title?: string;

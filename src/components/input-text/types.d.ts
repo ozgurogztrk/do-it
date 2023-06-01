@@ -1,4 +1,5 @@
 type InputTextProps = {
+  inputTitle?: string;
   title?: string;
   value?: string;
   placeholder?: string;

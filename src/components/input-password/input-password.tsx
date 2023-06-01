@@ -1,6 +1,7 @@
 import styles from "./input-password.module.scss";
 
 export default function InputPassword({
+  inputTitle = "",
   value,
   title = "Enter a password with a minimum length of 6 characters",
   placeholder = "Enter Your Password...",
@@ -9,20 +10,26 @@ export default function InputPassword({
   onChange,
 }: InputPasswordProps) {
   return (
-    <input
-      type="password"
-      className={
-        hasIcon
-          ? `${styles["input-password"]} ${styles["with-icon"]}`
-          : styles["input-password"]
-      }
-      value={value}
-      placeholder={placeholder}
-      title={title}
-      minLength={minLength}
-      pattern="[^' ']+"
-      onChange={onChange}
-      required
-    />
+    <div>
+      {inputTitle.length > 0 ? (
+        <p className={styles["input-password-title"]}>{inputTitle}</p>
+      ) : null}
+
+      <input
+        type="password"
+        className={
+          hasIcon
+            ? `${styles["input-password"]} ${styles["with-icon"]}`
+            : styles["input-password"]
+        }
+        value={value}
+        placeholder={placeholder}
+        title={title}
+        minLength={minLength}
+        pattern="[^' ']+"
+        onChange={onChange}
+        required
+      />
+    </div>
   );
 }

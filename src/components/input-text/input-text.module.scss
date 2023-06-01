@@ -1,5 +1,9 @@
 @use "src/assets/scss/abstracts" as abs;
 
+.input-text-title {
+  color: abs.$color-white;
+}
+
 .input-text {
   background-color: abs.$color-input-background;
   color: abs.$color-text--light;

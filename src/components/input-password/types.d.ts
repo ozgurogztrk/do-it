@@ -1,4 +1,5 @@
 type InputPasswordProps = {
+  inputTitle?: string;
   value?: string;
   placeholder?: string;
   title?: string;

@@ -40,9 +40,8 @@ export default function ChangeEmail() {
   return (
     <BaseCard>
       <form className={styles["change-email"]} onSubmit={changeEmail}>
-        <p className={styles["change-email__title"]}>Change E-Mail</p>
-
         <InputEmail
+          inputTitle="Change E-Mail"
           placeholder="Enter A New E-Mail..."
           onChange={(event) => setEmail(event.target.value)}
           value={email!}

@@ -1,15 +1,16 @@
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
+import InputSelectbox from "src/components/input-selectbox";
+import InputCheckbox from "src/components/input-checkbox";
 import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
-import InputCheckbox from "src/components/input-checkbox";
 import Modal from "src/components/modal";
 import styles from "./todo-details.module.scss";
-import { Icon } from "@iconify/react";
 
 export default function TodoDetails({
   id = 0,
@@ -91,17 +92,19 @@ export default function TodoDetails({
         <form onSubmit={saveNewTodoDetails}>
           <div className={styles["todo-details__inputs"]}>
             <InputText
+              inputTitle="Change Title"
               placeholder="Add New Title"
               onChange={(event) => setTodoTitle(event.target.value)}
               value={todoTitle}
             />
 
+            <InputSelectbox inputTitle="Move To List" />
+
             <InputCheckbox
+              inputTitle="Add To Favorites"
               onChange={(event) => setIsTodoFavorite(event.target.checked)}
               checked={isTodoFavorite}
-            >
-              Add To Favorites
-            </InputCheckbox>
+            />
           </div>
 
           <div className={styles["todo-details__buttons"]}>
