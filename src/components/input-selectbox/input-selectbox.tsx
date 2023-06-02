@@ -10,7 +10,7 @@ export default function InputSelectbox({
   ],
 }: InputSelectboxProps) {
   return (
-    <div>
+    <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? (
         <p className={styles["input-selectbox-title"]}>{inputTitle}</p>
       ) : null}

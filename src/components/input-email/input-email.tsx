@@ -9,7 +9,7 @@ export default function InputEmail({
   onChange,
 }: InputEmailProps) {
   return (
-    <div>
+    <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? (
         <p className={styles["input-email-title"]}>{inputTitle}</p>
       ) : null}

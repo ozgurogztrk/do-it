@@ -1,22 +1,26 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.input-selectbox-title {
-  color: abs.$color-white;
-}
-
-.input-selectbox {
-  background-color: abs.$color-input-background;
-  color: abs.$color-text--light;
-  box-shadow: 0 0 0 2px abs.$color-input-outline;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  border-radius: 12px;
-  padding: abs.em(20) abs.em(16);
+.input-wrapper {
   width: 100%;
-  cursor: pointer;
 
-  option {
+  .input-selectbox-title {
+    color: abs.$color-white;
+  }
+
+  .input-selectbox {
+    background-color: abs.$color-input-background;
+    color: abs.$color-text--light;
+    box-shadow: 0 0 0 2px abs.$color-input-outline;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    padding: abs.em(20) abs.em(16);
+    width: 100%;
     cursor: pointer;
+
+    option {
+      cursor: pointer;
+    }
   }
 }

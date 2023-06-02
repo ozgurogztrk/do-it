@@ -10,7 +10,7 @@ export default function InputPassword({
   onChange,
 }: InputPasswordProps) {
   return (
-    <div>
+    <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? (
         <p className={styles["input-password-title"]}>{inputTitle}</p>
       ) : null}

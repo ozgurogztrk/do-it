@@ -9,7 +9,7 @@ export default function InputText({
   onChange,
 }: InputTextProps) {
   return (
-    <div>
+    <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? (
         <p className={styles["input-text-title"]}>{inputTitle}</p>
       ) : null}
