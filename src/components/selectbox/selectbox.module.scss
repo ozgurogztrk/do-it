@@ -1,13 +1,13 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.input-wrapper {
+.wrapper {
   width: 100%;
 
-  .input-selectbox-title {
+  .selectbox-title {
     color: abs.$color-white;
   }
 
-  .input-selectbox {
+  .selectbox {
     background-color: abs.$color-input-background;
     color: abs.$color-text--light;
     box-shadow: 0 0 0 2px abs.$color-input-outline;
@@ -21,6 +21,10 @@
 
     option {
       cursor: pointer;
+
+      &:hover {
+        background-color: abs.$color-link-background;
+      }
     }
   }
 }

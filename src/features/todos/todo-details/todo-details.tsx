@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import InputText from "src/components/input-text";
-import InputSelectbox from "src/components/input-selectbox";
+import SelectBox from "src/components/selectbox";
 import InputCheckbox from "src/components/input-checkbox";
 import ButtonIcon from "src/components/button-icon";
 import Button from "src/components/button";
@@ -25,6 +25,7 @@ export default function TodoDetails({
 
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
   const [todoTitle, setTodoTitle] = useState(selectedTodo?.title);
+  const [currentList, setCurrentList] = useState(id.toString());
   const [isTodoFavorite, setIsTodoFavorite] = useState(
     selectedTodo?.isFavorite
   );
@@ -35,17 +36,37 @@ export default function TodoDetails({
   };
 
   // The function of updating new todo details to cloud firestore
-  const saveNewTodoDetails = async (event: any) => {
+  const saveNewTodoDetails = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    const updatedLists = [...lists];
+    if (id === parseInt(currentList)) {
+      const updatedLists = [...lists];
 
-    updatedLists[id].todos[selectedTodo.id].title = todoTitle;
-    updatedLists[id].todos[selectedTodo.id].isFavorite = isTodoFavorite;
+      updatedLists[id].todos[selectedTodo.id].title = todoTitle;
+      updatedLists[id].todos[selectedTodo.id].isFavorite = isTodoFavorite;
 
-    await updateDoc(userDocRef, {
-      lists: updatedLists,
-    });
+      await updateDoc(userDocRef, {
+        lists: updatedLists,
+      });
+    } else {
+      // Move to another list
+      deleteTodo();
+
+      const updatedLists = [...lists];
+
+      const newTodo = {
+        id: updatedLists[parseInt(currentList)].todos.length,
+        title: todoTitle,
+        isFavorite: isTodoFavorite,
+        isCompleted: selectedTodo.isCompleted,
+      };
+
+      updatedLists[parseInt(currentList)].todos.push(newTodo);
+
+      await updateDoc(userDocRef, {
+        lists: updatedLists,
+      }).catch((error) => console.error(error.code, error.message));
+    }
 
     closeDetails();
   };
@@ -71,9 +92,6 @@ export default function TodoDetails({
     await updateDoc(userDocRef, {
       lists: updatedLists,
     }).catch((error) => console.error(error.code, error.message));
-
-    toggleDeleteModal();
-    closeDetails();
   };
   return createPortal(
     <div className={styles.backdrop}>
@@ -98,7 +116,15 @@ export default function TodoDetails({
               value={todoTitle}
             />
 
-            <InputSelectbox inputTitle="Move To List" />
+            <SelectBox
+              inputTitle="Move To List"
+              options={lists.map((list: any) => ({
+                value: list.id.toString(),
+                title: list.title,
+              }))}
+              onChange={(event) => setCurrentList(event.target.value)}
+              value={currentList}
+            />
 
             <InputCheckbox
               inputTitle="Add To Favorites"
@@ -119,7 +145,15 @@ export default function TodoDetails({
               <p>Are you sure you want to delete this item?</p>
 
               <div className={styles.modal__buttons}>
-                <Button onClick={deleteTodo}>Yes</Button>
+                <Button
+                  onClick={() => {
+                    deleteTodo();
+                    toggleDeleteModal();
+                    closeDetails();
+                  }}
+                >
+                  Yes
+                </Button>
                 <Button role="secondary" onClick={toggleDeleteModal}>
                   Cancel
                 </Button>
