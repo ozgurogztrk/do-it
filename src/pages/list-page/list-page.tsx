@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
@@ -43,6 +43,16 @@ export default function ListPage() {
 
     toggleListModal();
   };
+
+  // Check if the id exists in the lists array and if it's not, navigate the user to the error page
+  useEffect(() => {
+    if (id && lists.length > 0) {
+      const listExists = lists.some((list: any) => list.id === parseInt(id));
+      if (!listExists) {
+        navigate("*");
+      }
+    }
+  }, [id, lists, navigate]);
   return (
     <PageContainer>
       <div className={styles["list-page-header"]}>
