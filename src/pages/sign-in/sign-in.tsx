@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
 import { ListsContext } from "src/contexts/lists-context";
@@ -40,15 +40,19 @@ export default function SignIn() {
 
         <form onSubmit={handleSignIn}>
           <InputEmail
+            inputTitle="E-Mail"
             onChange={(event) => setEmail(event.target.value)}
             value={email}
           />
           <InputPassword
+            inputTitle="Password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}
           />
 
-          <p>Don't have an account? Click here to Sign Up</p>
+          <NavLink to="/sign-up">
+            <p>Don't have an account? Click here to Sign Up</p>
+          </NavLink>
 
           <Button type="submit">Sign In</Button>
         </form>

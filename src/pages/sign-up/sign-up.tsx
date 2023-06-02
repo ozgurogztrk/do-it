@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
 import PageContainer from "src/components/page-container";
@@ -36,15 +36,18 @@ export default function SignUp() {
 
         <form onSubmit={handleSignUp}>
           <InputEmail
+            inputTitle="E-Mail"
             onChange={(event) => setEmail(event.target.value)}
             value={email}
           />
           <InputPassword
+            inputTitle="Password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}
           />
-
-          <p>Have an account? Click here to Sign In</p>
+          <NavLink to="/sign-in">
+            <p>Have an account? Click here to Sign In</p>
+          </NavLink>
 
           <Button type="submit">Sign Up</Button>
         </form>
