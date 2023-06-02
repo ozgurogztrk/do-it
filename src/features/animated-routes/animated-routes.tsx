@@ -8,6 +8,7 @@ import Favorites from "src/pages/favorites";
 import SettingsPage from "src/pages/settings-page";
 import SignIn from "src/pages/sign-in";
 import SignUp from "src/pages/sign-up";
+import Error from "src/pages/error";
 
 export default function AnimatedRoutes() {
   // Create a location variable that will allow users to navigate between pages without any problem
@@ -28,6 +29,7 @@ export default function AnimatedRoutes() {
 
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </AnimatePresence>
     </>
