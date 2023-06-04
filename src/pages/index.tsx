@@ -1,15 +1,13 @@
-import PageContainer from "src/components/page-container";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Index() {
-  return (
-    <PageContainer>
-      <h1>Welcome to To Do</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        vitae unde sit consectetur, tenetur sapiente sequi accusamus cupiditate,
-        obcaecati et esse beatae ratione pariatur alias quia explicabo
-        architecto rem possimus?
-      </p>
-    </PageContainer>
-  );
+  // Create a navigate variable using useNavigate hook to navigate between pages
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/tasks");
+  }, []);
+
+  return <></>;
 }

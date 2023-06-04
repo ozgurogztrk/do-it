@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import ProtectedRoute from "src/components/protected-route";
 import DefaultLayout from "src/layouts/default-layout";
 import Index from "src/pages";
+import Tasks from "src/pages/tasks";
 import ListPage from "src/pages/list-page";
 import Favorites from "src/pages/favorites";
 import SettingsPage from "src/pages/settings-page";
@@ -21,8 +22,9 @@ export default function AnimatedRoutes() {
           <Route element={<ProtectedRoute />}>
             <Route element={<DefaultLayout />}>
               <Route path="/" element={<Index />} />
-              <Route path="list-page/:id" element={<ListPage />} />
+              <Route path="tasks" element={<Tasks />} />
               <Route path="favorites" element={<Favorites />} />
+              <Route path="list-page/:id" element={<ListPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
           </Route>

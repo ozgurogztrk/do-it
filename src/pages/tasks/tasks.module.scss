@@ -1,0 +1,15 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.tasks-header {
+  display: flex;
+
+  button {
+    padding-top: abs.em(22);
+    margin-right: abs.em(16);
+
+    svg {
+      color: abs.$color-white !important;
+      font-size: abs.rem(30) !important;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.tasks-button {
+  display: flex;
+  text-decoration: none;
+  column-gap: 16px;
+  padding: abs.em(16);
+  margin-bottom: abs.em(16);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-radius 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background-color: abs.$color-link-background;
+    border-radius: 12px;
+  }
+}
+
+.tasks-button__text {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.--active {
+  background-color: abs.$color-link-background;
+  display: flex;
+  text-decoration: none;
+  border-radius: 12px;
+  column-gap: 16px;
+  padding: abs.em(16);
+  margin-bottom: abs.em(16);
+  cursor: pointer;
+  transition: font-weight 0.25s ease;
+
+  p {
+    color: abs.$color-white;
+  }
+
+  svg {
+    color: abs.$color-white;
+  }
+}
+
+svg {
+  color: abs.$color-text--light;
+  font-size: abs.rem(26);
+}
