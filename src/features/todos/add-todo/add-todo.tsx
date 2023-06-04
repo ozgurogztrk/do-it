@@ -17,25 +17,22 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
   const addNewTodo = async (event: any) => {
     event.preventDefault();
 
-    // Check if the new todo title is already in the todos array in the lists variable with the specified id
-    if (notContains(lists[id].todos, todoTitle)) {
-      const newTodo = {
-        id: [...lists][id].todos.length,
-        title: todoTitle,
-        isFavorite: false,
-        isCompleted: false,
-      };
+    const newTodo = {
+      id: [...lists][id].todos.length,
+      title: todoTitle,
+      isFavorite: false,
+      isCompleted: false,
+    };
 
-      const updatedLists = [...lists];
+    const updatedLists = [...lists];
 
-      updatedLists[id].todos.push(newTodo);
+    updatedLists[id].todos.push(newTodo);
 
-      await updateDoc(userDocRef, {
-        lists: updatedLists,
-      }).catch((error) => console.error(error.code, error.message));
+    await updateDoc(userDocRef, {
+      lists: updatedLists,
+    }).catch((error) => console.error(error.code, error.message));
 
-      setTodoTitle("");
-    }
+    setTodoTitle("");
   };
 
   return (
