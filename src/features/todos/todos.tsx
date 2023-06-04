@@ -5,6 +5,7 @@ import { ListsContext } from "src/contexts/lists-context";
 import AddTodo from "./add-todo";
 import Todo from "src/features/todos/todo";
 import TodoDetails from "src/features/todos/todo-details";
+import Accordion from "src/components/accordion";
 import styles from "./todos.module.scss";
 
 export default function Todos() {
@@ -14,10 +15,15 @@ export default function Todos() {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
-  // Create reactive activeState and selectedTodo variables
+  // Create reactive isDetailsOpen, isAccordionOpen and selectedTodo variables
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(true);
   const [selectedTodo, setSelectedTodo] = useState();
 
+  // Function to toggle accordion
+  const toggleAccordion = () => {
+    setIsAccordionOpen(!isAccordionOpen);
+  };
   return (
     <div className={styles.todos}>
       <AddTodo id={id} />
@@ -34,19 +40,23 @@ export default function Todos() {
           />
         ))}
 
-      <h2>Completed</h2>
-
-      {lists[id]?.todos
-        ?.filter((todo: any) => todo.isCompleted == true)
-        .map((filteredTodo: any) => (
-          <Todo
-            key={filteredTodo.id}
-            todo={filteredTodo}
-            id={id}
-            setIsDetailsOpen={setIsDetailsOpen}
-            setSelectedTodo={setSelectedTodo}
-          />
-        ))}
+      <Accordion
+        isAccordionOpen={isAccordionOpen}
+        title="Completed"
+        onClick={toggleAccordion}
+      >
+        {lists[id]?.todos
+          ?.filter((todo: any) => todo.isCompleted == true)
+          .map((filteredTodo: any) => (
+            <Todo
+              key={filteredTodo.id}
+              todo={filteredTodo}
+              id={id}
+              setIsDetailsOpen={setIsDetailsOpen}
+              setSelectedTodo={setSelectedTodo}
+            />
+          ))}
+      </Accordion>
 
       <AnimatePresence>
         {isDetailsOpen ? (

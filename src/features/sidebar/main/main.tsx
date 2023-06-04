@@ -5,7 +5,7 @@ import styles from "./main.module.scss";
 export default function Main({ sidebarState = false }: MainProps) {
   return (
     <section className={sidebarState ? styles.main : styles.hidden}>
-      <p className={styles.main__title}>Main</p>
+      <h3 className={styles.main__title}>Main</h3>
 
       <OverviewButton />
       <Favorites />

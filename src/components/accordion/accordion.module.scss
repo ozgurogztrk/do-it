@@ -1,0 +1,19 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+
+  .accordion__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid abs.$color-white;
+    margin-bottom: abs.em(16);
+    cursor: pointer;
+
+    svg {
+      color: abs.$color-white;
+    }
+  }
+}

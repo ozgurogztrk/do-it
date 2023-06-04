@@ -3,35 +3,48 @@ import { Fragment, useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
 import Todo from "src/features/todos/todo";
 import TodoDetails from "src/features/todos/todo-details";
+import Accordion from "src/components/accordion";
 import styles from "./overview-todos.module.scss";
 
 export default function OverviewTodos() {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
-  // Create reactive isDetailsOpen, selectedTodo and todoId variables
+  // Create reactive isDetailsOpen, accordionStates selectedTodo and todoId variables
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [accordionStates, setAccordionStates] = useState<{
+    [key: number]: boolean;
+  }>({});
   const [selectedTodo, setSelectedTodo] = useState();
   const [todoId, setTodoId] = useState(0);
 
+  // Function to toggle list specific accordion
+  const toggleAccordion = (accordionId: number) => {
+    setAccordionStates((prevState) => ({
+      ...prevState,
+      [accordionId]: !prevState[accordionId],
+    }));
+  };
   return (
     <div className={styles["overview-todos"]}>
       {lists?.map((list: any) => (
         <Fragment key={list.id}>
-          <p className={styles["overview-todos__list-title"]}>
-            {list.title} - {list.todos.length}
-          </p>
-
-          {list?.todos.map((todo: any) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              id={list.id}
-              setIsDetailsOpen={setIsDetailsOpen}
-              setSelectedTodo={setSelectedTodo}
-              setTodoId={setTodoId}
-            />
-          ))}
+          <Accordion
+            title={`${list.title} - ${list.todos.length}`}
+            isAccordionOpen={accordionStates[list.id] || false}
+            onClick={() => toggleAccordion(list.id)}
+          >
+            {list?.todos.map((todo: any) => (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                id={list.id}
+                setIsDetailsOpen={setIsDetailsOpen}
+                setSelectedTodo={setSelectedTodo}
+                setTodoId={setTodoId}
+              />
+            ))}
+          </Accordion>
         </Fragment>
       ))}
 
