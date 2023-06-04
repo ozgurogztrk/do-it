@@ -103,7 +103,7 @@ export default function TodoDetails({
         transition={{ duration: 0.2 }}
       >
         <div className={styles["todo-details__header"]}>
-          <h1>Todo Details:</h1>
+          <h1>Details:</h1>
           <ButtonIcon icon={"lucide:x"} onClick={closeDetails} />
         </div>
 
