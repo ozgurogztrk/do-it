@@ -10,7 +10,7 @@ export default function Todo({
   todo,
   setIsDetailsOpen,
   setSelectedTodo,
-  setFavoriteTodosId = () => 0,
+  setTodoId = () => 0,
 }: TodoProps) {
   const { lists, userDocRef } = useContext(ListsContext);
 
@@ -29,7 +29,7 @@ export default function Todo({
   const toggleTodoDetails = () => {
     setIsDetailsOpen(true);
     setSelectedTodo(getTodo());
-    setFavoriteTodosId(id);
+    setTodoId(id);
   };
 
   useEffect(() => {

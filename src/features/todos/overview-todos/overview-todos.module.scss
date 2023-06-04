@@ -1,0 +1,13 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.overview-todos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding-top: abs.em(16);
+  padding-right: abs.em(32);
+
+  .overview-todos__list-title {
+    color: abs.$color-white;
+  }
+}

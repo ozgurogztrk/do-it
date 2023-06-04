@@ -41,7 +41,7 @@ export default function ListPage() {
     await updateDoc(userDocRef, {
       lists: updatedLists,
     })
-      .then(() => navigate("/tasks"))
+      .then(() => navigate("/overview"))
       .catch((error) => console.error(error.code, error.message));
 
     toggleListModal();

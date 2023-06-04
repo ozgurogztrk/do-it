@@ -8,5 +8,5 @@ type TodoProps = {
   };
   setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedTodo: React.Dispatch<React.SetStateAction<undefined>>;
-  setFavoriteTodosId?: React.Dispatch<React.SetStateAction<number>>;
+  setTodoId?: React.Dispatch<React.SetStateAction<number>>;
 };
