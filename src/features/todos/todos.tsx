@@ -42,7 +42,9 @@ export default function Todos() {
 
       <Accordion
         isAccordionOpen={isAccordionOpen}
-        title="Completed"
+        title={`Completed - ${
+          lists[id]?.todos.filter((todo: any) => todo.isCompleted).length
+        }`}
         onClick={toggleAccordion}
       >
         {lists[id]?.todos
