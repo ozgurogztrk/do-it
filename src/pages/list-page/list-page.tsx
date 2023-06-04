@@ -16,6 +16,8 @@ export default function ListPage() {
   // Create a reactive variable to check if the modal is open or not
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [isDeleteFunctionStarted, setIsDeleteFunctionStarted] = useState(false);
+
   // Get the value of id parameter from '/list-page/:id' URL
   const { id }: any = useParams();
 
@@ -29,6 +31,7 @@ export default function ListPage() {
 
   // Function to delete list
   const deleteList = async () => {
+    setIsDeleteFunctionStarted(true);
     const updatedLists = [...lists];
 
     if (id !== -1) {
@@ -38,7 +41,7 @@ export default function ListPage() {
     await updateDoc(userDocRef, {
       lists: updatedLists,
     })
-      .then(() => navigate("/"))
+      .then(() => navigate("/tasks"))
       .catch((error) => console.error(error.code, error.message));
 
     toggleListModal();
@@ -46,7 +49,7 @@ export default function ListPage() {
 
   // Check if the id exists in the lists array and if it's not, navigate the user to the error page
   useEffect(() => {
-    if (id && lists.length > 0) {
+    if (!isDeleteFunctionStarted && id && lists.length > 0) {
       const listExists = lists.some((list: any) => list.id === parseInt(id));
       if (!listExists) {
         navigate("*");
