@@ -1,5 +1,5 @@
 import OverviewButton from "./overview-button";
-import Favorites from "./favorites";
+import FavoritesButton from "./favorites-button";
 import styles from "./main.module.scss";
 
 export default function Main({ sidebarState = false }: MainProps) {
@@ -8,7 +8,7 @@ export default function Main({ sidebarState = false }: MainProps) {
       <h3 className={styles.main__title}>Main</h3>
 
       <OverviewButton />
-      <Favorites />
+      <FavoritesButton />
     </section>
   );
 }
