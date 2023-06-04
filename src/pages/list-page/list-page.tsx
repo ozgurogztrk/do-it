@@ -67,7 +67,7 @@ export default function ListPage() {
 
         <Modal isModalOpen={isModalOpen}>
           <h1>Confirm Your Action!</h1>
-          <p>Are you sure you want to delete this item?</p>
+          <p>Are you sure you want to delete this list?</p>
 
           <div className={styles.modal__buttons}>
             <Button onClick={deleteList}>Yes</Button>
