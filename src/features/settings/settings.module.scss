@@ -1,5 +1,8 @@
+@use "src/assets/scss/abstracts" as abs;
+
 .settings {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 34px;
+  padding-right: abs.em(32);
 }
