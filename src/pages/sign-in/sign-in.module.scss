@@ -24,5 +24,10 @@
     a {
       text-decoration: none;
     }
+
+    .sign-in__error-description {
+      color: abs.$color-danger;
+      text-align: center;
+    }
   }
 }

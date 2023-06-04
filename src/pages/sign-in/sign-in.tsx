@@ -17,6 +17,9 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Create reactive errorDecription variable to use it for displaying authorization errors
+  const [errorDecription, setErrorDecription] = useState("");
+
   // Create a navigate variable using useNavigate hook to navigate between pages
   const navigate = useNavigate();
 
@@ -28,7 +31,20 @@ export default function SignIn() {
       .then(() => {
         navigate("/");
       })
-      .catch((error) => console.error(error.code, error.message));
+      .catch((error) => {
+        console.error(error.code, error.message);
+
+        switch (error.code) {
+          case "auth/user-not-found":
+            setErrorDecription("User not found!");
+            break;
+        }
+        switch (error.code) {
+          case "auth/wrong-password":
+            setErrorDecription("Wrong password!");
+            break;
+        }
+      });
 
     await fetchListCollection();
   };
@@ -44,15 +60,24 @@ export default function SignIn() {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
           />
+
           <InputPassword
             inputTitle="Password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}
           />
 
-          <NavLink to="/sign-up">
-            <p>Don't have an account? Click here to Sign Up</p>
-          </NavLink>
+          <div>
+            <NavLink to="/sign-up">
+              <p>Don't have an account? Click here to Sign Up</p>
+            </NavLink>
+
+            {errorDecription.length > 0 ? (
+              <p className={styles["sign-in__error-description"]}>
+                {errorDecription}
+              </p>
+            ) : null}
+          </div>
 
           <Button type="submit">Sign In</Button>
         </form>

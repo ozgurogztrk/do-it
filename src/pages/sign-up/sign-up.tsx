@@ -13,6 +13,9 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Create reactive errorDecription variable to use it for displaying authorization errors
+  const [errorDecription, setErrorDecription] = useState("");
+
   // Create a navigate variable using useNavigate hook to navigate between pages
   const navigate = useNavigate();
 
@@ -21,11 +24,15 @@ export default function SignUp() {
     event.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         navigate("/sign-in");
       })
       .catch((error) => {
-        console.error(error.code, error.message);
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            setErrorDecription("Account already exists!");
+            break;
+        }
       });
   };
 
@@ -40,15 +47,24 @@ export default function SignUp() {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
           />
+
           <InputPassword
             inputTitle="Password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}
           />
-          <NavLink to="/sign-in">
-            <p>Have an account? Click here to Sign In</p>
-          </NavLink>
 
+          <div>
+            <NavLink to="/sign-in">
+              <p>Have an account? Click here to Sign In</p>
+            </NavLink>
+
+            {errorDecription.length > 0 ? (
+              <p className={styles["sign-up__error-description"]}>
+                {errorDecription}
+              </p>
+            ) : null}
+          </div>
           <Button type="submit">Sign Up</Button>
         </form>
       </PageContainer>
