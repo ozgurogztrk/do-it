@@ -16,4 +16,10 @@
       color: abs.$color-white;
     }
   }
+
+  .accordion__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 }

@@ -16,7 +16,9 @@ export default function Accordion({
         />
       </div>
 
-      {isAccordionOpen ? children : null}
+      <div className={styles.accordion__content}>
+        {isAccordionOpen ? children : null}
+      </div>
     </div>
   );
 }
