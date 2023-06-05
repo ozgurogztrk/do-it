@@ -9,7 +9,15 @@
     width: 100%;
     max-height: 400px;
 
-    @include abs.breakpoints(sm) {
+    @media screen and (max-height: 685px) {
+      max-height: 100px;
+    }
+
+    @media screen and (min-height: 685px) and (max-height: 735px) {
+      max-height: 150px;
+    }
+
+    @media screen and (min-height: 735px) and (max-height: 839px) {
       max-height: 200px;
     }
   }
