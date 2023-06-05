@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import { notContains } from "src/utils/not-contains";
 import ButtonIcon from "src/components/button-icon";
 import InputText from "src/components/input-text";
 import styles from "./add-todo.module.scss";
