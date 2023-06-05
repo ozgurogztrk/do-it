@@ -14,7 +14,7 @@
 
   @include abs.breakpoints(sm) {
     position: fixed;
-    z-index: 10;
+    z-index: 30;
   }
 
   .sidebar__content {
