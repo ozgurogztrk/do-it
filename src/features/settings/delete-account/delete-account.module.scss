@@ -4,10 +4,6 @@
   display: flex;
   flex-direction: column;
   padding-bottom: abs.em(16);
-
-  .delete-account__title {
-    color: abs.$color-white;
-  }
 }
 
 .modal__buttons {

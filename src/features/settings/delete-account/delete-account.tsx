@@ -60,7 +60,7 @@ export default function DeleteAccount() {
   return (
     <BaseCard>
       <div className={styles["delete-account"]}>
-        <p className={styles["delete-account__title"]}>Delete Account</p>
+        <h3 className={styles["delete-account__title"]}>Delete Account</h3>
 
         <div>
           <Button role="danger" onClick={toggleDeleteAccountModal}>
