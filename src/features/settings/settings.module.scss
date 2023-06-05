@@ -5,4 +5,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 34px;
   padding-right: abs.em(32);
+
+  @include abs.breakpoints(md) {
+    grid-template-columns: 1fr;
+  }
 }

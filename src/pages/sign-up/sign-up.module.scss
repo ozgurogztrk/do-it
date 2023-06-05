@@ -10,6 +10,10 @@
   margin: auto;
   width: 20%;
 
+  @include abs.breakpoints(md) {
+    width: 40%;
+  }
+
   h1 {
     text-align: center;
   }

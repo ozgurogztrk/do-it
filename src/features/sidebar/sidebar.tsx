@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import Header from "./header";
 import Main from "./main";
 import Lists from "./lists";
@@ -10,10 +11,13 @@ export default function Sidebar() {
   // Create a reactive activeState variable to check if the sidebar is open or not
   const [activeState, setActiveState] = useState<boolean>(true);
 
+  // Check if the user is on mobile screen
+  const isMobileScreen = useMediaQuery({ query: "(max-width: 481px)" });
+
   // Animation properties
   const sidebarVariants = {
     opened: {
-      width: 380,
+      width: isMobileScreen ? "93%" : 380,
       transition: { duration: 0.2 },
     },
     closed: {

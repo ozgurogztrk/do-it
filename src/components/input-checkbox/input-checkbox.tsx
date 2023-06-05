@@ -11,7 +11,9 @@ export default function InputCheckbox({
       <input type="checkbox" checked={checked} onChange={onChange} />
       {checked ? <Icon icon={"lucide:check"} /> : null}
       <span className={styles.checkbox} />
-      <span>{inputTitle}</span>
+      <span>
+        <h3>{inputTitle}</h3>
+      </span>
     </label>
   );
 }
