@@ -10,6 +10,7 @@
   cursor: pointer;
 
   p {
+    color: abs.$color-white;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

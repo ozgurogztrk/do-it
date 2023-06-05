@@ -3,20 +3,7 @@
 .add-list {
   position: relative;
 
-  button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    position: absolute;
-    box-sizing: border-box;
-    transform: translateY(-50%);
-    left: 10px;
-    top: 50%;
-    cursor: pointer;
-
-    svg {
-      color: abs.$color-text--light;
-      font-size: abs.rem(26);
-    }
+  svg {
+    color: abs.$color-white;
   }
 }

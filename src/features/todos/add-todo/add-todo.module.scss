@@ -2,4 +2,8 @@
 
 .add-todo {
   position: relative;
+
+  svg {
+    color: abs.$color-white;
+  }
 }
