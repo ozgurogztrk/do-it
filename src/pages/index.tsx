@@ -6,7 +6,7 @@ export default function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/tasks");
+    navigate("/overview");
   }, []);
 
   return <></>;
