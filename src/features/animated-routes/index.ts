@@ -1,1 +1,1 @@
-export { default } from "./animated-routes";
+export { default as AnimatedRoutes } from "./animated-routes";

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import Header from "./header";
-import Main from "./main";
-import Lists from "./lists";
-import UserActions from "./user-actions";
+import { Header } from "./header";
+import { Main } from "./main";
+import { Lists } from "./lists";
+import { UserActions } from "./user-actions";
 import styles from "./sidebar.module.scss";
 
-export default function Sidebar() {
+const Sidebar = () => {
   // Create a reactive activeState variable to check if the sidebar is open or not
   const [activeState, setActiveState] = useState<boolean>(true);
 
@@ -48,4 +48,6 @@ export default function Sidebar() {
       </div>
     </motion.nav>
   );
-}
+};
+
+export default Sidebar;

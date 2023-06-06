@@ -1,11 +1,18 @@
 import styles from "./button.module.scss";
 
-export default function Button({
+type ButtonProps = {
+  type?: "button" | "submit" | "reset";
+  role?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+};
+
+const Button = ({
   type = "button",
   role = "primary",
   onClick,
   children,
-}: ButtonProps) {
+}: ButtonProps) => {
   return (
     <button
       type={type}
@@ -15,4 +22,6 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+
+export default Button;

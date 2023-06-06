@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import styles from "./page-container.module.scss";
 
-export default function PageContainer({ children }: PageContainerProps) {
+type PageContainerProps = {
+  children?: React.ReactNode;
+};
+
+const PageContainer = ({ children }: PageContainerProps) => {
   return (
     <motion.main
       className={styles["page-container"]}
@@ -13,4 +17,6 @@ export default function PageContainer({ children }: PageContainerProps) {
       {children}
     </motion.main>
   );
-}
+};
+
+export default PageContainer;

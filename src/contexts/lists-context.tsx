@@ -1,18 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { db, auth } from "src/utils/firebase-config";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  setDoc,
-} from "firebase/firestore";
+import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 
 // Create a lists context
-export const ListsContext = createContext({} as any);
+const ListsContext = createContext({} as any);
 
 // Create a provider component for lists context
-export default function ListsContextProvider({ children }: any) {
+type ListsContextProviderProps = {
+  children: React.ReactNode;
+};
+
+const ListsContextProvider = ({ children }: ListsContextProviderProps) => {
   // Create a reactive variable for lists
   const [lists, setLists] = useState<any>([]);
   const [userDocRef, setUserDocRef] = useState<any>(null);
@@ -90,4 +88,6 @@ export default function ListsContextProvider({ children }: any) {
       {children}
     </ListsContext.Provider>
   );
-}
+};
+
+export { ListsContextProvider, ListsContext };

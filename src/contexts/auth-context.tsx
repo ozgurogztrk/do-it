@@ -1,12 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "src/utils/firebase-config";
-import PageLoader from "src/components/page-loader";
+import { PageLoader } from "src/components/page-loader";
 
 // Create an authentication context
-export const AuthContext = createContext({} as any);
+const AuthContext = createContext({} as any);
 
 // Create a provider component for authentication context
-export default function AuthContextProvider({ children }: any) {
+type AuthContextProviderProps = {
+  children: React.ReactNode;
+};
+
+const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   // Create reactive variables for user and loading state
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -25,4 +29,6 @@ export default function AuthContextProvider({ children }: any) {
       {!loading ? children : <PageLoader />}
     </AuthContext.Provider>
   );
-}
+};
+
+export { AuthContextProvider, AuthContext };

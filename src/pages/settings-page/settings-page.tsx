@@ -1,8 +1,8 @@
-import PageContainer from "src/components/page-container";
-import Settings from "src/features/settings";
+import { PageContainer } from "src/components/page-container";
+import { Settings } from "src/features/settings";
 import styles from "./settings-page.module.scss";
 
-export default function SettingsPage() {
+const SettingsPage = () => {
   return (
     <PageContainer>
       <div className={styles["settings-page-header"]}>
@@ -13,4 +13,6 @@ export default function SettingsPage() {
       <Settings />
     </PageContainer>
   );
-}
+};
+
+export default SettingsPage;

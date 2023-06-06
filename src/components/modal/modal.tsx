@@ -2,7 +2,12 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./modal.module.scss";
 
-export default function Modal({ isModalOpen, children }: ModalProps) {
+type ModalProps = {
+  isModalOpen?: boolean;
+  children?: React.ReactNode;
+};
+
+const Modal = ({ isModalOpen, children }: ModalProps) => {
   return createPortal(
     <AnimatePresence>
       {isModalOpen ? (
@@ -21,4 +26,6 @@ export default function Modal({ isModalOpen, children }: ModalProps) {
     </AnimatePresence>,
     document.getElementById("root") as HTMLElement
   );
-}
+};
+
+export default Modal;

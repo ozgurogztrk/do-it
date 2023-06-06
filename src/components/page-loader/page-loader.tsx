@@ -1,7 +1,7 @@
-import PageContainer from "../page-container";
+import { PageContainer } from "../page-container";
 import styles from "./page-loader.module.scss";
 
-export default function PageLoader() {
+const PageLoader = () => {
   return (
     <PageContainer>
       <div className={styles["page-loader"]}>
@@ -9,4 +9,6 @@ export default function PageLoader() {
       </div>
     </PageContainer>
   );
-}
+};
+
+export default PageLoader;

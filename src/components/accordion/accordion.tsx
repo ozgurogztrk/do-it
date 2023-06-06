@@ -1,12 +1,19 @@
 import { Icon } from "@iconify/react";
 import styles from "./accordion.module.scss";
 
-export default function Accordion({
-  isAccordionOpen,
+type AccordionProps = {
+  title: string;
+  children: React.ReactNode;
+  isAccordionOpen: boolean;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+};
+
+const Accordion = ({
   title,
   children,
+  isAccordionOpen,
   onClick,
-}: AccordionProps) {
+}: AccordionProps) => {
   return (
     <div className={styles.accordion}>
       <div className={styles.accordion__header} onClick={onClick}>
@@ -21,4 +28,6 @@ export default function Accordion({
       </div>
     </div>
   );
-}
+};
+
+export default Accordion;

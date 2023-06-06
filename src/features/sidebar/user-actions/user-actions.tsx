@@ -1,11 +1,13 @@
-import SignOutButton from "./sign-out-button";
-import SwitchThemeButton from "./switch-theme-button";
-import SettingsButton from "./settings-button";
+import { SignOutButton } from "./sign-out-button";
+import { SwitchThemeButton } from "./switch-theme-button";
+import { SettingsButton } from "./settings-button";
 import styles from "./user-actions.module.scss";
 
-export default function UserActions({
-  sidebarState = false,
-}: UserActionsProps) {
+type UserActionsProps = {
+  sidebarState?: boolean;
+};
+
+const UserActions = ({ sidebarState = false }: UserActionsProps) => {
   return (
     <section className={sidebarState ? styles["user-actions"] : styles.hidden}>
       <SignOutButton />
@@ -13,4 +15,6 @@ export default function UserActions({
       <SettingsButton />
     </section>
   );
-}
+};
+
+export default UserActions;

@@ -1,12 +1,12 @@
 import { AnimatePresence } from "framer-motion";
 import { Fragment, useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
-import Todo from "src/features/todos/todo";
-import TodoDetails from "src/features/todos/todo-details";
-import Accordion from "src/components/accordion";
+import { Todo } from "src/features/todos/todo";
+import { TodoDetails } from "src/features/todos/todo-details";
+import { Accordion } from "src/components/accordion";
 import styles from "./overview-todos.module.scss";
 
-export default function OverviewTodos() {
+const OverviewTodos = () => {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
@@ -59,4 +59,6 @@ export default function OverviewTodos() {
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default OverviewTodos;

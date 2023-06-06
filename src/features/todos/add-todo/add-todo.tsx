@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import ButtonIcon from "src/components/button-icon";
-import InputText from "src/components/input-text";
+import { IconButton } from "src/components/icon-button";
+import { InputText } from "src/components/input-text";
 import styles from "./add-todo.module.scss";
 
-export default function AddTodo({ id = 0 }: AddTodoProps) {
+type AddTodoProps = {
+  id?: number;
+};
+
+const AddTodo = ({ id = 0 }: AddTodoProps) => {
   // Get lists and userDocRef variable from lists context
   const { lists, userDocRef } = useContext(ListsContext);
 
@@ -33,10 +37,9 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
 
     setTodoTitle("");
   };
-
   return (
     <form className={styles["add-todo"]} onSubmit={addNewTodo}>
-      <ButtonIcon type="submit" icon="lucide:plus" isAbsolute={true} />
+      <IconButton type="submit" icon="lucide:plus" isAbsolute={true} />
       <InputText
         placeholder="Add Something To Do"
         hasIcon={true}
@@ -45,4 +48,6 @@ export default function AddTodo({ id = 0 }: AddTodoProps) {
       />
     </form>
   );
-}
+};
+
+export default AddTodo;

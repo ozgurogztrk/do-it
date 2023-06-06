@@ -1,13 +1,22 @@
 import styles from "./input-text.module.scss";
 
-export default function InputText({
+type InputTextProps = {
+  inputTitle?: string;
+  title?: string;
+  value?: string;
+  placeholder?: string;
+  hasIcon?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+};
+
+const InputText = ({
   inputTitle = "",
   title,
   value,
   placeholder = "Placeholder...",
   hasIcon = false,
   onChange,
-}: InputTextProps) {
+}: InputTextProps) => {
   return (
     <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? <h3>{inputTitle}</h3> : null}
@@ -28,4 +37,6 @@ export default function InputText({
       />
     </div>
   );
-}
+};
+
+export default InputText;

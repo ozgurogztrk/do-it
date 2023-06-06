@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import styles from "./favorites-button.module.scss";
 
-export default function FavoritesButton() {
+const FavoritesButton = () => {
   return (
     <NavLink
       to={`/favorites`}
@@ -14,4 +14,6 @@ export default function FavoritesButton() {
       <p className={styles["favorites-button__text"]}>Favorites</p>
     </NavLink>
   );
-}
+};
+
+export default FavoritesButton;

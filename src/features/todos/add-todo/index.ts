@@ -1,1 +1,1 @@
-export { default } from "./add-todo";
+export { default as AddTodo } from "./add-todo";

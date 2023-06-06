@@ -1,9 +1,9 @@
-import ChangeEmail from "./change-email";
-import ChangePassword from "./change-password";
-import DeleteAccount from "./delete-account";
+import { ChangeEmail } from "./change-email";
+import { ChangePassword } from "./change-password";
+import { DeleteAccount } from "./delete-account";
 import styles from "./settings.module.scss";
 
-export default function Settings() {
+const Settings = () => {
   return (
     <section className={styles.settings}>
       <ChangeEmail />
@@ -11,4 +11,6 @@ export default function Settings() {
       <DeleteAccount />
     </section>
   );
-}
+};
+
+export default Settings;

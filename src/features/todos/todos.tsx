@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ListsContext } from "src/contexts/lists-context";
-import AddTodo from "./add-todo";
-import Todo from "src/features/todos/todo";
-import TodoDetails from "src/features/todos/todo-details";
-import Accordion from "src/components/accordion";
+import { AddTodo } from "./add-todo";
+import { Todo } from "src/features/todos/todo";
+import { TodoDetails } from "src/features/todos/todo-details";
+import { Accordion } from "src/components/accordion";
 import styles from "./todos.module.scss";
 
-export default function Todos() {
+const Todos = () => {
   // Get the value of id parameter from '/list-page/:id' URL
   const { id }: any = useParams();
 
@@ -64,11 +64,13 @@ export default function Todos() {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
-            selectedTodo={selectedTodo}
+            selectedTodo={selectedTodo!}
             id={id}
           />
         ) : null}
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default Todos;

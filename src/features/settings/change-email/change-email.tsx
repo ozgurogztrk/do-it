@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut, updateEmail } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
-import BaseCard from "src/components/base-card";
-import InputEmail from "src/components/input-email";
-import Button from "src/components/button";
+import { BaseCard } from "src/components/base-card";
+import { InputEmail } from "src/components/input-email";
+import { Button } from "src/components/button";
 import styles from "./change-email.module.scss";
 
-export default function ChangeEmail() {
+const ChangeEmail = () => {
   // Create a reactive email variable to use it in the InputEmail component
   const [email, setEmail] = useState(auth.currentUser!.email);
 
@@ -52,4 +52,6 @@ export default function ChangeEmail() {
       </form>
     </BaseCard>
   );
-}
+};
+
+export default ChangeEmail;

@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import styles from "./overview-button.module.scss";
 
-export default function OverviewButton() {
+const OverviewButton = () => {
   return (
     <NavLink
       to={`/overview`}
@@ -14,4 +14,6 @@ export default function OverviewButton() {
       <p className={styles["overview-button__text"]}>Overview</p>
     </NavLink>
   );
-}
+};
+
+export default OverviewButton;

@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { deleteDoc } from "firebase/firestore";
 import { auth } from "src/utils/firebase-config";
 import { ListsContext } from "src/contexts/lists-context";
-import BaseCard from "src/components/base-card";
-import Button from "src/components/button";
-import Modal from "src/components/modal";
+import { BaseCard } from "src/components/base-card";
+import { Button } from "src/components/button";
+import { Modal } from "src/components/modal";
 import styles from "./delete-account.module.scss";
 
-export default function DeleteAccount() {
+const DeleteAccount = () => {
   // Get lists variable from lists context
   const { userDocRef } = useContext(ListsContext);
 
@@ -82,4 +82,6 @@ export default function DeleteAccount() {
       </div>
     </BaseCard>
   );
-}
+};
+
+export default DeleteAccount;

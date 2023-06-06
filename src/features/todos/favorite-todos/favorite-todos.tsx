@@ -1,11 +1,11 @@
 import { AnimatePresence } from "framer-motion";
 import { useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
-import Todo from "src/features/todos/todo";
-import TodoDetails from "src/features/todos/todo-details";
+import { Todo } from "src/features/todos/todo";
+import { TodoDetails } from "src/features/todos/todo-details";
 import styles from "./favorite-todos.module.scss";
 
-export default function FavoriteTodos() {
+const FavoriteTodos = () => {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
@@ -44,4 +44,6 @@ export default function FavoriteTodos() {
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default FavoriteTodos;

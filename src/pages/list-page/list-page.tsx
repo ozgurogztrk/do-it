@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import PageContainer from "src/components/page-container";
-import ButtonIcon from "src/components/button-icon";
-import Button from "src/components/button";
-import Todos from "src/features/todos";
-import Modal from "src/components/modal";
+import { PageContainer } from "src/components/page-container";
+import { IconButton } from "src/components/icon-button";
+import { Button } from "src/components/button";
+import { Todos } from "src/features/todos";
+import { Modal } from "src/components/modal";
 import styles from "./list-page.module.scss";
 
-export default function ListPage() {
+const ListPage = () => {
   // Get lists variable from lists context
   const { lists, userDocRef } = useContext(ListsContext);
 
@@ -63,7 +63,7 @@ export default function ListPage() {
 
         <h1>{lists[id]?.title}</h1>
 
-        <ButtonIcon icon="lucide:trash-2" onClick={toggleListModal} />
+        <IconButton icon="lucide:trash-2" onClick={toggleListModal} />
 
         <Modal isModalOpen={isModalOpen}>
           <h1>Confirm Your Action!</h1>
@@ -81,4 +81,6 @@ export default function ListPage() {
       <Todos />
     </PageContainer>
   );
-}
+};
+
+export default ListPage;

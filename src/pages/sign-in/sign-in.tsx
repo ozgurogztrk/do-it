@@ -3,13 +3,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
 import { ListsContext } from "src/contexts/lists-context";
-import PageContainer from "src/components/page-container";
-import Button from "src/components/button";
-import InputEmail from "src/components/input-email";
-import InputPassword from "src/components/input-password";
+import { PageContainer } from "src/components/page-container";
+import { Button } from "src/components/button";
+import { InputEmail } from "src/components/input-email";
+import { InputPassword } from "src/components/input-password";
 import styles from "./sign-in.module.scss";
 
-export default function SignIn() {
+const SignIn = () => {
   // Get lists and userDocRef variable from lists context
   const { fetchListCollection } = useContext(ListsContext);
 
@@ -48,7 +48,6 @@ export default function SignIn() {
 
     await fetchListCollection();
   };
-
   return (
     <div className={styles["sign-in"]}>
       <PageContainer>
@@ -84,4 +83,6 @@ export default function SignIn() {
       </PageContainer>
     </div>
   );
-}
+};
+
+export default SignIn;

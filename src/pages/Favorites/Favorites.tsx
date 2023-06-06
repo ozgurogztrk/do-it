@@ -1,8 +1,8 @@
-import PageContainer from "src/components/page-container";
-import FavoriteTodos from "src/features/todos/favorite-todos";
+import { PageContainer } from "src/components/page-container";
+import { FavoriteTodos } from "src/features/todos/favorite-todos";
 import styles from "./favorites.module.scss";
 
-export default function Favorites() {
+const Favorites = () => {
   return (
     <PageContainer>
       <div className={styles["favorites-header"]}>
@@ -13,4 +13,6 @@ export default function Favorites() {
       <FavoriteTodos />
     </PageContainer>
   );
-}
+};
+
+export default Favorites;

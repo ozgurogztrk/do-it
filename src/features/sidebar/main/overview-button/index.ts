@@ -1,1 +1,1 @@
-export { default } from "./overview-button";
+export { default as OverviewButton } from "./overview-button";

@@ -1,7 +1,7 @@
-import PageContainer from "src/components/page-container";
+import { PageContainer } from "src/components/page-container";
 import styles from "./error.module.scss";
 
-export default function Error() {
+const Error = () => {
   return (
     <PageContainer>
       <div className={styles.error}>
@@ -9,4 +9,6 @@ export default function Error() {
       </div>
     </PageContainer>
   );
-}
+};
+
+export default Error;

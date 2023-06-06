@@ -1,1 +1,1 @@
-export { default } from "./delete-account";
+export { default as DeleteAccount } from "./delete-account";

@@ -1,1 +1,1 @@
-export { default } from "./todo-details";
+export { default as TodoDetails } from "./todo-details";

@@ -1,13 +1,22 @@
 import styles from "./input-email.module.scss";
 
-export default function InputEmail({
+type InputEmailProps = {
+  inputTitle?: string;
+  value?: string;
+  placeholder?: string;
+  title?: string;
+  hasIcon?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+};
+
+const InputEmail = ({
   inputTitle = "",
   title,
   value,
   placeholder = "Enter Your E-Mail....",
   hasIcon = false,
   onChange,
-}: InputEmailProps) {
+}: InputEmailProps) => {
   return (
     <div className={styles["input-wrapper"]}>
       {inputTitle.length > 0 ? <h3>{inputTitle}</h3> : null}
@@ -28,4 +37,6 @@ export default function InputEmail({
       />
     </div>
   );
-}
+};
+
+export default InputEmail;

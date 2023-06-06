@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import { ListsContext } from "src/contexts/lists-context";
-import List from "./list";
-import AddList from "./add-list";
-import Accordion from "src/components/accordion";
+import { Accordion } from "src/components/accordion";
+import { List } from "./list";
+import { AddList } from "./add-list";
 import styles from "./lists.module.scss";
 
-export default function Lists({ sidebarState = false }: ListsProps) {
+type ListsProps = {
+  sidebarState?: boolean;
+};
+
+const lists = ({ sidebarState = false }: ListsProps) => {
   // Get lists variable from lists context
   const { lists } = useContext(ListsContext);
 
@@ -24,7 +28,7 @@ export default function Lists({ sidebarState = false }: ListsProps) {
         onClick={toggleAccordion}
       >
         <div className={styles.lists__content}>
-          {lists.map(({ id, title }: ListsMapProps) => (
+          {lists.map(({ id, title }: { id: string; title: string }) => (
             <List key={id} id={id} title={title} />
           ))}
         </div>
@@ -33,4 +37,6 @@ export default function Lists({ sidebarState = false }: ListsProps) {
       </Accordion>
     </section>
   );
-}
+};
+
+export default lists;

@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut, updatePassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
-import BaseCard from "src/components/base-card";
-import InputPassword from "src/components/input-password";
-import Button from "src/components/button";
+import { BaseCard } from "src/components/base-card";
+import { InputPassword } from "src/components/input-password";
+import { Button } from "src/components/button";
 import styles from "./change-password.module.scss";
 
-export default function ChangePassword() {
+const ChangePassword = () => {
   // Create a reactive password variable to use it in the InputPassword component
   const [password, setPassword] = useState("");
 
@@ -50,4 +50,6 @@ export default function ChangePassword() {
       </form>
     </BaseCard>
   );
-}
+};
+
+export default ChangePassword;

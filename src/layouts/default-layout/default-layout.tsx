@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "src/features/sidebar";
+import { Sidebar } from "src/features/sidebar";
 
-export default function DefaultLayout() {
+const DefaultLayout = () => {
   return (
     <>
       <Sidebar />
       <Outlet />
     </>
   );
-}
+};
+
+export default DefaultLayout;

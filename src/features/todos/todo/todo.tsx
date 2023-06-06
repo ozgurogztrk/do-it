@@ -1,17 +1,30 @@
 import { useContext, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { onSnapshot, updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import InputCheckbox from "src/components/input-checkbox";
+import { InputCheckbox } from "src/components/input-checkbox";
 import styles from "./todo.module.scss";
 
-export default function Todo({
+type TodoProps = {
+  id?: number;
+  todo: {
+    id: number;
+    title: string;
+    isFavorite: boolean;
+    isCompleted: boolean;
+  };
+  setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedTodo: React.Dispatch<React.SetStateAction<undefined>>;
+  setTodoId?: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const Todo = ({
   id = 0,
   todo,
   setIsDetailsOpen,
   setSelectedTodo,
   setTodoId = () => 0,
-}: TodoProps) {
+}: TodoProps) => {
   const { lists, userDocRef } = useContext(ListsContext);
 
   // Get the information of selected todo
@@ -73,9 +86,11 @@ export default function Todo({
     >
       <InputCheckbox
         onChange={(event) => setIsTodoCompleted(event.target.checked)}
-        checked={isTodoCompleted}
+        isChecked={isTodoCompleted}
       />
       <p onClick={toggleTodoDetails}>{todo.title}</p>
     </motion.div>
   );
-}
+};
+
+export default Todo;

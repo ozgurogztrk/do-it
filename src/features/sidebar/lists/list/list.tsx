@@ -2,7 +2,12 @@ import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import styles from "./list.module.scss";
 
-export default function List({ title = "Default List", id = "0" }: ListProps) {
+type ListProps = {
+  title?: string;
+  id?: string;
+};
+
+const List = ({ title = "Default List", id = "0" }: ListProps) => {
   return (
     <NavLink
       to={`/list-page/${id}`}
@@ -14,4 +19,6 @@ export default function List({ title = "Default List", id = "0" }: ListProps) {
       <p className={styles["list__text"]}>{title}</p>
     </NavLink>
   );
-}
+};
+
+export default List;

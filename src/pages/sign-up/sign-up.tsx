@@ -2,13 +2,13 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
-import PageContainer from "src/components/page-container";
-import Button from "src/components/button";
-import InputEmail from "src/components/input-email";
-import InputPassword from "src/components/input-password";
+import { PageContainer } from "src/components/page-container";
+import { Button } from "src/components/button";
+import { InputEmail } from "src/components/input-email";
+import { InputPassword } from "src/components/input-password";
 import styles from "./sign-up.module.scss";
 
-export default function SignUp() {
+const SignUp = () => {
   // Create reactive email and password variables to use them in the InputEmail and InputPassword components
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +35,6 @@ export default function SignUp() {
         }
       });
   };
-
   return (
     <div className={styles["sign-up"]}>
       <PageContainer>
@@ -70,4 +69,6 @@ export default function SignUp() {
       </PageContainer>
     </div>
   );
-}
+};
+
+export default SignUp;

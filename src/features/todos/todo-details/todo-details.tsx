@@ -4,19 +4,30 @@ import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
-import InputText from "src/components/input-text";
-import SelectBox from "src/components/selectbox";
-import InputCheckbox from "src/components/input-checkbox";
-import ButtonIcon from "src/components/button-icon";
-import Button from "src/components/button";
-import Modal from "src/components/modal";
+import { InputText } from "src/components/input-text";
+import { Select } from "src/components/select";
+import { InputCheckbox } from "src/components/input-checkbox";
+import { IconButton } from "src/components/icon-button";
+import { Button } from "src/components/button";
+import { Modal } from "src/components/modal";
 import styles from "./todo-details.module.scss";
 
-export default function TodoDetails({
+type TodoDetailsProps = {
+  id?: number;
+  setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedTodo: {
+    id: number;
+    title: string;
+    isFavorite: boolean;
+    isCompleted: boolean;
+  };
+};
+
+const TodoDetails = ({
   id = 0,
   setIsDetailsOpen,
   selectedTodo,
-}: TodoDetailsProps) {
+}: TodoDetailsProps) => {
   // Get lists and userDocRef variable from lists context
   const { lists, userDocRef } = useContext(ListsContext);
 
@@ -104,7 +115,7 @@ export default function TodoDetails({
       >
         <div className={styles["todo-details__header"]}>
           <h1>Details:</h1>
-          <ButtonIcon icon={"lucide:x"} onClick={closeDetails} />
+          <IconButton icon={"lucide:x"} onClick={closeDetails} />
         </div>
 
         <form onSubmit={saveNewTodoDetails}>
@@ -116,8 +127,8 @@ export default function TodoDetails({
               value={todoTitle}
             />
 
-            <SelectBox
-              inputTitle="Move To List"
+            <Select
+              selectTitle="Move To List"
               options={lists.map((list: any) => ({
                 value: list.id.toString(),
                 title: list.title,
@@ -129,7 +140,7 @@ export default function TodoDetails({
             <InputCheckbox
               inputTitle="Add To Favorites"
               onChange={(event) => setIsTodoFavorite(event.target.checked)}
-              checked={isTodoFavorite}
+              isChecked={isTodoFavorite}
             />
           </div>
 
@@ -165,4 +176,6 @@ export default function TodoDetails({
     </div>,
     document.getElementById("root") as HTMLElement
   );
-}
+};
+
+export default TodoDetails;

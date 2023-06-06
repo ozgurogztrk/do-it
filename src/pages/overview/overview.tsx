@@ -1,8 +1,8 @@
-import PageContainer from "src/components/page-container";
-import OverviewTodos from "src/features/todos/overview-todos";
+import { PageContainer } from "src/components/page-container";
+import { OverviewTodos } from "src/features/todos/overview-todos";
 import styles from "./overview.module.scss";
 
-export default function Overview() {
+const Overview = () => {
   return (
     <PageContainer>
       <div className={styles["overview-header"]}>
@@ -13,4 +13,6 @@ export default function Overview() {
       <OverviewTodos />
     </PageContainer>
   );
-}
+};
+
+export default Overview;

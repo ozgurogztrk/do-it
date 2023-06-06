@@ -1,1 +1,1 @@
-export { default } from "./settings-button";
+export { default as SettingsButton } from "./settings-button";

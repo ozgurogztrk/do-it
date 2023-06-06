@@ -1,1 +1,1 @@
-export { default } from "./user-actions";
+export { default as UserActions } from "./user-actions";

@@ -1,13 +1,16 @@
 import { signOut } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
-import ButtonIcon from "src/components/button-icon/button-icon";
+import { IconButton } from "src/components/icon-button";
 
-export default function SignOutButton() {
+const SignOutButton = () => {
+  // Function to signing out the user
   const handleSignOut = () => {
     signOut(auth).catch((error) => {
       console.error(error.code, error.message);
     });
   };
 
-  return <ButtonIcon icon="lucide:log-out" onClick={handleSignOut} />;
-}
+  return <IconButton icon="lucide:log-out" onClick={handleSignOut} />;
+};
+
+export default SignOutButton;
