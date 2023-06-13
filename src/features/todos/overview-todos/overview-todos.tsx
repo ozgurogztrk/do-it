@@ -16,7 +16,7 @@ const OverviewTodos = () => {
     [key: number]: boolean;
   }>({});
   const [selectedTodo, setSelectedTodo] = useState();
-  const [todoId, setTodoId] = useState(0);
+  const [listId, setListId] = useState(0);
 
   // Function to toggle list specific accordion
   const toggleAccordion = (accordionId: number) => {
@@ -38,10 +38,10 @@ const OverviewTodos = () => {
               <Todo
                 key={todo.id}
                 todo={todo}
-                id={list.id}
+                listId={list.id}
                 setIsDetailsOpen={setIsDetailsOpen}
                 setSelectedTodo={setSelectedTodo}
-                setTodoId={setTodoId}
+                setListId={setListId}
               />
             ))}
           </Accordion>
@@ -52,8 +52,8 @@ const OverviewTodos = () => {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
-            selectedTodo={selectedTodo}
-            id={todoId}
+            selectedTodo={selectedTodo!}
+            listId={listId}
           />
         ) : null}
       </AnimatePresence>

@@ -6,7 +6,7 @@ import { InputCheckbox } from "src/components/input-checkbox";
 import styles from "./todo.module.scss";
 
 type TodoProps = {
-  id?: number;
+  listId?: number;
   todo: {
     id: number;
     title: string;
@@ -15,22 +15,22 @@ type TodoProps = {
   };
   setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedTodo: React.Dispatch<React.SetStateAction<undefined>>;
-  setTodoId?: React.Dispatch<React.SetStateAction<number>>;
+  setListId?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const Todo = ({
-  id = 0,
+  listId = 0,
   todo,
   setIsDetailsOpen,
   setSelectedTodo,
-  setTodoId = () => 0,
+  setListId = () => 0,
 }: TodoProps) => {
   const { lists, userDocRef } = useContext(ListsContext);
 
   // Get the information of selected todo
   const getTodo = () => {
     const updatedList = [...lists];
-    return updatedList?.[id]?.todos?.[todo.id] ?? null;
+    return updatedList?.[listId]?.todos?.[todo.id] ?? null;
   };
 
   // Create reactive isTodoDone variable to use it in the InputCheckbox component
@@ -42,13 +42,13 @@ const Todo = ({
   const toggleTodoDetails = () => {
     setIsDetailsOpen(true);
     setSelectedTodo(getTodo());
-    setTodoId(id);
+    setListId(listId);
   };
 
   useEffect(() => {
     const unsubscribe = onSnapshot(userDocRef, (doc: any) => {
       const updatedLists = [...doc.data().lists];
-      const updatedTodo = updatedLists[id]?.todos.find(
+      const updatedTodo = updatedLists[listId]?.todos.find(
         (t: any) => t.id === todo.id
       );
 
@@ -60,12 +60,12 @@ const Todo = ({
     return () => {
       unsubscribe();
     };
-  }, [id, todo.id, userDocRef]);
+  }, [listId, todo.id, userDocRef]);
 
   useEffect(() => {
     const updateTodoCompletedStatus = async () => {
       const updatedLists = [...lists];
-      updatedLists[id].todos[todo.id].isCompleted = isTodoCompleted;
+      updatedLists[listId].todos[todo.id].isCompleted = isTodoCompleted;
 
       await updateDoc(userDocRef, {
         lists: updatedLists,
@@ -73,7 +73,7 @@ const Todo = ({
     };
 
     updateTodoCompletedStatus();
-  }, [isTodoCompleted, id, todo.id, userDocRef]);
+  }, [isTodoCompleted, listId, todo.id, userDocRef]);
 
   return (
     <motion.div

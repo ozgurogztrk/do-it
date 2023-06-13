@@ -12,23 +12,23 @@ const FavoriteTodos = () => {
   // Create reactive isDetailsOpen, selectedTodo and todoId variables
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState();
-  const [todoId, setTodoId] = useState(0);
+  const [listId, setListId] = useState(0);
 
   return (
     <div className={styles["favorite-todos"]}>
       {lists?.map((list: any) =>
         list?.todos
           ?.filter(
-            (todo: any) => (todo.isFavorite == true, todo.isCompleted == false)
+            (todo: any) => todo.isFavorite == true && todo.isCompleted == false
           )
           .map((filteredTodo: any) => (
             <Todo
               key={filteredTodo.id}
               todo={filteredTodo}
-              id={list.id}
+              listId={list.id}
               setIsDetailsOpen={setIsDetailsOpen}
               setSelectedTodo={setSelectedTodo}
-              setTodoId={setTodoId}
+              setListId={setListId}
             />
           ))
       )}
@@ -37,8 +37,8 @@ const FavoriteTodos = () => {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
-            selectedTodo={selectedTodo}
-            id={todoId}
+            selectedTodo={selectedTodo!}
+            listId={listId}
           />
         ) : null}
       </AnimatePresence>

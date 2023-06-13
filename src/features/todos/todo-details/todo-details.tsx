@@ -13,7 +13,7 @@ import { Modal } from "src/components/modal";
 import styles from "./todo-details.module.scss";
 
 type TodoDetailsProps = {
-  id?: number;
+  listId?: number;
   setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedTodo: {
     id: number;
@@ -24,7 +24,7 @@ type TodoDetailsProps = {
 };
 
 const TodoDetails = ({
-  id = 0,
+  listId = 0,
   setIsDetailsOpen,
   selectedTodo,
 }: TodoDetailsProps) => {
@@ -36,7 +36,7 @@ const TodoDetails = ({
 
   // Create reactive todoTitle and todoFavorite variables to use them in the InputText components
   const [todoTitle, setTodoTitle] = useState(selectedTodo?.title);
-  const [currentList, setCurrentList] = useState(id.toString());
+  const [currentList, setCurrentList] = useState(listId.toString());
   const [isTodoFavorite, setIsTodoFavorite] = useState(
     selectedTodo?.isFavorite
   );
@@ -50,17 +50,22 @@ const TodoDetails = ({
   const saveNewTodoDetails = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    if (id === parseInt(currentList)) {
+    if (listId == parseInt(currentList)) {
       const updatedLists = [...lists];
 
-      updatedLists[id].todos[selectedTodo.id].title = todoTitle;
-      updatedLists[id].todos[selectedTodo.id].isFavorite = isTodoFavorite;
+      updatedLists[listId].todos[selectedTodo.id] = {
+        id: selectedTodo.id,
+        title: todoTitle,
+        isFavorite: isTodoFavorite,
+        isCompleted: selectedTodo.isCompleted,
+      };
 
       await updateDoc(userDocRef, {
         lists: updatedLists,
       });
     } else {
       // Move to another list
+
       deleteTodo();
 
       const updatedLists = [...lists];
@@ -76,7 +81,7 @@ const TodoDetails = ({
 
       await updateDoc(userDocRef, {
         lists: updatedLists,
-      }).catch((error) => console.error(error.code, error.message));
+      });
     }
 
     closeDetails();
@@ -90,7 +95,7 @@ const TodoDetails = ({
   // The function of deleting the current todo
   const deleteTodo = async () => {
     const updatedLists = [...lists];
-    const todos = updatedLists[id].todos;
+    const todos = updatedLists[listId].todos;
 
     const todoIndex = todos.findIndex(
       (todo: any) => todo.id === selectedTodo.id
