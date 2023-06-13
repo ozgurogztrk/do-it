@@ -1,6 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { db, auth } from "src/utils/firebase-config";
-import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
 
 // Create a lists context
 const ListsContext = createContext({} as any);
@@ -11,9 +17,10 @@ type ListsContextProviderProps = {
 };
 
 const ListsContextProvider = ({ children }: ListsContextProviderProps) => {
-  // Create a reactive variable for lists
+  // Create reactive lists, userDocRef and initialDataFetched variables
   const [lists, setLists] = useState<any>([]);
   const [userDocRef, setUserDocRef] = useState<any>(null);
+  const [initialDataFetched, setInitialDataFetched] = useState(false);
 
   // Fetch lists from Cloud Firestore and update the lists variable using setLists
   const fetchListCollection = async () => {
@@ -22,18 +29,20 @@ const ListsContextProvider = ({ children }: ListsContextProviderProps) => {
     if (userId) {
       const collectionRef = collection(db, "list-collection");
       const docRef = doc(collectionRef, userId);
+      const docSnapshot = await getDoc(docRef);
       setUserDocRef(docRef);
 
-      const unsubscribe = onSnapshot(docRef, (docSnapshot: any) => {
-        if (docSnapshot.exists()) {
+      if (docSnapshot.exists()) {
+        const unsubscribe = onSnapshot(docRef, (docSnapshot: any) => {
           setLists(docSnapshot.data().lists);
-        } else {
-          setLists([]);
-          createNewDocument(userId);
-        }
-      });
-
-      return unsubscribe;
+          setInitialDataFetched(true);
+        });
+        return unsubscribe;
+      } else {
+        setLists([]);
+        createNewDocument(userId);
+        setInitialDataFetched(true);
+      }
     }
   };
 
@@ -81,10 +90,12 @@ const ListsContextProvider = ({ children }: ListsContextProviderProps) => {
         unsubscribe();
       }
     };
-  }, []);
+  }, [initialDataFetched]);
 
   return (
-    <ListsContext.Provider value={{ lists, userDocRef, fetchListCollection }}>
+    <ListsContext.Provider
+      value={{ lists, userDocRef, setInitialDataFetched, fetchListCollection }}
+    >
       {children}
     </ListsContext.Provider>
   );
