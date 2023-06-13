@@ -3,10 +3,12 @@
 html {
   font-family: "Inter", sans-serif;
   line-height: 1.75rem;
+  height: 100%;
 }
 
 body {
   background-color: abs.$color-body-background;
+  height: 100%;
 }
 
 h1,
@@ -27,6 +29,5 @@ p {
 
 #root {
   display: flex;
-  flex-flow: row;
-  min-height: 100vh;
+  height: 100vh;
 }
