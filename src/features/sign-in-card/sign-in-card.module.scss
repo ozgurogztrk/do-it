@@ -1,12 +1,9 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.sign-in {
-  background-color: abs.$color-sign-in-background;
+.sign-in-card {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  border-radius: 16px;
-  padding: abs.em(16);
   margin: auto;
   width: 20%;
 
@@ -28,7 +25,7 @@
       text-decoration: none;
     }
 
-    .sign-in__error-description {
+    .sign-in-card__error-description {
       color: abs.$color-danger;
       text-align: center;
     }
