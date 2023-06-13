@@ -21,5 +21,9 @@
     padding: abs.em(16);
     max-width: 90%;
     min-width: 20%;
+
+    @include abs.breakpoints(sm) {
+      max-width: 80%;
+    }
   }
 }
