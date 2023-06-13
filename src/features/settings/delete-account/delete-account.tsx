@@ -9,8 +9,8 @@ import { Modal } from "src/components/modal";
 import styles from "./delete-account.module.scss";
 
 const DeleteAccount = () => {
-  // Get lists variable from lists context
-  const { userDocRef } = useContext(ListsContext);
+  // Get userDocRef and setInitialDataFetched variables from lists context
+  const { userDocRef, setInitialDataFetched } = useContext(ListsContext);
 
   // Create a reactive variable to check if the modal is open or not
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,40 +23,32 @@ const DeleteAccount = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  // Function to delete the user's data
+  const deleteUserDocument = async () => {
+    if (userDocRef) {
+      await deleteDoc(userDocRef);
+    }
+  };
+
   // Function to deleting the account if the user confirms it
   const deleteAccount = async () => {
     toggleDeleteAccountModal();
 
-    await deleteUserDocument();
-
-    await auth.currentUser
-      ?.delete()
-      .then(() => {
-        navigate("/sign-up");
-      })
-      .catch((error) => {
-        if (error.code == "auth/requires-recent-login") {
-          alert("You must sign in again before deleting your account!");
-          navigate("/sign-in");
-        }
-      });
-  };
-
-  // Function to delete the user's data
-  const deleteUserDocument = async () => {
     try {
-      if (userDocRef) {
-        await deleteDoc(userDocRef);
-        console.log(
-          "User document deleted successfully",
-          userDocRef,
-          auth.currentUser?.uid
+      deleteUserDocument();
+      await auth.currentUser?.delete();
+      navigate("/sign-up");
+      setInitialDataFetched(false);
+    } catch (error: any) {
+      if (error.code === "auth/requires-recent-login") {
+        alert(
+          "Your data has been deleted, but you must re-sign again to delete your account as well!"
         );
+        navigate("/sign-in");
       }
-    } catch (error) {
-      console.error("Error deleting user document for user", error);
     }
   };
+
   return (
     <BaseCard>
       <div className={styles["delete-account"]}>
