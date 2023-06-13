@@ -2,11 +2,20 @@
 
 .settings {
   display: grid;
+  overflow-y: auto;
   grid-template-columns: 1fr 1fr;
   gap: 34px;
   padding-right: abs.em(32);
+  padding-left: abs.em(32);
+
+  @include abs.breakpoints(sm) {
+    padding-right: abs.em(16);
+    padding-left: abs.em(16);
+  }
 
   @include abs.breakpoints(md) {
     grid-template-columns: 1fr;
+    padding-bottom: abs.em(16);
+    height: 90%;
   }
 }

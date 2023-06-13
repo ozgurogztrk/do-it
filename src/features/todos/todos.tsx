@@ -28,44 +28,46 @@ const Todos = () => {
     <div className={styles.todos}>
       <AddTodo id={id} />
 
-      {lists[id]?.todos
-        ?.filter((todo: any) => todo.isCompleted == false)
-        .map((filteredTodo: any) => (
-          <Todo
-            key={filteredTodo.id}
-            todo={filteredTodo}
-            id={id}
-            setIsDetailsOpen={setIsDetailsOpen}
-            setSelectedTodo={setSelectedTodo}
-          />
-        ))}
-
-      <Accordion
-        isAccordionOpen={isAccordionOpen}
-        title={`Completed - ${
-          lists[id]?.todos.filter((todo: any) => todo.isCompleted).length
-        }`}
-        onClick={toggleAccordion}
-      >
+      <div className={styles.todos__content}>
         {lists[id]?.todos
-          ?.filter((todo: any) => todo.isCompleted == true)
+          ?.filter((todo: any) => todo.isCompleted == false)
           .map((filteredTodo: any) => (
             <Todo
               key={filteredTodo.id}
               todo={filteredTodo}
-              id={id}
+              listId={id}
               setIsDetailsOpen={setIsDetailsOpen}
               setSelectedTodo={setSelectedTodo}
             />
           ))}
-      </Accordion>
+
+        <Accordion
+          isAccordionOpen={isAccordionOpen}
+          title={`Completed - ${
+            lists[id]?.todos.filter((todo: any) => todo.isCompleted).length
+          }`}
+          onClick={toggleAccordion}
+        >
+          {lists[id]?.todos
+            ?.filter((todo: any) => todo.isCompleted == true)
+            .map((filteredTodo: any) => (
+              <Todo
+                key={filteredTodo.id}
+                todo={filteredTodo}
+                listId={id}
+                setIsDetailsOpen={setIsDetailsOpen}
+                setSelectedTodo={setSelectedTodo}
+              />
+            ))}
+        </Accordion>
+      </div>
 
       <AnimatePresence>
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
             selectedTodo={selectedTodo!}
-            id={id}
+            listId={id}
           />
         ) : null}
       </AnimatePresence>

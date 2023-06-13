@@ -3,7 +3,19 @@
 .overview-todos {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
   row-gap: 16px;
   padding-top: abs.em(16);
   padding-right: abs.em(32);
+  padding-left: abs.em(32);
+  height: 90%;
+
+  @include abs.breakpoints(sm) {
+    padding-right: abs.em(16);
+    padding-left: abs.em(16);
+  }
+
+  @media screen and (max-height: 708px) {
+    height: 86%;
+  }
 }
