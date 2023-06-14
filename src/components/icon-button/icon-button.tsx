@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Icon } from "@iconify/react";
+import { ThemeContext } from "src/contexts/theme-context";
 import styles from "./icon-button.module.scss";
 
 type IconButtonProps = {
@@ -14,14 +16,14 @@ const IconButton = ({
   isAbsolute = false,
   onClick,
 }: IconButtonProps) => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
   return (
     <button
       type={type}
-      className={
-        isAbsolute
-          ? `${styles["icon-button"]} ${styles["absolute"]}`
-          : styles["icon-button"]
-      }
+      className={`${styles["icon-button"]} ${
+        isAbsolute && styles["absolute"]
+      } ${styles[theme]}`}
       onClick={onClick}
     >
       <Icon icon={icon} />

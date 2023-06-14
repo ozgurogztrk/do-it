@@ -12,7 +12,6 @@
   height: 100%;
 
   .modal {
-    background-color: abs.$color-modal-background;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,5 +24,13 @@
     @include abs.breakpoints(sm) {
       max-width: 80%;
     }
+  }
+
+  .dark {
+    background-color: abs.$color-modal-background--dark;
+  }
+
+  .light {
+    background-color: abs.$color-modal-background--light;
   }
 }

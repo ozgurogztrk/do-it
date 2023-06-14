@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
 import { ListsContext } from "src/contexts/lists-context";
+import { ThemeContext } from "src/contexts/theme-context";
 import { BaseCard } from "src/components/base-card";
 import { PageContainer } from "src/components/page-container";
 import { Button } from "src/components/button";
@@ -13,6 +14,9 @@ import styles from "./sign-in-card.module.scss";
 const SignInCard = () => {
   // Get lists and userDocRef variable from lists context
   const { fetchListCollection } = useContext(ListsContext);
+
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
 
   // Create reactive email and password variables to use them in the InputEmail and InputPassword components
   const [email, setEmail] = useState("");
@@ -48,8 +52,8 @@ const SignInCard = () => {
     await fetchListCollection();
   };
   return (
-    <BaseCard className={styles["sign-in-card"]}>
-      <PageContainer>
+    <PageContainer className={styles.wrapper}>
+      <BaseCard className={`${styles["sign-in-card"]} ${styles[theme]}`}>
         <h1>Sign In</h1>
 
         <form onSubmit={handleSignIn}>
@@ -79,8 +83,8 @@ const SignInCard = () => {
 
           <Button type="submit">Sign In</Button>
         </form>
-      </PageContainer>
-    </BaseCard>
+      </BaseCard>
+    </PageContainer>
   );
 };
 

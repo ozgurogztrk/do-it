@@ -1,7 +1,6 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .todo {
-  background-color: abs.$color-todo-background;
   display: flex;
   position: relative;
   text-decoration: none;
@@ -10,12 +9,27 @@
   cursor: pointer;
 
   p {
-    color: abs.$color-white;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     margin-bottom: 0;
     margin-top: 0;
     width: 100%;
+  }
+}
+
+.dark {
+  background-color: abs.$color-todo-background--dark;
+
+  p {
+    color: abs.$color-white;
+  }
+}
+
+.light {
+  background-color: abs.$color-todo-background--light;
+
+  p {
+    color: abs.$color-black;
   }
 }

@@ -5,6 +5,14 @@
   flex-direction: column;
 }
 
+.dark {
+  color: abs.$color-white;
+}
+
+.light {
+  color: abs.$color-black;
+}
+
 .hidden {
   display: none;
 }

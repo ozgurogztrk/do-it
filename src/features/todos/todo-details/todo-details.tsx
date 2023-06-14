@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
+import { ThemeContext } from "src/contexts/theme-context";
 import { InputText } from "src/components/input-text";
 import { Select } from "src/components/select";
 import { InputCheckbox } from "src/components/input-checkbox";
@@ -30,6 +31,9 @@ const TodoDetails = ({
 }: TodoDetailsProps) => {
   // Get lists and userDocRef variable from lists context
   const { lists, userDocRef } = useContext(ListsContext);
+
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
 
   // Create a reactive variable to check if the modal is open or not
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -112,13 +116,13 @@ const TodoDetails = ({
   return createPortal(
     <div className={styles.backdrop}>
       <motion.section
-        className={styles["todo-details"]}
+        className={`${styles["todo-details"]} ${styles[theme]}`}
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ duration: 0.2 }}
       >
-        <div className={styles["todo-details__header"]}>
+        <div className={`${styles["todo-details__header"]} ${styles[theme]}`}>
           <h1>Details:</h1>
           <IconButton icon={"lucide:x"} onClick={closeDetails} />
         </div>

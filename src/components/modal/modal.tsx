@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { ThemeContext } from "src/contexts/theme-context";
 import styles from "./modal.module.scss";
 
 type ModalProps = {
@@ -8,12 +10,14 @@ type ModalProps = {
 };
 
 const Modal = ({ isModalOpen, children }: ModalProps) => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
   return createPortal(
     <AnimatePresence>
       {isModalOpen ? (
         <div className={styles.backdrop}>
           <motion.div
-            className={styles.modal}
+            className={`${styles.modal} ${styles[theme]}`}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}

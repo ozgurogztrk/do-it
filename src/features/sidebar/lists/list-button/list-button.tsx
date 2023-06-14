@@ -2,24 +2,29 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { ThemeContext } from "src/contexts/theme-context";
-import styles from "./favorites-button.module.scss";
+import styles from "./list-button.module.scss";
 
-const FavoritesButton = () => {
+type ListProps = {
+  title?: string;
+  id?: string;
+};
+
+const ListButton = ({ title = "Default List", id = "0" }: ListProps) => {
   // Get theme variable from theme context
   const { theme } = useContext(ThemeContext);
   return (
     <NavLink
-      to={`/favorites`}
+      to={`/list-page/${id}`}
       className={({ isActive }) =>
-        `${styles["favorites-button"]} ${
+        `${styles["list-button"]} ${
           isActive ? styles["active"] : styles["inactive"]
         } ${styles[theme]}`
       }
     >
-      <Icon icon={"lucide:heart"} />
-      <p className={styles["favorites-button__text"]}>Favorites</p>
+      <Icon icon={"lucide:list"} />
+      <p className={styles["list-button__text"]}>{title}</p>
     </NavLink>
   );
 };
 
-export default FavoritesButton;
+export default ListButton;

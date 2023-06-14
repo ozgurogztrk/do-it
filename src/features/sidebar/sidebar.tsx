@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { ThemeContext } from "src/contexts/theme-context";
 import { Header } from "./header";
 import { Main } from "./main";
 import { Lists } from "./lists";
@@ -8,6 +9,9 @@ import { UserActions } from "./user-actions";
 import styles from "./sidebar.module.scss";
 
 const Sidebar = () => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
+
   // Create a reactive activeState variable to check if the sidebar is open or not
   const [activeState, setActiveState] = useState<boolean>(true);
 
@@ -34,7 +38,7 @@ const Sidebar = () => {
 
   return (
     <motion.nav
-      className={styles.sidebar}
+      className={`${styles.sidebar} ${styles[theme]}`}
       initial={false}
       animate={activeState ? "opened" : "closed"}
       variants={sidebarVariants}

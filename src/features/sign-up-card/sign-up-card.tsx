@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "src/utils/firebase-config";
+import { ThemeContext } from "src/contexts/theme-context";
 import { BaseCard } from "src/components/base-card";
 import { PageContainer } from "src/components/page-container";
 import { Button } from "src/components/button";
@@ -10,6 +11,9 @@ import { InputPassword } from "src/components/input-password";
 import styles from "./sign-up-card.module.scss";
 
 const SignUpCard = () => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
+
   // Create reactive email and password variables to use them in the InputEmail and InputPassword components
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,8 +41,8 @@ const SignUpCard = () => {
       });
   };
   return (
-    <BaseCard className={styles["sign-up-card"]}>
-      <PageContainer>
+    <PageContainer className={styles.wrapper}>
+      <BaseCard className={`${styles["sign-up-card"]} ${styles[theme]}`}>
         <h1>Sign Up</h1>
 
         <form onSubmit={handleSignUp}>
@@ -67,8 +71,8 @@ const SignUpCard = () => {
           </div>
           <Button type="submit">Sign Up</Button>
         </form>
-      </PageContainer>
-    </BaseCard>
+      </BaseCard>
+    </PageContainer>
   );
 };
 

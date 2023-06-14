@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "src/contexts/theme-context";
 import styles from "./input-email.module.scss";
 
 type InputEmailProps = {
@@ -17,17 +19,17 @@ const InputEmail = ({
   hasIcon = false,
   onChange,
 }: InputEmailProps) => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className={styles["input-wrapper"]}>
+    <div className={`${styles["input-wrapper"]} ${styles[theme]}`}>
       {inputTitle.length > 0 ? <h3>{inputTitle}</h3> : null}
 
       <input
         type="email"
-        className={
-          hasIcon
-            ? `${styles["input-email"]} ${styles["with-icon"]}`
-            : styles["input-email"]
-        }
+        className={`${styles["input-email"]} ${
+          hasIcon ? styles["with-icon"] : ""
+        } ${styles[theme]}`}
         value={value}
         placeholder={placeholder}
         title={title}

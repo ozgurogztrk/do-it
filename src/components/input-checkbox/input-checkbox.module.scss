@@ -1,7 +1,6 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .wrapper {
-  color: abs.$color-white;
   display: flex;
   position: relative;
   -webkit-user-select: none;
@@ -25,10 +24,8 @@
     }
   }
 
-  .checkbox {
-    background-color: abs.$color-input-checkbox;
+  .input-checkbox {
     border-radius: 8px;
-    box-shadow: 0 0 0 2px abs.$color-input-outline;
     margin-right: abs.em(16);
     width: 25px;
     height: 25px;
@@ -37,6 +34,16 @@
       content: "";
       position: absolute;
       display: none;
+    }
+
+    &.dark {
+      background-color: abs.$color-input-checkbox--dark;
+      box-shadow: 0 0 0 2px abs.$color-input-checkbox-outline--dark;
+    }
+
+    &.light {
+      background-color: abs.$color-input-checkbox--light;
+      box-shadow: 0 0 0 2px abs.$color-input-checkbox-outline--light;
     }
   }
 
@@ -52,4 +59,12 @@
   h3 {
     padding: 0;
   }
+}
+
+.dark {
+  color: abs.$color-white;
+}
+
+.light {
+  color: abs.$color-black;
 }

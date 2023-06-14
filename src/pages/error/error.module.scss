@@ -1,10 +1,17 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .error {
-  background-color: abs.$color-body-background;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.dark {
+  background-color: abs.$color-body-background--dark;
+}
+
+.light {
+  background-color: abs.$color-body-background--light;
 }

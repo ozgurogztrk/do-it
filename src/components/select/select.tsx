@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "src/contexts/theme-context";
 import styles from "./select.module.scss";
 
 type SelectProps = {
@@ -13,11 +15,17 @@ const Select = ({
   onChange,
   options = [{ value: "optionValue", title: "Option 1" }],
 }: SelectProps) => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className={styles["wrapper"]}>
+    <div className={`${styles["wrapper"]} ${styles[theme]}`}>
       {selectTitle.length > 0 ? <h3>{selectTitle}</h3> : null}
 
-      <select className={styles["select"]} value={value} onChange={onChange}>
+      <select
+        className={`${styles["select"]} ${styles[theme]}`}
+        value={value}
+        onChange={onChange}
+      >
         {options.map(
           (option: { value: string; title: string }, index: number) => (
             <option key={index} value={option.value}>

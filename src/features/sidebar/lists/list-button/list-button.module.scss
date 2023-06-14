@@ -1,6 +1,6 @@
 @use "src/assets/scss/abstracts" as abs;
 
-.overview-button {
+.list-button {
   display: flex;
   text-decoration: none;
   border-radius: 12px;
@@ -11,7 +11,7 @@
   transition: background-color 0.25s ease, border-radius 0.25s ease,
     color 0.25s ease;
 
-  .overview-button__text {
+  .list-button__text {
     margin-top: 0;
     margin-bottom: 0;
   }

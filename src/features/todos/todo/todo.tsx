@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { onSnapshot, updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
+import { ThemeContext } from "src/contexts/theme-context";
 import { InputCheckbox } from "src/components/input-checkbox";
 import styles from "./todo.module.scss";
 
@@ -25,7 +26,11 @@ const Todo = ({
   setSelectedTodo,
   setListId = () => 0,
 }: TodoProps) => {
+  // Get lists and userDocRef variables from lists context
   const { lists, userDocRef } = useContext(ListsContext);
+
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
 
   // Get the information of selected todo
   const getTodo = () => {
@@ -77,7 +82,7 @@ const Todo = ({
 
   return (
     <motion.div
-      className={styles.todo}
+      className={`${styles.todo} ${styles[theme]}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

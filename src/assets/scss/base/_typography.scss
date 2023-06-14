@@ -7,7 +7,6 @@ html {
 }
 
 body {
-  background-color: abs.$color-body-background;
   height: 100%;
 }
 
@@ -19,11 +18,9 @@ h5,
 h6 {
   margin-top: 0;
   padding-top: abs.em(11.2);
-  color: #fff;
 }
 
 p {
-  color: #a1a1aa;
   font-size: 1.125rem;
 }
 

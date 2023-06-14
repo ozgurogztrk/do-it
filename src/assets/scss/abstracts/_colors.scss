@@ -1,54 +1,112 @@
 $color-palette: (
   "gray-scale": (
     0: #000000,
-    10: #0c0c0d,
-    25: #121212,
-    50: #242426,
-    75: #a1a1aa,
-    100: #ffffff,
+    1: #0c0c0d,
+    2: #121212,
+    3: #242426,
+    4: #a1a1aa,
+    5: #ebebeb,
+    6: #f4f4f4,
+    7: #ffffff,
   ),
   "primary": #0862e5,
   "invalid": #e5083f,
   "semi-transparent--dark": #0000009a,
 );
 
-// Main
+// Buttons
+$color-button-secondary: map-get($color-palette, "gray-scale", 4);
+
+// -- General--
+
 $color-primary: map-get($color-palette, "primary");
 $color-danger: map-get($color-palette, "invalid");
-$color-white: map-get($color-palette, "gray-scale", 100);
-$color-text--light: map-get($color-palette, "gray-scale", 75);
+$color-white: map-get($color-palette, "gray-scale", 7);
+$color-black: map-get($color-palette, "gray-scale", 0);
+
+// Dark
+$color-text--dark: map-get($color-palette, "gray-scale", 4);
 $color-backdrop--dark: map-get($color-palette, "semi-transparent--dark");
-$color-link-background: map-get($color-palette, "gray-scale", 50);
 
-// Body
-$color-body-background: map-get($color-palette, "gray-scale", 10);
+// Light
+$color-text--light: map-get($color-palette, "gray-scale", 3);
 
-// Page Loader
-$color-spinner-background: map-get($color-palette, "gray-scale", 25);
-$color-spinner: map-get($color-palette, "gray-scale", 75);
+// -- Body --
 
-// Authentication Pages
-$color-sign-in-background: map-get($color-palette, "gray-scale", 25);
-$color-sign-up-background: map-get($color-palette, "gray-scale", 25);
+// Dark
+$color-body-background--dark: map-get($color-palette, "gray-scale", 1);
 
-// Sidebar
-$color-sidebar-background: map-get($color-palette, "gray-scale", 25);
-$color-sidebar-border: map-get($color-palette, "gray-scale", 50);
+// Light
+$color-body-background--light: map-get($color-palette, "gray-scale", 7);
 
-// Todos
-$color-todo-background: map-get($color-palette, "gray-scale", 50);
+// -- PageLoader --
 
-// Modal
-$color-modal-background: map-get($color-palette, "gray-scale", 25);
+// Dark
+$color-spinner-background--dark: map-get($color-palette, "gray-scale", 2);
+$color-spinner--dark: map-get($color-palette, "gray-scale", 4);
 
-// Inputs
-$color-input-background: map-get($color-palette, "gray-scale", 10);
-$color-input-outline: map-get($color-palette, "gray-scale", 50);
+// Light
+$color-spinner-background--light: map-get($color-palette, "gray-scale", 4);
+$color-spinner--light: map-get($color-palette, "gray-scale", 2);
+
+// -- BaseCard --
+
+// Dark
+$color-base-card-background--dark: map-get($color-palette, "gray-scale", 2);
+
+// Light
+$color-base-card-background--light: map-get($color-palette, "gray-scale", 6);
+
+// -- Sidebar --
+
+// Dark
+$color-sidebar-background--dark: map-get($color-palette, "gray-scale", 2);
+$color-sidebar-link-background--dark: map-get($color-palette, "gray-scale", 3);
+
+// Light
+$color-sidebar-background--light: map-get($color-palette, "gray-scale", 6);
+$color-sidebar-link-background--light: map-get($color-palette, "gray-scale", 5);
+
+// -- Todo --
+
+// Dark
+$color-todo-background--dark: map-get($color-palette, "gray-scale", 3);
+$color-todo-details-background--dark: map-get($color-palette, "gray-scale", 2);
+
+// Light
+$color-todo-background--light: map-get($color-palette, "gray-scale", 5);
+$color-todo-details-background--light: map-get($color-palette, "gray-scale", 6);
+
+// -- Modal --
+
+// Dark
+$color-modal-background--dark: map-get($color-palette, "gray-scale", 2);
+
+// Light
+$color-modal-background--light: map-get($color-palette, "gray-scale", 6);
+
+// -- Input --
+
 $color-input-focused: map-get($color-palette, "primary");
-$color-input-checkbox: map-get($color-palette, "gray-scale", 10);
 
-// Cards
-$color-base-card-background: map-get($color-palette, "gray-scale", 25);
+// Dark
+$color-input-background--dark: map-get($color-palette, "gray-scale", 1);
+$color-input-outline--dark: map-get($color-palette, "gray-scale", 3);
+$color-input-checkbox--dark: map-get($color-palette, "gray-scale", 1);
+$color-input-checkbox-outline--dark: map-get($color-palette, "gray-scale", 3);
 
-// Buttons
-$color-button-secondary: map-get($color-palette, "gray-scale", 75);
+// Light
+$color-input-background--light: map-get($color-palette, "gray-scale", 7);
+$color-input-outline--light: map-get($color-palette, "gray-scale", 4);
+$color-input-checkbox--light: map-get($color-palette, "gray-scale", 7);
+$color-input-checkbox-outline--light: map-get($color-palette, "gray-scale", 4);
+
+// -- Select --
+
+// Dark
+$color-select-background--dark: map-get($color-palette, "gray-scale", 1);
+$color-select-outline--dark: map-get($color-palette, "gray-scale", 3);
+
+// Light
+$color-select-background--light: map-get($color-palette, "gray-scale", 7);
+$color-select-outline--light: map-get($color-palette, "gray-scale", 4);

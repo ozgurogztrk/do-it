@@ -4,9 +4,6 @@
   width: 100%;
 
   .select {
-    background-color: abs.$color-input-background;
-    color: abs.$color-white;
-    box-shadow: 0 0 0 2px abs.$color-input-outline;
     box-sizing: border-box;
     outline: none;
     border: none;
@@ -15,12 +12,24 @@
     width: 100%;
     cursor: pointer;
 
-    option {
-      cursor: pointer;
+    &.dark {
+      background-color: abs.$color-select-background--dark;
+      color: abs.$color-white;
+      box-shadow: 0 0 0 2px abs.$color-select-outline--dark;
+    }
 
-      &:hover {
-        background-color: abs.$color-link-background;
-      }
+    &.light {
+      background-color: abs.$color-select-background--light;
+      color: abs.$color-black;
+      box-shadow: 0 0 0 2px abs.$color-select-outline--light;
     }
   }
+}
+
+.dark {
+  color: abs.$color-white;
+}
+
+.light {
+  color: abs.$color-black;
 }

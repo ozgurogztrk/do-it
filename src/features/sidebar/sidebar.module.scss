@@ -1,7 +1,6 @@
 @use "src/assets/scss/abstracts" as abs;
 
 .sidebar {
-  background-color: abs.$color-sidebar-background;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,4 +21,12 @@
     height: 100%;
     margin-bottom: abs.em(26);
   }
+}
+
+.dark {
+  background-color: abs.$color-sidebar-background--dark;
+}
+
+.light {
+  background-color: abs.$color-sidebar-background--light;
 }

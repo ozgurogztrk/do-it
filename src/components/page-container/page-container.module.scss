@@ -4,3 +4,11 @@
   display: inline-block;
   width: 100%;
 }
+
+.dark {
+  background-color: abs.$color-body-background--dark;
+}
+
+.light {
+  background-color: abs.$color-body-background--light;
+}

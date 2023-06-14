@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "src/contexts/theme-context";
 import styles from "./input-password.module.scss";
 
 type InputPasswordProps = {
@@ -19,17 +21,17 @@ const InputPassword = ({
   hasIcon = false,
   onChange,
 }: InputPasswordProps) => {
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className={styles["input-wrapper"]}>
+    <div className={`${styles["input-wrapper"]} ${styles[theme]}`}>
       {inputTitle.length > 0 ? <h3>{inputTitle}</h3> : null}
 
       <input
         type="password"
-        className={
-          hasIcon
-            ? `${styles["input-password"]} ${styles["with-icon"]}`
-            : styles["input-password"]
-        }
+        className={`${styles["input-password"]} ${
+          hasIcon ? styles["with-icon"] : ""
+        } ${styles[theme]}`}
         value={value}
         placeholder={placeholder}
         title={title}

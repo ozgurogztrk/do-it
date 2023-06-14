@@ -9,7 +9,6 @@
   cursor: pointer;
 
   svg {
-    color: abs.$color-text--light;
     font-size: abs.rem(26);
   }
 }
@@ -19,4 +18,16 @@
   transform: translateY(-50%);
   left: 10px;
   top: 50%;
+}
+
+.dark {
+  svg {
+    color: abs.$color-text--dark !important;
+  }
+}
+
+.light {
+  svg {
+    color: abs.$color-text--light !important;
+  }
 }

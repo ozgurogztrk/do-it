@@ -11,3 +11,15 @@
 .hidden {
   display: none;
 }
+
+.dark {
+  svg {
+    color: abs.$color-text--dark;
+  }
+}
+
+.light {
+  svg {
+    color: abs.$color-text--light;
+  }
+}
