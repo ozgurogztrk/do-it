@@ -12,15 +12,17 @@ const PageContainer = ({ className, children }: PageContainerProps) => {
   // Get theme variable from theme context
   const { theme } = useContext(ThemeContext);
   return (
-    <motion.main
-      className={`${styles["page-container"]} ${className} ${styles[theme]}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-    >
-      {children}
-    </motion.main>
+    <div className={`${styles.wrapper}  ${styles[theme]}`}>
+      <motion.main
+        className={`${styles["page-container"]} ${className}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        {children}
+      </motion.main>
+    </div>
   );
 };
 
