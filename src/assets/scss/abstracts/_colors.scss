@@ -14,9 +14,6 @@ $color-palette: (
   "semi-transparent--dark": #0000009a,
 );
 
-// Buttons
-$color-button-secondary: map-get($color-palette, "gray-scale", 4);
-
 // -- General--
 
 $color-primary: map-get($color-palette, "primary");
@@ -84,6 +81,9 @@ $color-modal-background--dark: map-get($color-palette, "gray-scale", 2);
 
 // Light
 $color-modal-background--light: map-get($color-palette, "gray-scale", 6);
+
+// -- Button --
+$color-button-secondary: map-get($color-palette, "gray-scale", 4);
 
 // -- Input --
 
