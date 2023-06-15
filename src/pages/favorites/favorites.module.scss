@@ -1,0 +1,22 @@
+@use "src/assets/scss/abstracts" as abs;
+
+.favorites-header {
+  display: flex;
+  padding-right: abs.em(32);
+  padding-left: abs.em(32);
+
+  @include abs.breakpoints(sm) {
+    padding-right: abs.em(16);
+    padding-left: abs.em(16);
+  }
+
+  button {
+    padding-top: abs.em(22);
+    margin-right: abs.em(16);
+
+    svg {
+      color: abs.$color-white !important;
+      font-size: abs.rem(30) !important;
+    }
+  }
+}
