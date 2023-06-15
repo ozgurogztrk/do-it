@@ -14,7 +14,7 @@ const Header = ({ activeState, toggleEvent }: HeaderProps) => {
   const { theme } = useContext(ThemeContext);
   return (
     <section className={` ${styles.header} ${styles[theme]}`}>
-      <h1 className={activeState ? "" : styles.hidden}>To Do</h1>
+      <h1 className={activeState ? "" : styles.hidden}>Do It</h1>
 
       {activeState ? (
         <IconButton icon={"lucide:x"} onClick={toggleEvent} />
