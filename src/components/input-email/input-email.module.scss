@@ -17,7 +17,7 @@
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px abs.$color-white !important;
+      box-shadow: 0 0 0 2px abs.$color-input-focused !important;
 
       &:not(:placeholder-shown) {
         &:invalid {
