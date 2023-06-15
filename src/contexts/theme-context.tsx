@@ -8,7 +8,9 @@ type ThemeContextProviderProps = {
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   // Create reactive theme variable
-  const [theme, setTheme] = useState(localStorage.getItem("themeKey")!);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("themeKey") || "dark"
+  );
 
   // Get html element
   const htmlElement = document.querySelector("html");
@@ -20,8 +22,9 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem("themeKey", "dark");
+    localStorage.setItem("themeKey", theme !== null ? theme : "dark");
   }, []);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
