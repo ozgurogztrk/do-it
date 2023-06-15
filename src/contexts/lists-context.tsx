@@ -40,7 +40,7 @@ const ListsContextProvider = ({ children }: ListsContextProviderProps) => {
         return unsubscribe;
       } else {
         setLists([]);
-        createNewDocument(userId);
+        await createNewDocument(userId);
         setInitialDataFetched(true);
       }
     }
