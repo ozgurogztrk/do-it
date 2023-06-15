@@ -21,7 +21,7 @@
 
       &:not(:placeholder-shown) {
         &:invalid {
-          box-shadow: 0 0 0 2px abs.$color-danger;
+          box-shadow: 0 0 0 2px abs.$color-danger !important;
         }
       }
     }
