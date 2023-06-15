@@ -5,7 +5,7 @@ import { DefaultLayout } from "src/layouts/default-layout";
 import { Index } from "src/pages";
 import { Overview } from "src/pages/overview";
 import { ListPage } from "src/pages/list-page";
-import { Favorites } from "src/pages/Favorites";
+import { Favorites } from "src/pages/favorites";
 import { SettingsPage } from "src/pages/settings-page";
 import { SignIn } from "src/pages/sign-in";
 import { SignUp } from "src/pages/sign-up";
