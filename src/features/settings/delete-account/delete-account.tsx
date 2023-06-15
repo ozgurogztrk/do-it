@@ -55,7 +55,7 @@ const DeleteAccount = () => {
         <h3 className={styles["delete-account__title"]}>Delete Account</h3>
 
         <div>
-          <Button role="danger" onClick={toggleDeleteAccountModal}>
+          <Button variant="danger" onClick={toggleDeleteAccountModal}>
             Delete
           </Button>
         </div>
@@ -66,7 +66,7 @@ const DeleteAccount = () => {
 
           <div className={styles.modal__buttons}>
             <Button onClick={deleteAccount}>Yes</Button>
-            <Button role="secondary" onClick={toggleDeleteAccountModal}>
+            <Button variant="secondary" onClick={toggleDeleteAccountModal}>
               Cancel
             </Button>
           </div>

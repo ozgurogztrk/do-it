@@ -71,7 +71,7 @@ const ListPage = () => {
 
           <div className={styles.modal__buttons}>
             <Button onClick={deleteList}>Yes</Button>
-            <Button role="secondary" onClick={toggleListModal}>
+            <Button variant="secondary" onClick={toggleListModal}>
               Cancel
             </Button>
           </div>

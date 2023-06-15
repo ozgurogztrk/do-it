@@ -155,7 +155,7 @@ const TodoDetails = ({
 
           <div className={styles["todo-details__buttons"]}>
             <Button type="submit">Save Changes</Button>
-            <Button role="danger--outline" onClick={toggleDeleteModal}>
+            <Button variant="danger--outline" onClick={toggleDeleteModal}>
               Delete
               <Icon icon="lucide:trash-2" />
             </Button>
@@ -174,7 +174,7 @@ const TodoDetails = ({
                 >
                   Yes
                 </Button>
-                <Button role="secondary" onClick={toggleDeleteModal}>
+                <Button variant="secondary" onClick={toggleDeleteModal}>
                   Cancel
                 </Button>
               </div>
