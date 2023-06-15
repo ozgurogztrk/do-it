@@ -7,7 +7,11 @@ const ThemeButton = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   // Create reactive themeIcon variable
-  const [themeIcon, setThemeIcon] = useState("lucide:moon-star");
+  const [themeIcon, setThemeIcon] = useState(
+    localStorage.getItem("themeKey") === "dark"
+      ? "lucide:moon-star"
+      : "lucide:cloud-sun"
+  );
 
   // Function to switch between themes
   const switchTheme = () => {
