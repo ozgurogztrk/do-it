@@ -15,7 +15,6 @@
     margin-right: abs.em(16);
 
     svg {
-      color: abs.$color-white;
       font-size: abs.rem(30);
     }
   }
@@ -28,13 +27,29 @@
       font-size: abs.rem(30);
     }
   }
-}
 
-.modal__buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding-bottom: abs.em(20);
-  width: 100%;
+  &.dark {
+    button:nth-child(1) {
+      svg {
+        color: abs.$color-white !important;
+      }
+    }
+  }
+
+  &.light {
+    button:nth-child(1) {
+      svg {
+        color: abs.$color-black !important;
+      }
+    }
+  }
+
+  .modal__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding-bottom: abs.em(20);
+    width: 100%;
+  }
 }

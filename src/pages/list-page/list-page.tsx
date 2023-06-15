@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
+import { ThemeContext } from "src/contexts/theme-context";
 import { PageContainer } from "src/components/page-container";
 import { IconButton } from "src/components/icon-button";
 import { Button } from "src/components/button";
@@ -13,9 +14,11 @@ const ListPage = () => {
   // Get lists variable from lists context
   const { lists, userDocRef } = useContext(ListsContext);
 
-  // Create a reactive variable to check if the modal is open or not
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Get theme variable from theme context
+  const { theme } = useContext(ThemeContext);
 
+  // Create reactive isModalOpen and isDeleteFunctionStarted variables
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteFunctionStarted, setIsDeleteFunctionStarted] = useState(false);
 
   // Get the value of id parameter from '/list-page/:id' URL
@@ -58,7 +61,7 @@ const ListPage = () => {
   }, [id, lists, navigate]);
   return (
     <PageContainer>
-      <div className={styles["list-page-header"]}>
+      <div className={`${styles["list-page-header"]} ${styles[theme]}`}>
         <div id="sidebar-toggle"></div>
 
         <h1>{lists[id]?.title}</h1>
