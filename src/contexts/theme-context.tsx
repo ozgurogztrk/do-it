@@ -20,7 +20,7 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem("themeKey", theme);
+    localStorage.setItem("themeKey", "dark");
   }, []);
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
