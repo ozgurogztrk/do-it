@@ -21,13 +21,9 @@ const ChangeEmail = () => {
     if (email != auth.currentUser?.email) {
       updateEmail(auth.currentUser!, email!)
         .then(() => {
-          signOut(auth)
-            .then(() => {
-              navigate("/sign-in");
-            })
-            .catch((error) => {
-              console.error(error.code, error.message);
-            });
+          signOut(auth).catch((error) => {
+            console.error(error.code, error.message);
+          });
         })
         .catch((error) => {
           if (error.code == "auth/requires-recent-login") {
