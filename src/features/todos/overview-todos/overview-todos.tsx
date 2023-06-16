@@ -52,6 +52,7 @@ const OverviewTodos = () => {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
+            isDetailsOpen={isDetailsOpen}
             selectedTodo={selectedTodo!}
             listId={listId}
           />

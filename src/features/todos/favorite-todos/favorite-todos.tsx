@@ -37,6 +37,7 @@ const FavoriteTodos = () => {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
+            isDetailsOpen={isDetailsOpen}
             selectedTodo={selectedTodo!}
             listId={listId}
           />
