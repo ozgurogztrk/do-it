@@ -11,6 +11,13 @@
     margin-bottom: abs.em(16);
     cursor: pointer;
 
+    h3 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 1400px;
+    }
+
     svg {
       font-size: abs.rem(26);
       padding-bottom: abs.em(4);
