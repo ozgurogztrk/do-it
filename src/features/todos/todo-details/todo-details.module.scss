@@ -11,13 +11,15 @@
     display: flex;
     flex-direction: column;
     float: right;
+    overflow: hidden;
+    transform-origin: right;
     row-gap: 16px;
     padding-left: abs.em(16);
     padding-right: abs.em(16);
     height: 100%;
 
     @include abs.breakpoints(sm) {
-      width: 93%;
+      width: 93% !important;
     }
 
     .todo-details__header {

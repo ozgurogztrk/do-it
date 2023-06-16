@@ -66,6 +66,7 @@ const Todos = () => {
         {isDetailsOpen ? (
           <TodoDetails
             setIsDetailsOpen={setIsDetailsOpen}
+            isDetailsOpen={isDetailsOpen}
             selectedTodo={selectedTodo!}
             listId={id}
           />

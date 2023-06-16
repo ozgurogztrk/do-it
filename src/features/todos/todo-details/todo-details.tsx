@@ -16,6 +16,7 @@ import styles from "./todo-details.module.scss";
 type TodoDetailsProps = {
   listId?: number;
   setIsDetailsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isDetailsOpen: boolean;
   selectedTodo: {
     id: number;
     title: string;
@@ -27,6 +28,7 @@ type TodoDetailsProps = {
 const TodoDetails = ({
   listId = 0,
   setIsDetailsOpen,
+  isDetailsOpen,
   selectedTodo,
 }: TodoDetailsProps) => {
   // Get lists and userDocRef variable from lists context
@@ -114,75 +116,81 @@ const TodoDetails = ({
     }).catch((error) => console.error(error.code, error.message));
   };
   return createPortal(
-    <div className={styles.backdrop}>
-      <motion.section
-        className={`${styles["todo-details"]} ${styles[theme]}`}
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className={`${styles["todo-details__header"]} ${styles[theme]}`}>
-          <h1>Details:</h1>
-          <IconButton icon={"lucide:x"} onClick={closeDetails} />
-        </div>
+    <>
+      {isDetailsOpen && (
+        <div className={styles.backdrop}>
+          <motion.section
+            className={`${styles["todo-details"]} ${styles[theme]}`}
+            initial={{ width: 0, scaleX: 0, opacity: 0 }}
+            animate={{ width: "340px", scaleX: 1, opacity: 1 }}
+            exit={{ width: 0, scaleX: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div
+              className={`${styles["todo-details__header"]} ${styles[theme]}`}
+            >
+              <h1>Details:</h1>
+              <IconButton icon={"lucide:x"} onClick={closeDetails} />
+            </div>
 
-        <form onSubmit={saveNewTodoDetails}>
-          <div className={styles["todo-details__inputs"]}>
-            <InputText
-              inputTitle="Change Title"
-              placeholder="Add New Title"
-              onChange={(event) => setTodoTitle(event.target.value)}
-              value={todoTitle}
-            />
+            <form onSubmit={saveNewTodoDetails}>
+              <div className={styles["todo-details__inputs"]}>
+                <InputText
+                  inputTitle="Change Title"
+                  placeholder="Add New Title"
+                  onChange={(event) => setTodoTitle(event.target.value)}
+                  value={todoTitle}
+                />
 
-            <Select
-              selectTitle="Move To List"
-              options={lists.map((list: any) => ({
-                value: list.id.toString(),
-                title: list.title,
-              }))}
-              onChange={(event) => setCurrentList(event.target.value)}
-              value={currentList}
-            />
+                <Select
+                  selectTitle="Move To List"
+                  options={lists.map((list: any) => ({
+                    value: list.id.toString(),
+                    title: list.title,
+                  }))}
+                  onChange={(event) => setCurrentList(event.target.value)}
+                  value={currentList}
+                />
 
-            <InputCheckbox
-              inputTitle="Add To Favorites"
-              onChange={(event) => setIsTodoFavorite(event.target.checked)}
-              isChecked={isTodoFavorite}
-            />
-          </div>
-
-          <div className={styles["todo-details__buttons"]}>
-            <Button type="submit">Save Changes</Button>
-            <Button variant="danger--outline" onClick={toggleDeleteModal}>
-              Delete
-              <Icon icon="lucide:trash-2" />
-            </Button>
-
-            <Modal isModalOpen={isModalOpen}>
-              <h1>Confirm Your Action!</h1>
-              <p>Are you sure you want to delete this item?</p>
-
-              <div className={styles.modal__buttons}>
-                <Button
-                  onClick={() => {
-                    deleteTodo();
-                    toggleDeleteModal();
-                    closeDetails();
-                  }}
-                >
-                  Yes
-                </Button>
-                <Button variant="secondary" onClick={toggleDeleteModal}>
-                  Cancel
-                </Button>
+                <InputCheckbox
+                  inputTitle="Add To Favorites"
+                  onChange={(event) => setIsTodoFavorite(event.target.checked)}
+                  isChecked={isTodoFavorite}
+                />
               </div>
-            </Modal>
-          </div>
-        </form>
-      </motion.section>
-    </div>,
+
+              <div className={styles["todo-details__buttons"]}>
+                <Button type="submit">Save Changes</Button>
+                <Button variant="danger--outline" onClick={toggleDeleteModal}>
+                  Delete
+                  <Icon icon="lucide:trash-2" />
+                </Button>
+
+                <Modal isModalOpen={isModalOpen}>
+                  <h1>Confirm Your Action!</h1>
+                  <p>Are you sure you want to delete this item?</p>
+
+                  <div className={styles.modal__buttons}>
+                    <Button
+                      onClick={() => {
+                        deleteTodo();
+                        toggleDeleteModal();
+                        closeDetails();
+                      }}
+                    >
+                      Yes
+                    </Button>
+                    <Button variant="secondary" onClick={toggleDeleteModal}>
+                      Cancel
+                    </Button>
+                  </div>
+                </Modal>
+              </div>
+            </form>
+          </motion.section>
+        </div>
+      )}
+    </>,
     document.getElementById("root") as HTMLElement
   );
 };
