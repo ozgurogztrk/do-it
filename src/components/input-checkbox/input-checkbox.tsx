@@ -19,8 +19,10 @@ const InputCheckbox = ({
   return (
     <label className={`${styles.wrapper} ${styles[theme]}`}>
       <input type="checkbox" checked={isChecked} onChange={onChange} />
-      {isChecked ? <Icon icon={"lucide:check"} /> : null}
-      <span className={`${styles["input-checkbox"]} ${styles[theme]}`} />
+
+      <span className={`${styles["input-checkbox"]} ${styles[theme]}`}>
+        {isChecked ? <Icon icon={"lucide:check"} /> : null}
+      </span>
       <span>
         <h3>{inputTitle}</h3>
       </span>
