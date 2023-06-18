@@ -3,6 +3,7 @@ import { AnimatedRoutes } from "src/features/animated-routes";
 import { ListsContextProvider } from "src/contexts/lists-context";
 import { AuthContextProvider } from "src/contexts/auth-context";
 import { ThemeContextProvider } from "src/contexts/theme-context";
+import { SidebarContextProvider } from "src/contexts/sidebar-context";
 
 const App = () => {
   return (
@@ -10,7 +11,9 @@ const App = () => {
       <ThemeContextProvider>
         <AuthContextProvider>
           <ListsContextProvider>
-            <AnimatedRoutes />
+            <SidebarContextProvider>
+              <AnimatedRoutes />
+            </SidebarContextProvider>
           </ListsContextProvider>
         </AuthContextProvider>
       </ThemeContextProvider>

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { ThemeContext } from "src/contexts/theme-context";
+import { SidebarContext } from "src/contexts/sidebar-context";
 import { Header } from "./header";
 import { Main } from "./main";
 import { Lists } from "./lists";
@@ -12,8 +13,8 @@ const Sidebar = () => {
   // Get theme variable from theme context
   const { theme } = useContext(ThemeContext);
 
-  // Create a reactive activeState variable to check if the sidebar is open or not
-  const [activeState, setActiveState] = useState<boolean>(true);
+  // Get isSidebarOpen variable from theme context
+  const { isSidebarOpen } = useContext(SidebarContext);
 
   // Check if the user is on mobile screen
   const isMobileScreen = useMediaQuery({ query: "(max-width: 481px)" });
@@ -31,24 +32,19 @@ const Sidebar = () => {
     },
   };
 
-  // The function of toggling the sidebar menu
-  const toggleSidebar = () => {
-    setActiveState(!activeState);
-  };
-
   return (
     <motion.nav
       className={`${styles.sidebar} ${styles[theme]}`}
-      initial={false}
-      animate={activeState ? "opened" : "closed"}
+      initial={isMobileScreen ? true : false}
+      animate={isSidebarOpen ? "opened" : "closed"}
       variants={sidebarVariants}
     >
-      <Header activeState={activeState} toggleEvent={toggleSidebar} />
+      <Header />
 
       <div className={styles.sidebar__content}>
-        <Main sidebarState={activeState} />
-        <Lists sidebarState={activeState} />
-        <UserActions sidebarState={activeState} />
+        <Main />
+        <Lists />
+        <UserActions />
       </div>
     </motion.nav>
   );

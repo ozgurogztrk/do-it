@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc } from "firebase/firestore";
 import { ListsContext } from "src/contexts/lists-context";
 import { ThemeContext } from "src/contexts/theme-context";
+import { SidebarContext } from "src/contexts/sidebar-context";
 import { PageContainer } from "src/components/page-container";
 import { IconButton } from "src/components/icon-button";
 import { Button } from "src/components/button";
@@ -16,6 +17,9 @@ const ListPage = () => {
 
   // Get theme variable from theme context
   const { theme } = useContext(ThemeContext);
+
+  // Get isSidebarOpen and toggleSidebar variables from sidebar context
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
 
   // Create reactive isModalOpen and isDeleteFunctionStarted variables
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,7 +66,11 @@ const ListPage = () => {
   return (
     <PageContainer>
       <div className={`${styles["list-page-header"]} ${styles[theme]}`}>
-        <div id="sidebar-toggle"></div>
+        <div id="sidebar-toggle">
+          {!isSidebarOpen ? (
+            <IconButton icon={"lucide:menu"} onClick={toggleSidebar} />
+          ) : null}
+        </div>
 
         <h1>{lists[id]?.title}</h1>
 

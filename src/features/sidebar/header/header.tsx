@@ -1,29 +1,23 @@
 import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { ThemeContext } from "src/contexts/theme-context";
+import { SidebarContext } from "src/contexts/sidebar-context";
 import { IconButton } from "src/components/icon-button";
 import styles from "./header.module.scss";
 
-type HeaderProps = {
-  activeState: boolean;
-  toggleEvent: React.MouseEventHandler<SVGElement>;
-};
-
-const Header = ({ activeState, toggleEvent }: HeaderProps) => {
+const Header = () => {
   // Get theme variable from theme context
   const { theme } = useContext(ThemeContext);
+
+  // Get isSidebarOpen and toggleSidebar variables from sidebar context
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
   return (
     <section className={` ${styles.header} ${styles[theme]}`}>
-      <h1 className={activeState ? "" : styles.hidden}>Do It</h1>
+      <h1 className={isSidebarOpen ? "" : styles.hidden}>Do It</h1>
 
-      {activeState ? (
-        <IconButton icon={"lucide:x"} onClick={toggleEvent} />
-      ) : (
-        createPortal(
-          <IconButton icon={"lucide:menu"} onClick={toggleEvent} />,
-          document.getElementById("sidebar-toggle") as HTMLElement
-        )
-      )}
+      {isSidebarOpen ? (
+        <IconButton icon={"lucide:x"} onClick={toggleSidebar} />
+      ) : null}
     </section>
   );
 };
